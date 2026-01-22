@@ -17,8 +17,6 @@ def searchFromGdelt():
     # Formata datas no padrão exigido pela API GDELT
     start_str = start_time.strftime("%Y%m%d%H%M%S")
     end_str = end_time.strftime("%Y%m%d%H%M%S")
-    print(start_str)
-    print(end_str)
 
     url = "https://api.gdeltproject.org/api/v2/doc/doc/"
     params = {
@@ -82,4 +80,6 @@ def Scrap():
 #####################################################################################################
 
 if __name__ == "__main__":
-    print(Scrap()['url'][:-1][0])
+    df = Scrap()
+    print(df.head(), "\n", "-" * 65)
+    df.info()

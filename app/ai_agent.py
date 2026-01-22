@@ -22,6 +22,7 @@ api_token = os.getenv('GENAI_TOKEN')
 # Função para testa um scrap em uma url e retira o texto dela
 def TestingScrap():
     """retorna o texto da url como string."""
+
     url = 'https://g1.globo.com/mt/mato-grosso/noticia/2025/09/24/roubos-de-carga-de-caminhao-tem-queda-de-mais-de-40percent-com-ajuda-de-tecnologia-em-mt.ghtml'
 
     html = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}).text
@@ -34,6 +35,7 @@ def TestingScrap():
 # Agente Gemini da Google
 def ParseToAgent(texto, api_token):
     """recebe o 'texto' como parte do prompt e retorna um json da resposta. 'api_token' -> token da API"""
+    
     prompt = f"""
         No texto: {texto},
 
