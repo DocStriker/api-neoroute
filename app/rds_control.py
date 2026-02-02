@@ -3,7 +3,7 @@ import time
 import boto3
 
 REGION = "us-east-1"
-DB_INSTANCE_ID = "neoroute-db"
+DB_INSTANCE_ID = "neoroutedb"
 
 rds = boto3.client("rds", region_name=REGION)
 
