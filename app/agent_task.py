@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
 from dotenv import load_dotenv
 import psycopg2
+import boto3
 import os
 import time
 import pandas as pd
@@ -22,6 +23,7 @@ load_dotenv()
 
 api_token = os.getenv("GENAI_TOKEN")
 db_endpoint = os.getenv("RDS_ENDPOINT")
+password=os.getenv("RDS_PASS")
 scrap_df = Scrap() # Chama a função Scrap() do script 'web_scrapping.py' no qual retorna um dataframe
 
 #####################################################################################################
@@ -90,11 +92,11 @@ def extract_adress(json):
 def main():
 
     conn = psycopg2.connect(
-        host=db_endpoint,
-        database="news_scrap",
-        user="neoroute",
-        password="neoroute",
+        host='neoroute-db-instance.cwn2ecuw8v62.us-east-1.rds.amazonaws.com',
         port=5432,
+        database='neoroutedb',
+        user='gallifrey',
+        password=password,
     )
 
     print("Conectado ao banco 'news_scrap' na porta: 5432.")

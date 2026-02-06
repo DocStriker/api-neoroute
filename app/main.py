@@ -4,19 +4,26 @@
 from fastapi import FastAPI, Header, HTTPException, Depends
 import psycopg2
 from psycopg2.extras import RealDictCursor
-from dotenv import load_dotenv
 import os
 from fastapi.middleware.cors import CORSMiddleware
 import asyncio
 from agent_task import main
+from mangum import Mangum
+
+import boto3
+
+ssm = boto3.client("ssm")
+
+def get_param(name):
+    return ssm.get_parameter(
+        Name=name,
+        WithDecryption=True
+    )["Parameter"]["Value"]
 
 #####################################################################################################
 # 2. Configurando as variáveis de ambiente
 
-load_dotenv()
-
-db_endpoint = os.getenv('RDS_ENDPOINT')
-api_token = os.getenv('API_TOKEN')
+api_token = get_param("/neoroute/api/token")
 
 #####################################################################################################
 # 3. Configurando o FastAPI
@@ -51,11 +58,12 @@ app.add_middleware(
 def get_connection():
     """conecta ao banco RDS via PostgreSQL na porta 5432."""
     return psycopg2.connect(
-        dbname="news_scrap",
-        user="neoroute",
-        password="neoroute",
-        host=db_endpoint,
-        port="5432"
+        dbname=get_param("/neoroute/db/name"),
+        user=get_param("/neoroute/db/user"),
+        password=get_param("/neoroute/db/password"),
+        host=get_param("/neoroute/db/host"),
+        port="5432",
+        connect_timeout=5
     )
 
 # Função para chama o agente Gemini
@@ -68,6 +76,13 @@ async def run_agent_task():
 
 #####################################################################################################
 # 5. Criação das rotas da API
+
+@app.get("/health", tags=["Health Check"])
+def health_check(auth: None = Depends(verify_token)):
+    try:
+        return {"status": "OK"}
+    except Exception as e:
+        return HTTPException(status_code=500, detail=str(e))
 
 # Chama o agente para executar a tarefa
 @app.post("/run_agent", tags=["AI Agent"])
@@ -243,3 +258,5 @@ def get_coordenadas(auth: None = Depends(verify_token)):
     finally:
         cur.close()
         conn.close()
+
+handler = Mangum(app)

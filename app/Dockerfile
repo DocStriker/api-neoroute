@@ -1,18 +1,11 @@
-# Imagem base leve
-FROM python:3.11-slim
+FROM public.ecr.aws/lambda/python:3.10
 
-# Define diretório de trabalho dentro do container
-WORKDIR /app
+# Copia dependências
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# Copia os arquivos do projeto
-COPY . /app
+# Copia o código
+COPY . .
 
-# Instala dependências
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Expõe a porta onde a API roda
-EXPOSE 8000
-
-# Comando para rodar o servidor
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-
+# Handler do Lambda
+CMD ["main.handler"]

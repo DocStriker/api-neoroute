@@ -47,7 +47,7 @@ def ParseToAgent(texto, api_token):
 
     client = genai.Client(api_key=api_token)
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-2.5-flash-lite",
         contents=prompt,
         config=types.GenerateContentConfig(
             thinking_config=types.ThinkingConfig(thinking_budget=0)  # Desabilita o modo pensamento
