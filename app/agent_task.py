@@ -4,12 +4,9 @@
 import requests
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
-from dotenv import load_dotenv
 import psycopg2
 import boto3
-import os
 import time
-import pandas as pd
 import json
 import unicodedata
 
@@ -19,11 +16,17 @@ from ai_agent import ParseToAgent # Importa a função de AI Agent para procurar
 #####################################################################################################
 # 2. Configuração de variáveis de ambiente
 
-load_dotenv()
+import boto3
 
-api_token = os.getenv("GENAI_TOKEN")
-db_endpoint = os.getenv("RDS_ENDPOINT")
-password=os.getenv("RDS_PASS")
+ssm = boto3.client("ssm")
+
+def get_param(name, decrypt=True):
+    return ssm.get_parameter(
+        Name=name,
+        WithDecryption=decrypt
+    )["Parameter"]["Value"]
+
+api_token = get_param("/neoroute/api/aiagent")
 scrap_df = Scrap() # Chama a função Scrap() do script 'web_scrapping.py' no qual retorna um dataframe
 
 #####################################################################################################
@@ -92,11 +95,12 @@ def extract_adress(json):
 def main():
 
     conn = psycopg2.connect(
-        host='neoroute-db-instance.cwn2ecuw8v62.us-east-1.rds.amazonaws.com',
-        port=5432,
-        database='neoroutedb',
-        user='gallifrey',
-        password=password,
+        dbname=get_param("/neoroute/db/name"),
+        user=get_param("/neoroute/db/user"),
+        password=get_param("/neoroute/db/password"),
+        host=get_param("/neoroute/db/host"),
+        port="5432",
+        connect_timeout=5
     )
 
     print("Conectado ao banco 'news_scrap' na porta: 5432.")

@@ -5,16 +5,22 @@ import requests
 from google import genai
 from google.genai import types
 from bs4 import BeautifulSoup
-import os
 import json
-from dotenv import load_dotenv
+
+import boto3
+
+ssm = boto3.client("ssm")
+
+def get_param(name, decrypt=True):
+    return ssm.get_parameter(
+        Name=name,
+        WithDecryption=decrypt
+    )["Parameter"]["Value"]
 
 #####################################################################################################
 # 2. Configurando variáveis de ambiente
 
-load_dotenv()
-
-api_token = os.getenv('GENAI_TOKEN')
+api_token = get_param("/neoroute/api/aiagent")
 
 #####################################################################################################
 # 3. Funções de utilidades

@@ -1,11 +1,12 @@
-FROM public.ecr.aws/lambda/python:3.10
+FROM public.ecr.aws/lambda/python:3.11
 
 # Copia dependências
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+
+RUN pip install --no-cache-dir -r requirements.txt -t /var/task
 
 # Copia o código
-COPY . .
+COPY main.py .
 
-# Handler do Lambda
+# Handler
 CMD ["main.handler"]

@@ -4,33 +4,42 @@
 from fastapi import FastAPI, Header, HTTPException, Depends
 import psycopg2
 from psycopg2.extras import RealDictCursor
-import os
 from fastapi.middleware.cors import CORSMiddleware
 import asyncio
-from agent_task import main
+#from agent_task import main
 from mangum import Mangum
 
 import boto3
 
 ssm = boto3.client("ssm")
 
-def get_param(name):
+def get_param(name, decrypt=True):
     return ssm.get_parameter(
         Name=name,
-        WithDecryption=True
+        WithDecryption=decrypt
     )["Parameter"]["Value"]
 
 #####################################################################################################
 # 2. Configurando as variáveis de ambiente
 
-api_token = get_param("/neoroute/api/token")
+api_token = None
+
+
+def main():
+    pass
+
+def get_api_token():
+    global api_token
+    if api_token is None:
+        api_token = get_param("/neoroute/api/token")
+    return api_token
 
 #####################################################################################################
 # 3. Configurando o FastAPI
 
 # Função para verificação do token da API
 def verify_token(x_api_key: str = Header(...)):
-    if x_api_key != api_token:
+    if x_api_key != get_api_token():
         raise HTTPException(status_code=401, detail="Unauthorized")
 
 app = FastAPI(
@@ -40,7 +49,7 @@ app = FastAPI(
 )
 
 origins = [
-    "http://localhost:3000" # Front local
+    "*" # Front local
 ]
 
 app.add_middleware(
@@ -68,7 +77,7 @@ def get_connection():
 
 # Função para chama o agente Gemini
 async def run_agent_task():
-    """chama a função main() do script 'agent_task.py' e retorna um json do status."""
+    
     main()
     # por exemplo, scrape + inserção no banco
     await asyncio.sleep(3)  # simula tempo de execução
@@ -78,11 +87,8 @@ async def run_agent_task():
 # 5. Criação das rotas da API
 
 @app.get("/health", tags=["Health Check"])
-def health_check(auth: None = Depends(verify_token)):
-    try:
-        return {"status": "OK"}
-    except Exception as e:
-        return HTTPException(status_code=500, detail=str(e))
+def health_check():
+    return {"status": "OK"}
 
 # Chama o agente para executar a tarefa
 @app.post("/run_agent", tags=["AI Agent"])
