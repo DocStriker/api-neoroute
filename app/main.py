@@ -24,7 +24,6 @@ def get_param(name, decrypt=True):
 
 api_token = None
 
-
 def main():
     pass
 
@@ -88,6 +87,10 @@ async def run_agent_task():
 
 @app.get("/health", tags=["Health Check"])
 def health_check():
+    return {"status": "OK"}
+
+@app.get("/token_check", tags=["Health Check"])
+def token_check(auth: None = Depends(verify_token)):
     return {"status": "OK"}
 
 # Chama o agente para executar a tarefa
