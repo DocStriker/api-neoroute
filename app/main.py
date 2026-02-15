@@ -6,7 +6,7 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 from fastapi.middleware.cors import CORSMiddleware
 import asyncio
-#from agent_task import main
+from agent_task import main
 from mangum import Mangum
 
 import boto3

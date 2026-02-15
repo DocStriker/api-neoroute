@@ -18,7 +18,7 @@ from ai_agent import ParseToAgent # Importa a função de AI Agent para procurar
 
 import boto3
 
-ssm = boto3.client("ssm")
+ssm = boto3.client('ssm', 'us-east-1')
 
 def get_param(name, decrypt=True):
     return ssm.get_parameter(
