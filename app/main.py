@@ -11,13 +11,18 @@ from mangum import Mangum
 
 import boto3
 
-ssm = boto3.client("ssm")
+ssm = boto3.client('ssm', 'us-east-1')
+
+from botocore.exceptions import ClientError
 
 def get_param(name, decrypt=True):
-    return ssm.get_parameter(
-        Name=name,
-        WithDecryption=decrypt
-    )["Parameter"]["Value"]
+    try:
+        return ssm.get_parameter(
+            Name=name,
+            WithDecryption=decrypt
+        )["Parameter"]["Value"]
+    except ClientError as e:
+        raise HTTPException(status_code=500, detail="SSM error")
 
 #####################################################################################################
 # 2. Configurando as variáveis de ambiente

@@ -66,4 +66,4 @@ echo "Deploy concluído com sucesso 🚀"
 echo "Versão publicada: $IMAGE_TAG"
 echo "========================================="
 
-exit
+Ctrl+c
