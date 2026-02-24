@@ -3,7 +3,7 @@ import time
 import boto3
 
 REGION = "us-east-1"
-DB_INSTANCE_ID = "neoroutedb"
+DB_INSTANCE_ID = "neoroute-db-instance"
 
 rds = boto3.client("rds", region_name=REGION)
 
@@ -42,6 +42,9 @@ def wait_until_available():
         print(f"Status atual: {status}")
         if status == "available":
             print("✅ RDS pronto para uso")
+            break
+        if status == "stopped":
+            print("✅ RDS parado")
             break
         time.sleep(20)
 
