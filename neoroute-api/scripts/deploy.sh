@@ -59,11 +59,12 @@ docker push $FULL_IMAGE_URI
 echo "Atualizando Lambda..."
 aws lambda update-function-code \
   --function-name $LAMBDA_NAME \
-  --image-uri $FULL_IMAGE_URI
+  --image-uri $FULL_IMAGE_URI \
+  --no-cli-pager > /dev/null
+
+echo "Lambda atualizada com sucesso."
 
 echo "========================================="
-echo "Deploy concluído com sucesso 🚀"
+echo "Deploy concluído com sucesso"
 echo "Versão publicada: $IMAGE_TAG"
 echo "========================================="
-
-Ctrl+c
