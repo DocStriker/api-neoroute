@@ -5,26 +5,16 @@ import requests
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
 import psycopg2
-import boto3
 import time
 import json
 import unicodedata
 
 from web_scrapping import Scrap # Importa a função de scraping que retorna uma lista de urls
 from ai_agent import ParseToAgent # Importa a função de AI Agent para procurar com base no prompt
+from app.core.config import get_param
 
 #####################################################################################################
 # 2. Configuração de variáveis de ambiente
-
-import boto3
-
-ssm = boto3.client('ssm', 'us-east-1')
-
-def get_param(name, decrypt=True):
-    return ssm.get_parameter(
-        Name=name,
-        WithDecryption=decrypt
-    )["Parameter"]["Value"]
 
 api_token = get_param("/neoroute/api/aiagent")
 scrap_df = Scrap() # Chama a função Scrap() do script 'web_scrapping.py' no qual retorna um dataframe

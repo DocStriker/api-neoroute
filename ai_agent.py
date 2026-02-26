@@ -7,15 +7,7 @@ from google.genai import types
 from bs4 import BeautifulSoup
 import json
 
-import boto3
-
-ssm = boto3.client('ssm', 'us-east-1')
-
-def get_param(name, decrypt=True):
-    return ssm.get_parameter(
-        Name=name,
-        WithDecryption=decrypt
-    )["Parameter"]["Value"]
+from app.core.config import get_param
     
 #####################################################################################################
 # 2. Configurando variáveis de ambiente
