@@ -1,8 +1,22 @@
 import requests
+from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime, timedelta
 
 class ScrapingService:
+
+    def use_bs(self, url):
+        try:
+            html = requests.get(url, timeout=6).text  # timeout em segundos
+            soup = BeautifulSoup(html, "html.parser")
+
+            texto = " ".join([p.get_text() for p in soup.find_all("p")])
+
+            return texto
+        except requests.exceptions.ConnectTimeout:
+            print(f"Tempo esgotado para {url[:10]}")
+        except requests.exceptions.RequestException as e:
+            print(f"Erro ao acessar {url[:10]}: {e}")
 
     def fetch_gdelt(self):
 
