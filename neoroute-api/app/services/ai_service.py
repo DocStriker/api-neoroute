@@ -10,9 +10,15 @@ class AIService:
 
     def parse(self, texto):
         prompt = f"""
-        Extraia localização e tipo de carga:
-        {texto}
-        """
+        No texto: {texto},
+
+        Extraia a localização principal mencionada no texto e retorne
+        no seguinte formato: 
+        
+        ['street': 'Rodovia/Rua', 
+        'city': 'cidade' ou ''(caso não tenha), 
+        'state': estado (ex: MG), 
+        'cargo_type': tipo de carga roubada em só uma palavra sem acentos e no plural (ex: Eletrônicos, Móveis...)] """
 
         client = genai.Client(api_key=self.api_token)
 
@@ -24,7 +30,11 @@ class AIService:
             ),
         )
 
-        try:
-            return json.loads(response.text)
-        except:
-            return None
+        if response.text:
+            try:
+                data = json.loads(response.text[8:-3])
+            except json.JSONDecodeError as e:
+                print("Erro ao decodificar JSON:", e)
+                data = None
+
+        return data # Retorno em json

@@ -72,11 +72,7 @@ def Agent(url, api_token):
     return response # Resposta em JSON.
 
 # Função na qual extrai o formato endereço do json de resposta do agente
-def extract_adress(json):
-    """recebe um json e retorna uma string."""
-    adress = f"{json['street']}, {json['city'] + ', 'if json['city'] else ''}{json['state']}"
 
-    return adress # Retorno em string
 
 #####################################################################################################
 # 4. Iniciando o agente
