@@ -46,6 +46,8 @@ class AgentService:
 
                 texto = self.scraper.use_bs(row["url"])
 
+                print(f"BS Response: {texto[:10]}")
+
                 rjson = self.ai.parse(texto) if texto else None
 
                 if isinstance(rjson, list) and len(rjson) > 0:
@@ -56,6 +58,8 @@ class AgentService:
 
                 else:
                     continue  # nenhum dado válido
+
+                print(f"Agent Response: {rjson}")
 
                 for r in rjson:
 

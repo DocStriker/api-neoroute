@@ -11,7 +11,7 @@ class Utils:
         # Remove caracteres não-ASCII (acentos)
         return "".join([c for c in nfkd if not unicodedata.combining(c)])
     
-    def extract_adress(json):
+    def extract_adress(self, json):
         """recebe um json e retorna uma string."""
         adress = f"{json['street']}, {json['city'] + ', 'if json['city'] else ''}{json['state']}"
 
