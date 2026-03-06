@@ -11,6 +11,8 @@ QUEUE_URL = "https://sqs.us-east-1.amazonaws.com/979311683347/agent-queue"
 @router.post("/run_agent")
 def run_agent(auth: None = Depends(verify_token)):
 
+    print("Recebeu requisição")
+
     message = {
         "action": "run_agent"
     }
@@ -19,5 +21,7 @@ def run_agent(auth: None = Depends(verify_token)):
         QueueUrl=QUEUE_URL,
         MessageBody=json.dumps(message)
     )
+
+    print("Mensagem enviada")
 
     return {"status": "agent enviado para fila"}
