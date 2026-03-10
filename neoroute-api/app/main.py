@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
 
-from app.api.routes import health, agent, cargas
+from app.api.routes import health, agent, cargas, states, geodata
 
 app = FastAPI(
     title="NeoRoute API",
@@ -19,5 +19,7 @@ app.add_middleware(
 app.include_router(health.router)
 app.include_router(agent.router)
 app.include_router(cargas.router)
+app.include_router(states.router)
+app.include_router(geodata.router)
 
 handler = Mangum(app)
