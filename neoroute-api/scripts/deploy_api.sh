@@ -26,7 +26,7 @@ echo "========================================="
 # ==============================
 
 echo "Buildando imagem..."
-docker build -t $ECR_REPO:$IMAGE_TAG .
+docker build -f Dockerfile.api -t $ECR_REPO:$IMAGE_TAG .
 
 # ==============================
 # LOGIN ECR
