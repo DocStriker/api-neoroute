@@ -15,23 +15,17 @@ def count_records(table_name: str):
     conn.close()
     return total
 
-def top_state(table_name: str):
+def top_state():
     """
     Retorna o estado com maior número de registros.
     A tabela deve conter uma coluna chamada 'state'.
     """
-
-    allowed_tables = ["rotas"]
-    
-    if table_name not in allowed_tables:
-        raise ValueError("Tabela não permitida")
-
     try:
         conn = get_connection()
         cur = conn.cursor(cursor_factory=RealDictCursor)
         query = f"""
             SELECT state, COUNT(*) AS total
-            FROM {table_name}
+            FROM rotas
             GROUP BY state
             ORDER BY total DESC
             LIMIT 1;
@@ -48,19 +42,14 @@ def top_state(table_name: str):
         cur.close()
         conn.close()
 
-def states(table_name: str):
-
-    allowed_tables = ["rotas"]
-    
-    if table_name not in allowed_tables:
-        raise ValueError("Tabela não permitida")
+def states():
 
     try:
         conn = get_connection()
         cur = conn.cursor(cursor_factory=RealDictCursor)
         query = f"""
             SELECT state, COUNT(*) AS total
-            FROM {table_name}
+            FROM rotas
             GROUP BY state;
         """
         cur.execute(query)
