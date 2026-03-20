@@ -1,6 +1,9 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from mangum import Mangum
+
+if os.getenv("ENV") == "aws":
+    from mangum import Mangum
 
 from app.api.routes import health, agent, cargas, states, geodata, controls
 
@@ -23,4 +26,5 @@ app.include_router(states.router)
 app.include_router(geodata.router)
 app.include_router(controls.router)
 
-handler = Mangum(app)
+if os.getenv("ENV") == "aws":
+    handler = Mangum(app)

@@ -1,13 +1,18 @@
+import os
 from google import genai
 from google.genai import types
 import json
 from app.core.config import get_param
+from dotenv import load_dotenv
+load_dotenv()
 
 class AIService:
 
     def __init__(self):
-        self.api_token = get_param("/neoroute/api/aiagent")
-
+        if os.getenv("ENV") == "aws":
+            self.api_token = get_param("/neoroute/api/aiagent")
+        self.api_token = os.getenv("AIAGENT_TOKEN")
+        
     def parse(self, texto):
         prompt = f"""
         No texto: {texto},

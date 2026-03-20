@@ -12,7 +12,8 @@ google-auth-httplib2==0.2.0
 google-genai==1.41.0
 googleapis-common-protos==1.70.0
 GoogleNews==1.6.15
-pandas==2.1.4
+#pandas==2.1.4
+pandas==2.2.3
 psycopg2-binary==2.9.11
 pt_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/pt_core_news_sm-3.8.0/pt_core_news_sm-3.8.0-py3-none-any.whl#sha256=c304fa04db3af73cd08a250feacf560506e15a2ec2469bd1b09f06847f6b455c
 regex==2025.7.34

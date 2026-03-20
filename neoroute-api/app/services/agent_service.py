@@ -18,8 +18,8 @@ class AgentService:
     def run(self):
 
         try:
-            df = self.scraper.fetch_gdelt()
             init_db()
+            df = self.scraper.fetch_gdelt()
 
             conn = get_connection()
             cur = conn.cursor()
