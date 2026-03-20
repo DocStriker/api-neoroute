@@ -23,7 +23,7 @@ class ScrapingService:
         """usa a API do Gdelt para coletar urls de notícias globais e retorna um dataframe."""
         
         end_time = datetime.now()
-        start_time = end_time - timedelta(days=2)
+        start_time = end_time - timedelta(hours=6)
 
         # Formata datas no padrão exigido pela API GDELT
         start_str = start_time.strftime("%Y%m%d%H%M%S")
@@ -39,7 +39,9 @@ class ScrapingService:
         }
 
         try:
-            resp = requests.get(url, params=params, timeout=15)
+            resp = requests.get(url, params=params, timeout=15, headers={
+        "User-Agent": "Mozilla/5.0"
+    })
 
             # Verifica se o servidor respondeu corretamente
             if resp.status_code != 200:
