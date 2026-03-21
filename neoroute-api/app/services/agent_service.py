@@ -19,8 +19,8 @@ class AgentService:
 
         try:
             df = self.scraper.fetch_gdelt()
-            init_db()
-            
+            created = init_db()
+            print(f"{'table created.' if created else 'database not initiated.'}")
             conn = get_connection()
             cur = conn.cursor()
 
