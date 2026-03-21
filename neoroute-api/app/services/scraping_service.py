@@ -23,7 +23,7 @@ class ScrapingService:
         """usa a API do Gdelt para coletar urls de notícias globais e retorna um dataframe."""
         
         end_time = datetime.now()
-        start_time = end_time - timedelta(hours=6)
+        start_time = end_time - timedelta(days=1)
 
         # Formata datas no padrão exigido pela API GDELT
         start_str = start_time.strftime("%Y%m%d%H%M%S")
