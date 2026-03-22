@@ -34,9 +34,8 @@ class ScrapingService:
             "query": '"truck theft" AND Brazil AND (cargo OR logistics)',
             "mode": "ArtList",
             "format": "json",
-            "startdatetime": start_str,
-            "enddatetime": end_str,
-            "maxrecords": 50,
+            "timespan": "3days",
+            "maxrecords": 250,
             "sort": "DateDesc"
         }
 
