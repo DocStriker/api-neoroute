@@ -31,10 +31,10 @@ class ScrapingService:
 
         url = "https://api.gdeltproject.org/api/v2/doc/doc/"
         params = {
-            "query": '"truck theft" AND Brazil AND (cargo OR logistics)',
+            "query": '(("truck theft" OR "cargo theft") AND Brazil)',
             "mode": "ArtList",
             "format": "json",
-            "timespan": "3days",
+            "timespan": "3d",
             "maxrecords": 250,
             "sort": "DateDesc"
         }
