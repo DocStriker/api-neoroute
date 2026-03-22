@@ -7,7 +7,7 @@ class ScrapingService:
 
     def use_bs(self, url):
         try:
-            html = requests.get(url, timeout=6).text  # timeout em segundos
+            html = requests.get(url, timeout=30).text  # timeout em segundos
             soup = BeautifulSoup(html, "html.parser")
 
             texto = " ".join([p.get_text() for p in soup.find_all("p")])
@@ -23,7 +23,7 @@ class ScrapingService:
         """usa a API do Gdelt para coletar urls de notícias globais e retorna um dataframe."""
         
         end_time = datetime.now()
-        start_time = end_time - timedelta(days=1)
+        start_time = end_time - timedelta(days=3)
 
         # Formata datas no padrão exigido pela API GDELT
         start_str = start_time.strftime("%Y%m%d%H%M%S")
@@ -31,15 +31,17 @@ class ScrapingService:
 
         url = "https://api.gdeltproject.org/api/v2/doc/doc/"
         params = {
-            "query": "truck theft sourcecountry:brazil",
+            "query": '"truck theft" AND Brazil AND (cargo OR logistics)',
             "mode": "ArtList",
             "format": "json",
             "startdatetime": start_str,
-            "enddatetime": end_str
+            "enddatetime": end_str,
+            "maxrecords": 50,
+            "sort": "DateDesc"
         }
 
         try:
-            resp = requests.get(url, params=params, timeout=15, headers={
+            resp = requests.get(url, params=params, timeout=30, headers={
         "User-Agent": "Mozilla/5.0"
     })
 
