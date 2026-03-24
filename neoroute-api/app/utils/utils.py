@@ -1,4 +1,6 @@
 import unicodedata
+import time
+import requests
 
 class Utils:
 
@@ -16,3 +18,25 @@ class Utils:
         adress = f"{json['street']}, {json['city'] + ', 'if json['city'] else ''}{json['state']}"
 
         return adress # Retorno em string
+    
+    def safe_request(self, url, params):
+        delay = 5
+
+        for i in range(5):
+            try:
+                response = requests.get(url, params=params, timeout=10, headers={"User-Agent": "Mozilla/5.0"})
+                if response.status_code != 200:
+                    raise Exception
+                return response
+            except Exception as e:
+                print(f"Tentativa {i+1} falhou:", e)
+                time.sleep(delay)
+                delay *= 2  # backoff exponencial
+
+    def normalize_agent_response(self, r: dict) -> dict:
+        return {
+            "street": r.get("street") or "",
+            "city": r.get("city") or "",
+            "state": r.get("state") or "",
+            "cargo_type": r.get("cargo_type") or "",
+        }

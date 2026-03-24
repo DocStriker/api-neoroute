@@ -1,5 +1,4 @@
 import os
-import psycopg2
 from psycopg2 import pool
 from app.core.config import get_param
 
@@ -7,7 +6,6 @@ from app.core.config import get_param
 if os.getenv("ENV") == "local":
     from dotenv import load_dotenv
     load_dotenv()
-
 
 def build_db_config():
     """
@@ -28,7 +26,6 @@ def build_db_config():
     # Render / local via DATABASE_URL
     return {
         "dsn": os.getenv("DATABASE_URL"),
-        "sslmode": "require",
     }
 
 

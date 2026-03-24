@@ -48,16 +48,18 @@ class AgentService:
 
                 print(f"BS Response: {texto[:10]}")
 
-                rjson = self.ai.parse(texto) if texto else None
+                airesponse = self.ai.parse(texto) if texto else None
 
-                if isinstance(rjson, list) and len(rjson) > 0:
-                    rjson = [rjson[0]]
+                if isinstance(airesponse, list) and len(airesponse) > 0:
+                    airesponse = [airesponse[0]]
 
-                elif isinstance(rjson, dict):
-                    rjson = [rjson]
+                elif isinstance(airesponse, dict):
+                    airesponse = [airesponse]
 
                 else:
                     continue  # nenhum dado válido
+
+                rjson = self.u.normalize_agent_response(airesponse)
 
                 print(f"Agent Response: {rjson}")
 

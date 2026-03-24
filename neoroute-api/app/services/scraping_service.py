@@ -2,8 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from datetime import datetime, timedelta
+from app.utils.utils import Utils
 
 class ScrapingService:
+    def __init__(self):
+        self.u = Utils()
 
     def use_bs(self, url):
         try:
@@ -34,15 +37,15 @@ class ScrapingService:
             "query": "truck theft sourcecountry:brazil",
             "mode": "artlist",
             "format": "json",
-            "timespan": "3d",
+            "startdatetime": start_str,
+            "enddatetime": end_str,
             "maxrecords": 250,
             "sort": "datedesc"
         }
 
         try:
-            resp = requests.get(url, params=params, timeout=30, headers={
-        "User-Agent": "Mozilla/5.0"
-    })
+            resp = self.u.safe_request(url, params)
+            print(resp.status_code)
 
             # Verifica se o servidor respondeu corretamente
             if resp.status_code != 200:
