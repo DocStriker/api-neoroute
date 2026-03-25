@@ -24,7 +24,7 @@ class Utils:
 
         for i in range(5):
             try:
-                response = requests.get(url, params=params, timeout=10, headers={"User-Agent": "Mozilla/5.0"})
+                response = requests.get(url, params=params, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
                 if response.status_code != 200:
                     raise Exception
                 return response
@@ -35,8 +35,8 @@ class Utils:
 
     def normalize_agent_response(self, r: dict) -> dict:
         return {
-            "street": r.get("street") or "",
-            "city": r.get("city") or "",
-            "state": r.get("state") or "",
-            "cargo_type": r.get("cargo_type") or "",
+            "street": r.get("street", ""),
+            "city": r.get("city", ""),
+            "state": r.get("state", ""),
+            "cargo_type": r.get("cargo_type", ""),
         }
