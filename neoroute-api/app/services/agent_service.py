@@ -3,7 +3,7 @@ import time, json
 from app.services.scraping_service import ScrapingService
 from app.services.ai_service import AIService
 from app.services.geolocation_service import GeolocationService
-from app.utils.utils import Utils
+from app.utils.utils import Utils, RateLimiter
 from app.repositories.database import get_connection, release_connection
 from app.models.db_models import init_db
 
@@ -14,6 +14,7 @@ class AgentService:
         self.ai = AIService()
         self.geo = GeolocationService()
         self.u = Utils()
+        self.rate_limiter = RateLimiter(max_calls=10, period=60)  # Limite de 10 chamadas por minuto
 
     def run(self):
 
@@ -26,7 +27,6 @@ class AgentService:
             conn = get_connection()
             cur = conn.cursor()
 
-            contador = 0
 
             for _, row in df.iterrows():
 
@@ -38,16 +38,10 @@ class AgentService:
                 if rota_existente:
                     print(f"Url já existe no banco: {row['url'][:10]}")
                     continue
-
-                contador += 1
-
-                if contador % 10 == 0:
-
-                    print("\n Atingido 10 requisições. Aguardando 60 segundos...")
-                    time.sleep(60)  # pausa de 1 minuto
-                    print("Retomando execução...\n")
-
+                
                 texto = self.scraper.use_bs(row["url"])
+
+                self.rate_limiter.wait()  # Aguarda se necessário para respeitar o limite de chamadas
 
                 airesponse = self.ai.parse(texto) if texto else None
 
@@ -95,10 +89,10 @@ class AgentService:
                         VALUES (%s, %s)
                         ON CONFLICT DO NOTHING;
                     """, (rota_id, cargo_id))
-
-                    # Salva no banco RDS
-                    conn.commit()
+                    
                     print(f"Rota registrada.")
+                # Salva no banco RDS
+                conn.commit()
                 
             print('Concluído.')
 

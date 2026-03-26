@@ -20,7 +20,7 @@ class Utils:
         return adress # Retorno em string
     
     def safe_request(self, url, params):
-        delay = 5
+        delay = 6  # tempo inicial de espera entre tentativas (em segundos)
 
         for i in range(5):
             try:
@@ -40,3 +40,21 @@ class Utils:
             "state": r.get("state", ""),
             "cargo_type": r.get("cargo_type", ""),
         }
+
+class RateLimiter:
+    def __init__(self, max_calls, period):
+        self.max_calls = max_calls
+        self.period = period
+        self.calls = []
+
+    def wait(self):
+        now = time.time()
+
+        # remove chamadas antigas
+        self.calls = [t for t in self.calls if now - t < self.period]
+
+        if len(self.calls) >= self.max_calls:
+            sleep_time = self.period - (now - self.calls[0])
+            time.sleep(max(sleep_time, 0))
+
+        self.calls.append(time.time())

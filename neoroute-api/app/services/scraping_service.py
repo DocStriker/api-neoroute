@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-from datetime import datetime, timedelta
+from datetime import datetime
 from app.utils.utils import Utils
 
 class ScrapingService:
@@ -24,21 +24,15 @@ class ScrapingService:
     def fetch_gdelt(self):
 
         """usa a API do Gdelt para coletar urls de notícias globais e retorna um dataframe."""
-        
-        end_time = datetime.now()
-        start_time = end_time - timedelta(days=3)
-
+    
         # Formata datas no padrão exigido pela API GDELT
-        start_str = start_time.strftime("%Y%m%d%H%M%S")
-        end_str = end_time.strftime("%Y%m%d%H%M%S")
 
         url = "https://api.gdeltproject.org/api/v2/doc/doc/"
         params = {
             "query": "truck theft sourcecountry:brazil",
             "mode": "artlist",
             "format": "json",
-            "startdatetime": start_str,
-            "enddatetime": end_str,
+            "timespan": "3d",
             "maxrecords": 250,
             "sort": "datedesc"
         }
