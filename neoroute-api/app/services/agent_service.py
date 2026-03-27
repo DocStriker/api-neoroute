@@ -45,6 +45,8 @@ class AgentService:
 
                 airesponse = self.ai.parse(texto) if texto else None
 
+                print(airesponse)
+
                 if isinstance(airesponse, list) and len(airesponse) > 0:
                     airesponse = airesponse[0]
 

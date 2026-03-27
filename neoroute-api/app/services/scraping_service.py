@@ -32,9 +32,8 @@ class ScrapingService:
             "query": "truck theft sourcecountry:brazil",
             "mode": "artlist",
             "format": "json",
-            "timespan": "3d",
+            "timespan": "2d",
             "maxrecords": 250,
-            "sort": "datedesc"
         }
 
         try:

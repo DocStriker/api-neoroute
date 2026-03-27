@@ -1,7 +1,9 @@
+from http import client
 import os
 from google import genai
 from google.genai import types
 import json
+from pydantic import BaseModel, Field
 from app.core.config import get_param
 from dotenv import load_dotenv
 load_dotenv()
@@ -15,31 +17,33 @@ class AIService:
         
     def parse(self, texto):
         prompt = f"""
-        No texto: {texto},
-
-        Extraia a localização principal mencionada no texto e retorne
-        no seguinte formato: 
-        
-        ['street': 'Rodovia/Rua', 
-        'city': 'cidade' ou ''(caso não tenha), 
-        'state': estado (ex: MG), 
-        'cargo_type': tipo de carga roubada em só uma palavra sem acentos e no plural (ex: Eletrônicos, Móveis...)] """
+        No texto: {texto}, extraia a localização principal mencionada no texto, o tipo de carga roubada, a rua, cidade e o estado onde ocorreu o roubo."""
 
         client = genai.Client(api_key=self.api_token)
 
+        class ReviewAnalysis(BaseModel):
+            street: str = Field(description="The street where the location is situated")
+            city: str = Field(description="The city where the location is situated")
+            state: str = Field(description="The state where the location is situated")
+            cargo_type: str = Field(description="The type of cargo stolen, in a single word without accents and in plural")
+            
+
         response = client.models.generate_content(
-            model="gemini-2.5-flash-lite",
+            model="gemini-3.1-flash-lite-preview",
             contents=prompt,
-            config=types.GenerateContentConfig(
-                thinking_config=types.ThinkingConfig(thinking_budget=0)
-            ),
+            config={"response_mime_type": "application/json",
+        "response_json_schema": ReviewAnalysis.model_json_schema()}
         )
 
-        if response.text:
+        return response.text
+'''
+        if result:
             try:
-                data = json.loads(response.text[8:-3])
+                data = json.loads(result)
+                return data # Retorno em json
             except json.JSONDecodeError as e:
                 print("Erro ao decodificar JSON:", e)
                 data = None
-
-        return data # Retorno em json
+                return data
+'''
+        
