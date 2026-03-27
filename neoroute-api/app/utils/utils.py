@@ -13,16 +13,15 @@ class Utils:
         # Remove caracteres não-ASCII (acentos)
         return "".join([c for c in nfkd if not unicodedata.combining(c)])
     
-    def extract_adress(self, json):
-        """recebe um json e retorna uma string."""
-        adress = f"{json['street']}, {json['city'] + ', 'if json['city'] else ''}{json['state']}"
+    def extract_adress(self, airesponse):
+        adress = f"{airesponse.street}, {airesponse.city + ', ' if airesponse.city else ''}{airesponse.state}"
 
         return adress # Retorno em string
     
     def safe_request(self, url, params):
         delay = 6  # tempo inicial de espera entre tentativas (em segundos)
 
-        for i in range(5):
+        for i in range(6):
             try:
                 response = requests.get(url, params=params, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
                 if response.status_code != 200:
@@ -56,5 +55,6 @@ class RateLimiter:
         if len(self.calls) >= self.max_calls:
             sleep_time = self.period - (now - self.calls[0])
             time.sleep(max(sleep_time, 0))
+            print(f"Rate limit reached. Waiting for {sleep_time:.2f} seconds...")
 
         self.calls.append(time.time())

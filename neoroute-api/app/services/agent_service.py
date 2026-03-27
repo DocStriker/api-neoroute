@@ -1,4 +1,4 @@
-import time, json
+import json
 
 from app.services.scraping_service import ScrapingService
 from app.services.ai_service import AIService
@@ -27,7 +27,6 @@ class AgentService:
             conn = get_connection()
             cur = conn.cursor()
 
-
             for _, row in df.iterrows():
 
                 print("Processando:", row["url"][7:30], "...")
@@ -36,7 +35,7 @@ class AgentService:
                 rota_existente = cur.fetchone()
 
                 if rota_existente:
-                    print(f"Url já existe no banco: {row['url'][:10]}")
+                    print(f"Url já existe no banco: {row['url'][:10]} ...")
                     continue
                 
                 texto = self.scraper.use_bs(row["url"])
@@ -45,22 +44,14 @@ class AgentService:
 
                 airesponse = self.ai.parse(texto) if texto else None
 
-                print(airesponse)
+                print(f"Agent Response: {airesponse}")
 
-                if isinstance(airesponse, list) and len(airesponse) > 0:
-                    airesponse = airesponse[0]
+                state = airesponse.state
 
-                else:
-                    continue
-
-                rjson = self.u.normalize_agent_response(airesponse)
-
-                print(f"Agent Response: {rjson}")
-
-                state = rjson.get("state", "")
-                coord = self.geo.get_coordinates(self.u.extract_adress(rjson))
+                coord = self.geo.get_coordinates(self.u.extract_adress(airesponse))
                 coord = json.dumps(coord) if isinstance(coord, dict) else str(coord)
-                cargo_list = [c.strip() for c in rjson.get("cargo_type", "").split(",") if c.strip()]
+
+                cargo_list = [c.strip() for c in airesponse.cargo_type.split(",") if c.strip()]
 
                 # Insere rota
                 cur.execute(
