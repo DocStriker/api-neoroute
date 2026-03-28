@@ -32,32 +32,27 @@ class ScrapingService:
             "query": "truck theft sourcecountry:brazil",
             "mode": "artlist",
             "format": "json",
-            "timespan": "2d",
+            "timespan": "3d",
             "maxrecords": 250,
         }
 
         try:
             resp = self.u.safe_request(url, params)
-            print(resp.status_code)
 
             # Verifica se o servidor respondeu corretamente
             if resp.status_code != 200:
                 print(f"HTTP {resp.status_code}: {resp.text[:200]}")
-                return pd.DataFrame()
 
             # Tenta decodificar JSON
             try:
                 data = resp.json()
             except Exception:
                 print("Erro ao converter resposta em JSON.")
-                print("Resposta recebida:")
                 print(resp.text[:500])
-                return pd.DataFrame()
 
             # Verifica se há artigos
             if "articles" not in data or not data["articles"]:
                 print("Nenhum artigo encontrado na resposta do GDELT.")
-                return pd.DataFrame()
 
             # Converte para DataFrame
             articles = pd.DataFrame(data["articles"]).rename(columns={'seendate':'date'})
@@ -76,5 +71,3 @@ class ScrapingService:
 
         except requests.RequestException as e:
             print(f"Erro de conexão com GDELT: {e}")
-
-            return pd.DataFrame() # Retorno em dataframe

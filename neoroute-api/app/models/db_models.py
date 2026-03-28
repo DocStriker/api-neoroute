@@ -29,6 +29,12 @@ def init_db():
                 carga_id INTEGER REFERENCES cargas(id) ON DELETE CASCADE,
                 PRIMARY KEY (rota_id, carga_id)
             );  
+                    
+            -- tabela de tipos de caches de respostas da AI
+            CREATE TABLE IF NOT EXISTS ai_cache (
+                hash TEXT PRIMARY KEY,
+                response TEXT
+            );        
         """)
 
         conn.commit()

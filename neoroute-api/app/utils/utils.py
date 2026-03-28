@@ -1,22 +1,9 @@
-import unicodedata
 import time
 import requests
+import hashlib
+from app.services.ai_service import AIService
 
 class Utils:
-
-    def remove_acentos(self, texto):
-        """entrada: 'texto' -> 'string', saída: 'string' normalizada sem acentos."""
-        if not texto:
-            return ""
-        # Normaliza para NFD (separa caracteres + acentos)
-        nfkd = unicodedata.normalize('NFD', texto)
-        # Remove caracteres não-ASCII (acentos)
-        return "".join([c for c in nfkd if not unicodedata.combining(c)])
-    
-    def extract_adress(self, airesponse):
-        adress = f"{airesponse.street}, {airesponse.city + ', ' if airesponse.city else ''}{airesponse.state}"
-
-        return adress # Retorno em string
     
     def safe_request(self, url, params):
         delay = 6  # tempo inicial de espera entre tentativas (em segundos)
@@ -32,19 +19,15 @@ class Utils:
                 time.sleep(delay)
                 delay *= 2  # backoff exponencial
 
-    def normalize_agent_response(self, r: dict) -> dict:
-        return {
-            "street": r.get("street", ""),
-            "city": r.get("city", ""),
-            "state": r.get("state", ""),
-            "cargo_type": r.get("cargo_type", ""),
-        }
+    def hash_text(self, texto):
+        return hashlib.md5(texto.encode()).hexdigest()
 
 class RateLimiter:
     def __init__(self, max_calls, period):
         self.max_calls = max_calls
         self.period = period
         self.calls = []
+        self.ai = AIService()
 
     def wait(self):
         now = time.time()
@@ -58,3 +41,13 @@ class RateLimiter:
             print(f"Rate limit reached. Waiting for {sleep_time:.2f} seconds...")
 
         self.calls.append(time.time())
+
+    def safe_ai_call(self, texto):
+        for i in range(3):
+            try:
+                self.wait()
+                return self.ai.parse(texto)
+            except Exception:
+                print(f"Erro na chamada da IA (tentativa {i+1}): {e}")
+                time.sleep(2 ** i)
+        return None
