@@ -55,37 +55,43 @@ class AgentService:
                         airesponse = json.loads(cached[0])
                         print(f"Using cached response for hash: {h}")
                     else:
-                        airesponse = self.rate_limiter.safe_ai_call(texto)
-                        print(f"AI response obtained for hash: {h}, response: {airesponse}")
+                        airesponse = self.rate_limiter.safe_ai_call(texto).model_dump()
+                        print(f"AI response obtained for hash: {h}, response: {json.dumps(airesponse)}")
 
                         cur.execute(
                             "INSERT INTO ai_cache (hash, response) VALUES (%s, %s)",
-                            (h, airesponse)
+                            (h, json.dumps(airesponse))
                         )
-
-                    try:
-                        if not airesponse or not airesponse.state:
-                            continue
-                    except Exception:
-                        continue
 
                     print(f"Agent Response: {airesponse}")
 
-                    state = airesponse.state
+                    if airesponse.get("state") in [None, 'nao informado', 'not informed', 'desconecido', 'unknown','n/a', 'null']:
+                        print(f"State not found in AI response, skipping URL: {row['url'][:30]} ...")
+                        continue
+
+                    state = airesponse.get("state")
 
                     coord = self.geo.get_coordinates(self.f.extract_adress(airesponse))
                     coord = json.dumps(coord) if isinstance(coord, dict) else str(coord)
 
-                    cargo_list = re.split(r"[,\s]+", airesponse.cargo_type)
+                    cargo_list = re.split(r"[,\s]+", airesponse.get("cargo_type", ""))
                     cargo_list = [c.strip() for c in cargo_list if c.strip()]
+
+                    print(f"Extracted state: {state}, cargo types: {cargo_list}, coordinates: {coord}")
 
                     # Insere rota
                     cur.execute(
-                        "INSERT INTO rotas (url, state, date, coord) VALUES (%s, %s, %s, %s) RETURNING id ON CONFLICT (url) DO NOTHING;",
-                        (row["url"], state, row["date"], coord)
-                    )
+                                """
+                                INSERT INTO rotas (url, state, date, coord)
+                                VALUES (%s, %s, %s, %s)
+                                ON CONFLICT (url) DO UPDATE 
+                                SET state = EXCLUDED.state
+                                RETURNING id;
+                                """,
+                                (row["url"], state, row["date"], coord)
+                            )
                     rota_id = cur.fetchone()[0]
-
+                    print(f"Rota ID {rota_id} inserida/atualizada para URL: {row['url'][:30]} ...")
                     # Insere cada carga e vincula à rota
                     for cargo in cargo_list:
                         cargo = self.f.remove_acentos(cargo.strip().lower())  # normaliza (evita duplicados tipo "Combustível" vs "combustivel")

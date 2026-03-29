@@ -7,10 +7,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class ReviewAnalysis(BaseModel):
-            street: str = Field(description="The street where the location is situated")
-            city: str = Field(description="The city where the location is situated")
-            state: str = Field(description="The state where the location is situated in its abbreviated form, e.g., SP for São Paulo)")
-            cargo_type: str = Field(description="The type of cargo stolen, in a single word without accents and in plural")
+            street: str = Field(description="The street where the location is situated, if not found, return 'unknown'")
+            city: str = Field(description="The city where the location is situated, if not found, return 'unknown'")
+            state: str = Field(description="The state where the location is situated in its abbreviated form, e.g., SP for São Paulo, if not found, return 'unknown'")
+            cargo_type: str = Field(description="The type of cargo stolen, in a single word without accents and in plural, if not found, return 'unknown'")
 
 class AIService:
 

@@ -12,7 +12,7 @@ class Filters:
         return "".join([c for c in nfkd if not unicodedata.combining(c)])
      
      def extract_adress(self, airesponse):
-        adress = f"{airesponse.street}, {airesponse.city + ', ' if airesponse.city else ''}{airesponse.state}"
+        adress = f"{airesponse.get('street')}, {airesponse.get('city') + ', ' if airesponse.get('city') else ''}{airesponse.get('state')}"
 
         return adress # Retorno em string
      

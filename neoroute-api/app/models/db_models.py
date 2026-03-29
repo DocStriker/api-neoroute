@@ -11,7 +11,7 @@ def init_db():
             -- tabela das rotas
             CREATE TABLE IF NOT EXISTS rotas (
                 id SERIAL PRIMARY KEY,
-                url TEXT NOT NULL,
+                url TEXT NOT NULL UNIQUE,
                 state TEXT,
                 date DATE NOT NULL,
                 coord TEXT
