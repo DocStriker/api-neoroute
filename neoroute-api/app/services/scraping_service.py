@@ -10,7 +10,7 @@ class ScrapingService:
 
     def use_bs(self, url):
         try:
-            html = requests.get(url, timeout=30).text  # timeout em segundos
+            html = requests.get(url, timeout=20).text  # timeout em segundos
             soup = BeautifulSoup(html, "html.parser")
 
             texto = " ".join([p.get_text() for p in soup.find_all("p")])

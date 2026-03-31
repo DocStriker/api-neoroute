@@ -10,7 +10,7 @@ class Utils:
 
         for i in range(6):
             try:
-                response = requests.get(url, params=params, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
+                response = requests.get(url, params=params, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
                 if response.status_code != 200:
                     raise Exception
                 return response
@@ -19,7 +19,7 @@ class Utils:
                 time.sleep(delay)
                 delay *= 2  # backoff exponencial
 
-    def hash_text(self, texto):
+    def hash(self, texto):
         return hashlib.md5(texto.encode()).hexdigest()
 
 class RateLimiter:
@@ -47,7 +47,7 @@ class RateLimiter:
             try:
                 self.wait()
                 return self.ai.parse(texto)
-            except Exception:
+            except Exception as e:
                 print(f"Erro na chamada da IA (tentativa {i+1}): {e}")
                 time.sleep(2 ** i)
         return None

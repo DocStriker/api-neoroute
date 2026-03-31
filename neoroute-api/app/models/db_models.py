@@ -11,16 +11,16 @@ def init_db():
             -- tabela das rotas
             CREATE TABLE IF NOT EXISTS rotas (
                 id SERIAL PRIMARY KEY,
-                url TEXT NOT NULL UNIQUE,
-                state TEXT,
+                url VARCHAR(150) NOT NULL UNIQUE,
+                state VARCHAR(2) NOT NULL,
                 date DATE NOT NULL,
-                coord TEXT
+                coord JSONB
             );
             
             -- tabela de tipos de cargas
             CREATE TABLE IF NOT EXISTS cargas (
                 id SERIAL PRIMARY KEY,
-                nome TEXT UNIQUE
+                nome VARCHAR(30) UNIQUE
             );
 
             -- tabela associativa (N:N)
@@ -31,9 +31,11 @@ def init_db():
             );  
                     
             -- tabela de tipos de caches de respostas da AI
-            CREATE TABLE IF NOT EXISTS ai_cache (
+            CREATE TABLE IF NOT EXISTS process_cache (
                 hash TEXT PRIMARY KEY,
-                response TEXT
+                url VARCHAR(150),
+                response JSONB,
+                processed BOOLEAN DEFAULT FALSE
             );        
         """)
 

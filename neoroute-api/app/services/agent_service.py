@@ -45,36 +45,45 @@ class AgentService:
                         print(f"Texto inválido ou muito curto, pulando url: {row['url'][:30]} ...")
                         continue
 
-                    h = self.u.hash_text(texto)
+                    h = self.u.hash(row["url"])
 
-                    cur.execute("SELECT response FROM ai_cache WHERE hash = %s", (h,))
+                    cur.execute("SELECT processed, response FROM process_cache WHERE hash = %s", (h,))
                     cached = cur.fetchone()
+
+                    print(cached if cached else f"No cache entry for hash: {h}")
                     print(f"Cache {'hit' if cached else 'miss'} for hash: {h}")
 
                     if cached:
-                        airesponse = json.loads(cached[0])
+                        data = cached[1]
+
+                        if cached[0]:  # Se já foi processado, pulamos
+                            print("FULL CACHE HIT → skipping processing")
+                            continue
+
+                        airesponse = data
                         print(f"Using cached response for hash: {h}")
                     else:
                         airesponse = self.rate_limiter.safe_ai_call(texto).model_dump()
                         print(f"AI response obtained for hash: {h}, response: {json.dumps(airesponse)}")
 
                         cur.execute(
-                            "INSERT INTO ai_cache (hash, response) VALUES (%s, %s)",
+                            "INSERT INTO process_cache (hash, response) VALUES (%s, %s)",
                             (h, json.dumps(airesponse))
                         )
 
                     print(f"Agent Response: {airesponse}")
 
-                    if airesponse.get("state") in [None, 'nao informado', 'not informed', 'desconecido', 'unknown','n/a', 'null']:
-                        print(f"State not found in AI response, skipping URL: {row['url'][:30]} ...")
-                        continue
-
                     state = airesponse.get("state")
+                    cargo = airesponse.get("cargo_type")
+
+                    if state == "unknown" or cargo == "unknown":
+                        print(f"State or Cargo Type not found in AI response, skipping URL: {row['url'][:30]} ...")
+                        continue
 
                     coord = self.geo.get_coordinates(self.f.extract_adress(airesponse))
                     coord = json.dumps(coord) if isinstance(coord, dict) else str(coord)
 
-                    cargo_list = re.split(r"[,\s]+", airesponse.get("cargo_type", ""))
+                    cargo_list = re.split(r"[,\s]+", cargo)
                     cargo_list = [c.strip() for c in cargo_list if c.strip()]
 
                     print(f"Extracted state: {state}, cargo types: {cargo_list}, coordinates: {coord}")
