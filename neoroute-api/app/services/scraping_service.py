@@ -41,7 +41,9 @@ class ScrapingService:
 
             # Verifica se o servidor respondeu corretamente
             if resp.status_code != 200:
-                print(f"HTTP {resp.status_code}: {resp.text[:200]}")
+                print(f"{resp}")
+            if resp.status_code == 400:
+                raise Exception(f"Erro 400: {resp['text']}")
 
             # Tenta decodificar JSON
             try:

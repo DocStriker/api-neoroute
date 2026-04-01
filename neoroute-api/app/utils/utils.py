@@ -8,16 +8,22 @@ class Utils:
     def safe_request(self, url, params):
         delay = 6  # tempo inicial de espera entre tentativas (em segundos)
 
-        for i in range(6):
-            try:
-                response = requests.get(url, params=params, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
-                if response.status_code != 200:
-                    raise Exception
-                return response
-            except Exception as e:
-                print(f"Tentativa {i+1} falhou:", e)
-                time.sleep(delay)
-                delay *= 2  # backoff exponencial
+
+        try:
+            for i in range(5):
+                try:
+                    response = requests.get(url, params=params, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
+                    if response.status_code != 200:
+                        raise Exception
+                    return response
+                except Exception as e:
+                    print(f"Tentativa {i+1} falhou:", e)
+                    time.sleep(delay)
+                    delay *= 2  # backoff exponencial
+            raise Exception("Todas as tentativas falharam.")
+        except Exception as e:
+            print("Erro crítico na requisição:", e)
+            response = {"status_code": 400, "text": f"Erro crítico: {e}"}
 
     def hash(self, texto):
         return hashlib.md5(texto.encode()).hexdigest()
