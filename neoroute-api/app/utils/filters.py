@@ -2,23 +2,23 @@ import unicodedata
 
 class Filters:
 
-     def remove_acentos(self, texto):
-        """entrada: 'texto' -> 'string', saída: 'string' normalizada sem acentos."""
-        if not texto:
+     def remove_accents(self, text: str) -> str:
+        if not text:
             return ""
-        # Normaliza para NFD (separa caracteres + acentos)
-        nfkd = unicodedata.normalize('NFD', texto)
-        # Remove caracteres não-ASCII (acentos)
-        return "".join([c for c in nfkd if not unicodedata.combining(c)])
+        
+        normalized_text = unicodedata.normalize('NFD', texto)
+        text_without_accents = "".join([c for c in nfkd if not unicodedata.combining(c)])
+
+        return text_without_accents
      
-     def extract_adress(self, airesponse):
+     def extract_adress(self, airesponse) -> str:
         adress = f"{airesponse.get('street')}, {airesponse.get('city') + ', ' if airesponse.get('city') else ''}{airesponse.get('state')}"
 
-        return adress # Retorno em string
+        return adress
      
      def is_relevant_url(self, url: str) -> bool:
         keywords = ["roubo", "carga", "transporte", "frete", "transportadora", "caminhao", "carreta", "caminhoes", "rodovia", "estrada"]
         return any(k in url.lower() for k in keywords)
      
-     def is_valid_text(self, texto: str) -> bool:
-        return texto and len(texto) > 300
+     def is_valid_text(self, text: str) -> bool:
+        return text and len(text) > 300

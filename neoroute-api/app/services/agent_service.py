@@ -21,27 +21,24 @@ class AgentService:
             print("Fetching GDELT data and initializing...")
             df = self.scraper.fetch_gdelt()
 
-            init_db()
-
             conn = get_connection()
             cur = conn.cursor()
 
             print(f"DB initiated. Agent started at {datetime.datetime.now()}...")
-            print(f"{'Total URLs to process:':<25} {len(df)}")
+            print(f"{'Total URLs to process:':<25} {len(df)} \n")
 
             for _, row in df.iterrows():
-    
                 try:
                     if not self.f.is_relevant_url(row["url"]):
-                        print(f"Url irrelevante, pulando: {row['url'][:30]} ...")
+                        print(f"Irrelevant URL, skipping: {row['url'][:30]} ... \n")
                         continue
 
-                    print("Processando:", row["url"][:30], "...")
+                    print("Processing:", row["url"][:30], "...")
                     
                     texto = self.scraper.use_bs(row["url"])
 
                     if not self.f.is_valid_text(texto):
-                        print(f"Texto inválido ou muito curto, pulando url: {row['url'][:30]} ...")
+                        print(f"Invalid text or too short, skipping url: {row['url'][:30]} ... \n")
                         continue
 
                     h = self.u.hash(row["url"])
@@ -51,15 +48,10 @@ class AgentService:
 
                     print(f"Cache {'hit' if cached else 'miss'} for hash: {h}")
 
-                    if cached:
-                        data = cached[1]
-
-                        if cached[0]:  # Se já foi processado, pulamos
-                            print("FULL CACHE HIT → skipping processing")
-                            continue
-
-                        airesponse = data
-                        print(f"Using cached response for hash: {h}")
+                    if cached and cached[0]:  # Verifica se há resposta armazenada
+                        print("FULL CACHE HIT → skipping processing \n")
+                        continue
+                    
                     else:
                         airesponse = self.rate_limiter.safe_ai_call(texto).model_dump()
                         print(f"AI response obtained for hash: {h}, response: {json.dumps(airesponse)}")
@@ -75,7 +67,7 @@ class AgentService:
                     cargo = airesponse.get("cargo_type")
 
                     if state == "unknown" or cargo == "unknown":
-                        print(f"State or Cargo Type not found in AI response, skipping URL: {row['url'][:30]} ...")
+                        print(f"State or Cargo Type not found in AI response, skipping URL: {row['url'][:30]} ... \n")
                         continue
 
                     coord = self.geo.get_coordinates(self.f.extract_adress(airesponse))
@@ -96,12 +88,11 @@ class AgentService:
                                 (row["url"], state, row["date"], coord if coord != "None" else json.dumps({"error": "not found"}))
                             )
                     rota_id = cur.fetchone()[0]
-                    print(f"Rota ID {rota_id} inserida/atualizada para URL: {row['url'][:30]} ...")
-                    # Insere cada carga e vincula à rota
-                    for cargo in cargo_list:
-                        cargo = self.f.remove_acentos(cargo.strip().lower())  # normaliza (evita duplicados tipo "Combustível" vs "combustivel")
+                    print(f"Route ID {rota_id} inserted for URL: {row['url'][:30]} ...")
 
-                        # Insere ou ignora o nome da carga se já existir
+                    for cargo in cargo_list:
+                        cargo = self.f.remove_accents(cargo.strip().lower())
+
                         cur.execute("""
                             INSERT INTO cargas (nome)
                             VALUES (%s)
@@ -111,24 +102,22 @@ class AgentService:
 
                         cargo_id = cur.fetchone()[0]
 
-                        # Associa à rota
                         cur.execute("""
                             INSERT INTO rota_cargas (rota_id, carga_id)
                             VALUES (%s, %s)
                             ON CONFLICT DO NOTHING;
                         """, (rota_id, cargo_id))
                     
-                    # Salva no banco
                     conn.commit()
-                    print(f"Rota registrada.")
+                    print(f"Registred route. \n")
 
                         
                 except Exception as e:
                     print(f"Error processing URL {row['url'][:30]}: {str(e)}")
-                    conn.rollback()  # Reverte apenas a transação atual, mantendo o progresso anterior
+                    conn.rollback()
 
-            conn.commit()  # Garante que as últimas inserções sejam salvas
-            print('Concluído.')
+            conn.commit()
+            print('Completed. \n')
 
         except Exception as e:
             print("Agent Service Error:", str(e))
