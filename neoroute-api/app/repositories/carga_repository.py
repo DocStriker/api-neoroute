@@ -8,7 +8,7 @@ def count_records(table_name: str):
         raise ValueError("Tabela não permitida")
 
     conn = get_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
     cur.execute(f"SELECT COUNT(*) FROM {table_name}")
     total = cur.fetchone()[0]
     cur.close()

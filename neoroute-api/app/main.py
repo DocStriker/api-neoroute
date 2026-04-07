@@ -18,7 +18,8 @@ if os.getenv("ENV") == "aws":
 
 app = FastAPI(
     title="NeoRoute API",
-    version="2.0.0"
+    version="2.0.0",
+    lifespan=lifespan
 )
 
 app.add_middleware(

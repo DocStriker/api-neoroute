@@ -10,7 +10,7 @@ class ScrapingService:
 
     def use_bs(self, url):
         try:
-            html = requests.get(url, timeout=20).text  # timeout em segundos
+            html = requests.get(url, timeout=20).text
             soup = BeautifulSoup(html, "html.parser")
 
             texto = " ".join([p.get_text() for p in soup.find_all("p")])
@@ -22,11 +22,6 @@ class ScrapingService:
             print(f"Erro ao acessar {url[:10]}: {e}")
 
     def fetch_gdelt(self):
-
-        """usa a API do Gdelt para coletar urls de notícias globais e retorna um dataframe."""
-    
-        # Formata datas no padrão exigido pela API GDELT
-
         url = "https://api.gdeltproject.org/api/v2/doc/doc/"
         params = {
             "query": "truck theft sourcecountry:brazil",
@@ -38,25 +33,11 @@ class ScrapingService:
 
         try:
             resp = self.u.safe_request(url, params)
+            data = resp.json()
 
-            # Verifica se o servidor respondeu corretamente
-            if resp.status_code != 200:
-                print(f"{resp}")
-            if resp.status_code == 400:
-                raise Exception(f"Erro 400: {resp['text']}")
-
-            # Tenta decodificar JSON
-            try:
-                data = resp.json()
-            except Exception:
-                print("Erro ao converter resposta em JSON.")
-                print(resp.text[:500])
-
-            # Verifica se há artigos
             if "articles" not in data or not data["articles"]:
                 print("Nenhum artigo encontrado na resposta do GDELT.")
 
-            # Converte para DataFrame
             articles = pd.DataFrame(data["articles"]).rename(columns={'seendate':'date'})
 
             def parse_pubdate(pubdate_str):
@@ -73,3 +54,8 @@ class ScrapingService:
 
         except requests.RequestException as e:
             print(f"Erro de conexão com GDELT: {e}")
+            return None
+        
+        except Exception as e:
+            print(f"Erro inesperado: {e}")
+            return None

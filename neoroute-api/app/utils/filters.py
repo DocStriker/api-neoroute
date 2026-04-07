@@ -6,8 +6,8 @@ class Filters:
         if not text:
             return ""
         
-        normalized_text = unicodedata.normalize('NFD', texto)
-        text_without_accents = "".join([c for c in nfkd if not unicodedata.combining(c)])
+        normalized_text = unicodedata.normalize('NFD', text)
+        text_without_accents = "".join([c for c in normalized_text if not unicodedata.combining(c)])
 
         return text_without_accents
      

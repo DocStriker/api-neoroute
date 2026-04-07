@@ -5,7 +5,6 @@ from app.services.geolocation_service import GeolocationService
 from app.utils.utils import Utils, RateLimiter
 from app.utils.filters import Filters
 from app.repositories.database import get_connection, release_connection
-from app.models.db_models import init_db
 
 class AgentService:
 
@@ -14,7 +13,7 @@ class AgentService:
         self.geo = GeolocationService()
         self.u = Utils()
         self.f = Filters()
-        self.rate_limiter = RateLimiter(max_calls=10, period=60)  # Limite de 10 chamadas por minuto
+        self.rate_limiter = RateLimiter(max_calls=10, period=60)
 
     def run(self):
         try:
@@ -35,9 +34,9 @@ class AgentService:
 
                     print("Processing:", row["url"][:30], "...")
                     
-                    texto = self.scraper.use_bs(row["url"])
+                    text = self.scraper.use_bs(row["url"])
 
-                    if not self.f.is_valid_text(texto):
+                    if not self.f.is_valid_text(text):
                         print(f"Invalid text or too short, skipping url: {row['url'][:30]} ... \n")
                         continue
 
@@ -48,20 +47,18 @@ class AgentService:
 
                     print(f"Cache {'hit' if cached else 'miss'} for hash: {h}")
 
-                    if cached and cached[0]:  # Verifica se há resposta armazenada
+                    if cached and cached[0]:
                         print("FULL CACHE HIT → skipping processing \n")
                         continue
                     
                     else:
-                        airesponse = self.rate_limiter.safe_ai_call(texto).model_dump()
-                        print(f"AI response obtained for hash: {h}, response: {json.dumps(airesponse)}")
+                        airesponse = self.rate_limiter.safe_ai_call(text).model_dump()
+                        print(f"AI response obtained for hash: {h}, response: {airesponse}")
 
                         cur.execute(
                             "INSERT INTO process_cache (hash, response, processed) VALUES (%s, %s, %s)",
                             (h, json.dumps(airesponse), True)
                         )
-
-                    print(f"Agent Response: {airesponse}")
 
                     state = airesponse.get("state")
                     cargo = airesponse.get("cargo_type")
@@ -78,7 +75,6 @@ class AgentService:
 
                     print(f"Extracted state: {state}, cargo types: {cargo_list}, coordinates: {coord}")
 
-                    # Insere rota
                     cur.execute(
                                 """
                                 INSERT INTO rotas (url, state, date, coord)

@@ -6,23 +6,28 @@ from app.services.ai_service import AIService
 class Utils:
     
     def safe_request(self, url, params):
-        delay = 6  # tempo inicial de espera entre tentativas (em segundos)
+        delay = 6
         
-        try:
-            for i in range(5):
-                try:
-                    response = requests.get(url, params=params, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
-                    if response.status_code != 200:
-                        raise Exception
-                    return response
-                except Exception as e:
-                    print(f"Tentativa {i+1} falhou:", e)
-                    time.sleep(delay)
-                    delay *= 2  # backoff exponencial
-            raise Exception("Todas as tentativas falharam.")
-        except Exception as e:
-            print("Erro crítico na requisição:", e)
-            response = {"status_code": 400, "text": f"Erro crítico: {e}"}
+        for i in range(5):
+            try:
+                response = requests.get(
+                    url,
+                    params=params,
+                    timeout=20,
+                    headers={"User-Agent": "Mozilla/5.0"}
+                )
+
+                if response.status_code != 200:
+                    raise requests.RequestException(f"Status {response.status_code}")
+
+                return response
+
+            except requests.RequestException as e:
+                print(f"Try {i+1} failed: {e} \n")
+                time.sleep(delay)
+                delay *= 2
+
+        raise requests.RequestException("Todas as tentativas falharam \n")
 
     def hash(self, texto):
         return hashlib.md5(texto.encode()).hexdigest()
