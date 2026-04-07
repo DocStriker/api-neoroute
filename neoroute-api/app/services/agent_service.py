@@ -30,8 +30,7 @@ class AgentService:
             print(f"{'Total URLs to process:':<25} {len(df)}")
 
             for _, row in df.iterrows():
-                
-
+    
                 try:
                     if not self.f.is_relevant_url(row["url"]):
                         print(f"Url irrelevante, pulando: {row['url'][:30]} ...")
@@ -50,7 +49,6 @@ class AgentService:
                     cur.execute("SELECT processed, response FROM process_cache WHERE hash = %s", (h,))
                     cached = cur.fetchone()
 
-                    print(cached if cached else f"No cache entry for hash: {h}")
                     print(f"Cache {'hit' if cached else 'miss'} for hash: {h}")
 
                     if cached:
@@ -67,8 +65,8 @@ class AgentService:
                         print(f"AI response obtained for hash: {h}, response: {json.dumps(airesponse)}")
 
                         cur.execute(
-                            "INSERT INTO process_cache (hash, response) VALUES (%s, %s)",
-                            (h, json.dumps(airesponse))
+                            "INSERT INTO process_cache (hash, response, processed) VALUES (%s, %s, %s)",
+                            (h, json.dumps(airesponse), True)
                         )
 
                     print(f"Agent Response: {airesponse}")
@@ -93,11 +91,9 @@ class AgentService:
                                 """
                                 INSERT INTO rotas (url, state, date, coord)
                                 VALUES (%s, %s, %s, %s)
-                                ON CONFLICT (url) DO UPDATE 
-                                SET state = EXCLUDED.state
                                 RETURNING id;
                                 """,
-                                (row["url"], state, row["date"], coord)
+                                (row["url"], state, row["date"], coord if coord != "None" else json.dumps({"error": "not found"}))
                             )
                     rota_id = cur.fetchone()[0]
                     print(f"Rota ID {rota_id} inserida/atualizada para URL: {row['url'][:30]} ...")

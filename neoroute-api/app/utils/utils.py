@@ -7,8 +7,7 @@ class Utils:
     
     def safe_request(self, url, params):
         delay = 6  # tempo inicial de espera entre tentativas (em segundos)
-
-
+        
         try:
             for i in range(5):
                 try:
