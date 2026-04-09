@@ -1,5 +1,5 @@
 from psycopg2.extras import RealDictCursor
-from .database import get_connection
+from .database import get_connection, release_connection
 
 def count_records(table_name: str):
     allowed_tables = ["rotas", "cargas"]
@@ -10,9 +10,9 @@ def count_records(table_name: str):
     conn = get_connection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
     cur.execute(f"SELECT COUNT(*) FROM {table_name}")
-    total = cur.fetchone()[0]
+    total = cur.fetchone()
     cur.close()
-    conn.close()
+    release_connection(conn)
     return total
 
 def top_carga():
@@ -28,7 +28,7 @@ def top_carga():
     """)
     result = cur.fetchone()
     cur.close()
-    conn.close()
+    release_connection(conn)
     return result
 
 # Consulta o banco de dados para todos os tipos de cargas por quantidade de registro
@@ -53,7 +53,7 @@ def cargas():
         return {"error": str(e)}
     finally:
         cur.close()
-        conn.close()
+        release_connection(conn)
 
 # Consulta o banco de dados por ocorrências por dia
 def ocorrencias_por_dia():
@@ -78,5 +78,5 @@ def ocorrencias_por_dia():
         return {"error": str(e)}
     finally:
         cur.close()
-        conn.close()
+        release_connection(conn)
 

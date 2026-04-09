@@ -20,6 +20,9 @@ class AgentService:
             print("Fetching GDELT data and initializing...")
             df = self.scraper.fetch_gdelt()
 
+            if df is None or df.empty:
+                raise Exception("No data fetched from GDELT.")
+
             conn = get_connection()
             cur = conn.cursor()
 
@@ -29,7 +32,7 @@ class AgentService:
             for _, row in df.iterrows():
                 try:
                     if not self.f.is_relevant_url(row["url"]):
-                        print(f"Irrelevant URL, skipping: {row['url'][:30]} ... \n")
+                        print(f"Irrelevant URL, skipping: {row['url'][:30]} ...")
                         continue
 
                     print("Processing:", row["url"][:30], "...")
@@ -124,5 +127,6 @@ class AgentService:
                 cur.close()
             if conn:
                 release_connection(conn)
+            return {"status_code": 200, "message": "agent run completed"}
 
         

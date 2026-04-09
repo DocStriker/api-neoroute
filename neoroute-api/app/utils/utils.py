@@ -56,7 +56,7 @@ class RateLimiter:
         for i in range(3):
             try:
                 self.wait()
-                return self.ai.parse(texto)
+                return self.ai.parse(texto, model="openrouter")
             except Exception as e:
                 print(f"Erro na chamada da IA (tentativa {i+1}): {e}")
                 time.sleep(2 ** i)

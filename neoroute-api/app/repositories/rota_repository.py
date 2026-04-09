@@ -1,5 +1,5 @@
 from psycopg2.extras import RealDictCursor
-from .database import get_connection
+from .database import get_connection, release_connection
 
 def count_records(table_name: str):
     allowed_tables = ["rotas", "cargas"]
@@ -8,11 +8,11 @@ def count_records(table_name: str):
         raise ValueError("Tabela não permitida")
 
     conn = get_connection()
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
     cur.execute(f"SELECT COUNT(*) FROM {table_name}")
-    total = cur.fetchone()[0]
+    total = cur.fetchone()
     cur.close()
-    conn.close()
+    release_connection(conn)
     return total
 
 def top_state():
@@ -40,7 +40,7 @@ def top_state():
         return {"error": str(e)}
     finally:
         cur.close()
-        conn.close()
+        release_connection(conn)
 
 def states():
 
@@ -62,7 +62,7 @@ def states():
         return {"error": str(e)}
     finally:
         cur.close()
-        conn.close()
+        release_connection(conn)
 
 def get_coordenadas():
     try:
@@ -81,4 +81,4 @@ def get_coordenadas():
         return {"error": str(e)}
     finally:
         cur.close()
-        conn.close()
+        release_connection(conn)

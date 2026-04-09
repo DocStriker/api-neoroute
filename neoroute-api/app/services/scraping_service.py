@@ -27,7 +27,7 @@ class ScrapingService:
             "query": "truck theft sourcecountry:brazil",
             "mode": "artlist",
             "format": "json",
-            "timespan": "5d",
+            "timespan": "7d",
             "maxrecords": 250,
         }
 

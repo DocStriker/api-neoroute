@@ -38,6 +38,5 @@ def run_agent(auth: None = Depends(verify_token)):
 
         return {"status": "agent enviado para fila"}
     
-    AgentService().run()
-    return {"status_code": 200, "message": "sucess"}
+    return AgentService().run()
     
