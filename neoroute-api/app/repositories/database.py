@@ -1,6 +1,6 @@
 import os
 from psycopg2 import pool
-from app.core.config import get_param
+from app.core.ssm_config import get_param
 
 # Carrega .env apenas fora de produção
 if os.getenv("ENV") == "local":

@@ -18,7 +18,7 @@ class AIService:
 
     def __init__(self):
         if os.getenv("ENV") == "aws":
-            from app.core.config import get_param
+            from app.core.ssm_config import get_param
             self.api_token = get_param("/neoroute/api/aiagent")
 
         self.api_token = os.getenv("AIAGENT_TOKEN_TWO")

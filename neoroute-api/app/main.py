@@ -5,13 +5,18 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import health, agent, cargas, states, geodata, controls
 from app.models.db_models import init_db
+from app.core.logging_config import setup_logging
+
+import logging
+logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    print("Starting up...")
+    logger.info("Starting up...")
+    setup_logging()
     init_db()
     yield
-    print("Shutting down...")
+    logger.info("Shutting down...")
 
 if os.getenv("ENV") == "aws":
     from mangum import Mangum

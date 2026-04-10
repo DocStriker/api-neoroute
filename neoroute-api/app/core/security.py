@@ -1,6 +1,6 @@
 import os
 from fastapi import Header, HTTPException
-from app.core.config import get_param
+from app.core.ssm_config import get_param
 from dotenv import load_dotenv
 load_dotenv()
 
