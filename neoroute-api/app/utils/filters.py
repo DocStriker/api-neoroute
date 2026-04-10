@@ -17,7 +17,7 @@ class Filters:
         return adress
      
      def is_relevant_url(self, url: str) -> bool:
-        keywords = ["roubo", "carga", "transporte", "frete", "transportadora", "caminhao", "carreta", "caminhoes", "rodovia", "estrada"]
+        keywords = ["roubo", "carga", "transporte", "frete", "transportadora", "caminhao", "carreta", "caminhoes", "rodovia", "estrada", "caminh-o", "furtado", "furto", "caminh-es"]
         return any(k in url.lower() for k in keywords)
      
      def is_valid_text(self, text: str) -> bool:

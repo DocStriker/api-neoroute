@@ -1,5 +1,6 @@
 import json, re, datetime
 
+from fastapi import HTTPException
 from app.services.scraping_service import ScrapingService
 from app.services.geolocation_service import GeolocationService
 from app.utils.utils import Utils, RateLimiter
@@ -20,29 +21,29 @@ class AgentService:
 
     def run(self):
         try:
+            conn = get_connection()
+            cur = conn.cursor()
+
             logger.info("Fetching GDELT data and initializing...")
             df = self.scraper.fetch_gdelt()
 
             if df is None or df.empty:
                 raise Exception("No data fetched from GDELT.")
 
-            conn = get_connection()
-            cur = conn.cursor()
-
-            logger.info("DB initiated. Agent started at %s", datetime.datetime.now())
+            logger.info("Agent started at %s", datetime.datetime.now())
             logger.info("Total URLs to process: %d", len(df))
 
             for _, row in df.iterrows():
                 try:
                     if not self.f.is_relevant_url(row["url"]):
-                        logger.info("Irrelevant URL, skipping: %s", row['url'], extra={"url": row["url"]})
+                        logger.info("Irrelevant URL, skipping", extra={"url_full": row["url"]})
                         continue
 
-                    logger.info("Processing: %s", row['url'], extra={"url": row["url"]})
+                    logger.info("Processing URL", extra={"url_full": row["url"]})
                     text = self.scraper.use_bs(row["url"])
 
                     if not self.f.is_valid_text(text):
-                        logger.info("Invalid text or too short, skipping url: %s", row['url'], extra={"url": row["url"]})
+                        logger.info("Invalid text or too short, skipping URL")
                         continue
 
                     h = self.u.hash(row["url"])
@@ -50,15 +51,14 @@ class AgentService:
                     cur.execute("SELECT processed, response FROM process_cache WHERE hash = %s", (h,))
                     cached = cur.fetchone()
 
-                    logger.info("Cache %s for hash: %s", "hit" if cached else "miss", h)
-
                     if cached and cached[0]:
-                        logger.info("FULL CACHE HIT → skipping processing \n")
+                        logger.info("FULL CACHE HIT → skipping processing")
                         continue
                     
                     else:
                         airesponse = self.rate_limiter.safe_ai_call(text).model_dump()
-                        logger.info("AI response obtained for hash: %s, response: %s", h, airesponse)
+                        logger.info("Caching AI response for hash: %s", h)
+                        logger.info("AI response: %s", airesponse)
 
                         cur.execute(
                             "INSERT INTO process_cache (hash, response, processed) VALUES (%s, %s, %s)",
@@ -69,7 +69,7 @@ class AgentService:
                     cargo = airesponse.get("cargo_type")
 
                     if state == "unknown" or cargo == "unknown":
-                        logger.info("State or Cargo Type not found in AI response, skipping URL: %s", row['url'], extra={"url": row["url"]})
+                        logger.info("State or Cargo Type not found in AI response, skipping URL")
                         continue
 
                     coord = self.geo.get_coordinates(self.f.extract_adress(airesponse))
@@ -89,7 +89,7 @@ class AgentService:
                                 (row["url"], state, row["date"], coord if coord != "None" else json.dumps({"error": "not found"}))
                             )
                     rota_id = cur.fetchone()[0]
-                    logger.info("Route ID %s inserted for URL: %s...", rota_id, row['url'], extra={"url": row["url"]})
+                    logger.info("Route ID %s inserted", rota_id)
 
                     for cargo in cargo_list:
                         cargo = self.f.remove_accents(cargo.strip().lower())
@@ -110,25 +110,24 @@ class AgentService:
                         """, (rota_id, cargo_id))
                     
                     conn.commit()
-                    logger.info("Registered route. \n")
+                    logger.info("Registered route.")
 
                         
                 except Exception as e:
-                    logger.error("Error processing URL %s: %s", row['url'], str(e), extra={"url": row["url"]})
+                    logger.error("Error processing URL, %s", str(e), extra={"url_full": row["url"]})
                     conn.rollback()
 
             conn.commit()
-            logger.info("Completed. \n")
+            logger.info("Completed.")
 
         except Exception as e:
             logger.error("Agent Service Error: %s", str(e))
-            return {"error": str(e)}
+            raise HTTPException(status_code=500, detail="Internal Server Error")
 
         finally:
             if cur:
                 cur.close()
             if conn:
                 release_connection(conn)
-            return {"message": "agent run completed"}
 
         

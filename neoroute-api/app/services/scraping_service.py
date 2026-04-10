@@ -50,7 +50,7 @@ class ScrapingService:
             articles.dropna(subset=["date"], inplace=True)
             articles.drop_duplicates(inplace=True)
 
-            return articles[["url", "date"]]
+            return #articles[["url", "date"]]
 
         except requests.RequestException as e:
             print(f"Erro de conexão com GDELT: {e}")
