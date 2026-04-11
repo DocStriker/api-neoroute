@@ -5,7 +5,8 @@ from app.services.scraping_service import ScrapingService
 from app.services.geolocation_service import GeolocationService
 from app.utils.utils import Utils, RateLimiter
 from app.utils.filters import Filters
-from app.repositories.database import get_connection, release_connection
+from app.repositories.database_config import get_connection, release_connection
+from app.repositories.job_repository import update_job
 
 import logging
 logger = logging.getLogger(__name__)
@@ -19,8 +20,10 @@ class AgentService:
         self.f = Filters()
         self.rate_limiter = RateLimiter(max_calls=10, period=60)
 
-    def run(self):
+    def run(self, job_id: str):
         try:
+            update_job(job_id, "running")
+
             conn = get_connection()
             cur = conn.cursor()
 
@@ -119,9 +122,11 @@ class AgentService:
 
             conn.commit()
             logger.info("Completed.")
+            update_job(job_id, "done")
 
         except Exception as e:
             logger.error("Agent Service Error: %s", str(e))
+            update_job(job_id, "error")
             raise HTTPException(status_code=500, detail="Internal Server Error")
 
         finally:

@@ -1,5 +1,5 @@
 from psycopg2.extras import RealDictCursor
-from .database import get_connection, release_connection
+from .database_config import get_connection, release_connection
 
 def count_records(table_name: str):
     allowed_tables = ["rotas", "cargas"]

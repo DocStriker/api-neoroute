@@ -79,10 +79,6 @@ class AIService:
 
             content = response.json()["choices"][0]["message"]["content"]
 
-            # -------------------------
-            # Parsing seguro
-            # -------------------------
-
             try:
                 data = json.loads(content)
                 return ReviewAnalysis(**data)

@@ -1,506 +1,85 @@
-2026-04-10 07:58:25,633 [INFO] app.services.agent_service: Processing URL: https://g1.globo.com/jornal-na | URL: https://g1.globo.com/jornal-nacional/noticia/2026/04/04/roubo-de-soja-caminhoneiros-sao-alvos-de-ataques-armados-na-principal-rota-do-maranhao.ghtml
-2026-04-10 07:58:27,741 [INFO] app.services.agent_service: Processing URL: https://imirante.com/noticias/ | URL: https://imirante.com/noticias/sao-luis/2026/04/05/roubos-de-graos-criminosos-usam-barricadas-para-roubar-cargas-na-br-135-no-maranhao
-2026-04-10 07:58:28,405 [INFO] app.services.agent_service: Processing URL: https://jornalpequeno.com.br/2 | URL: https://jornalpequeno.com.br/2026/04/05/caminhoneiros-denunciam-ataques-e-roubo-de-soja-na-br-135-no-maranhao/
-2026-04-10 07:58:28,510 [INFO] app.services.agent_service: Processing URL: https://g1.globo.com/sp/mogi-d | URL: https://g1.globo.com/sp/mogi-das-cruzes-suzano/noticia/2026/04/09/trem-bate-em-caminhao-na-estrada-do-taboao-do-paratei-em-mogi.ghtml
-2026-04-10 07:58:29,748 [INFO] app.services.agent_service: Processing URL: https://a8se.com/noticias/serg | URL: https://a8se.com/noticias/sergipe/prf-recupera-caminhao-adulterado-com-restricao-judicial-na-br-101-em-sergipe/
-2026-04-10 07:58:30,749 [INFO] app.services.agent_service: Processing URL: https://jornalpequeno.com.br/2 | URL: https://jornalpequeno.com.br/2026/04/03/carga-de-combustivel-roubada-e-recuperada-e-caminhao-localizado-no-interior-do-maranhao/
-2026-04-10 07:58:30,940 [INFO] app.services.agent_service: Processing URL: https://www.em.com.br/gerais/2 | URL: https://www.em.com.br/gerais/2026/04/7391922-caminhao-com-armas-e-roubado-e-criminosos-fazem-refens-na-grande-bh.html
-2026-04-10 07:58:31,300 [INFO] app.services.agent_service: Processing URL: https://jmonline.com.br/polici | URL: https://jmonline.com.br/policia/furto-ousado-caminh-o-com-carga-de-agua-mineral-desaparece-em-uberaba-1.611584
-2026-04-10 07:58:31,373 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://g1.globo.com/pi/piaui/ | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/idoso-morre-amarrado.ghtml
-2026-04-10 07:58:31,374 [INFO] app.services.agent_service: Processing URL: https://jmonline.com.br/polici | URL: https://jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 07:58:31,428 [INFO] app.services.agent_service: Processing URL: https://www.jmonline.com.br/po | URL: https://www.jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 07:58:31,590 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://g1.globo.com/pi/piaui/ | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/pf-operacao-trafico-interestadual-de-drogas.ghtml
-2026-04-10 07:58:31,591 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://g1.globo.com/pi/piaui/ | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/08/jovem-morre-moto.ghtml
-2026-04-10 07:58:31,592 [INFO] app.services.agent_service: Processing URL: https://www.agorams.com.br/pmr | URL: https://www.agorams.com.br/pmr-recupera-veiculo-furtado-e-prende-dois-autores-na-ms-162-em-maracaju/
-2026-04-10 07:58:31,878 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://g1.globo.com/pi/piaui/ | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/adolescente-apreendido-acidente.ghtml
-2026-04-10 07:58:31,879 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://g1.globo.com/pi/piaui/ | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/08/suspeitos-desaparecimento-motorista-presos.ghtml
-2026-04-10 07:58:31,880 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://g1.globo.com/pi/piaui/ | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/operacao-pascoa-multas.ghtml
-2026-04-10 07:58:31,881 [INFO] app.services.agent_service: Processing URL: https://jmonline.com.br/polici | URL: https://jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 07:58:31,939 [INFO] app.services.agent_service: Processing URL: https://www.jmonline.com.br/po | URL: https://www.jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 07:58:32,064 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://www.diariodigital.com. | URL: https://www.diariodigital.com.br/policia-2/policia-civil-apreende-quase-3-toneladas-de-maconha-em-mundo-novo
-2026-04-10 07:58:32,068 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://g1.globo.com/pi/piaui/ | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/cachorro-morto-enforcado.ghtml
-2026-04-10 07:58:32,070 [INFO] app.services.agent_service: Processing URL: https://g1.globo.com/pi/piaui/ | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/suspeito-furto-denuncia.ghtml
-2026-04-10 07:58:33,397 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://g1.globo.com/pi/piaui/ | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/04/fugitivos-penitenciaria-parnaiba.ghtml
-2026-04-10 07:58:33,398 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://www.correio24horas.com | URL: https://www.correio24horas.com.br/minha-bahia/semaforos-vandalizados-geram-mais-de-r-1-milhao-de-prejuizo-em-salvador-0426
-2026-04-10 07:58:33,399 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://g1.globo.com/pi/piaui/ | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/03/passageira-pede-escolta.ghtml
-2026-04-10 07:58:33,400 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://tnonline.uol.com.br/no | URL: https://tnonline.uol.com.br/noticias/parana/novos-blindados-para-as-forcas-policiais-comecam-a-chegar-no-pr-1079495
-2026-04-10 07:58:33,401 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://tnonline.uol.com.br/no | URL: https://tnonline.uol.com.br/noticias/parana/falsos-policiais-interceptam-onibus-na-br-277-e-assaltam-45-passageiros-no-parana-1078762
-2026-04-10 07:58:33,402 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://noticiasdatv.uol.com.b | URL: https://noticiasdatv.uol.com.br/noticia/novelas/paulinho-sofre-grande-injustica-e-e-denunciado-a-corregedoria-em-tres-gracas-149683
-2026-04-10 07:58:33,404 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://regiaonoroeste.com/pol | URL: https://regiaonoroeste.com/policia-civil-desarticula-quadrilha-especializada-em-clonagem-de-veiculos-em-birigui/
-2026-04-10 07:58:33,405 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://g1.globo.com/rs/rio-gr | URL: https://g1.globo.com/rs/rio-grande-do-sul/noticia/2026/04/07/da-espessura-ao-ponto-churrasqueiro-gaucho-da-dicas-de-como-comprar-preparar-e-servir-picanha-eleita-um-dos-melhores-pratos-do-mundo.ghtml
-2026-04-10 07:58:33,406 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://www.aplateia.com.br/20 | URL: https://www.aplateia.com.br/2026/04/prf-registra-queda-de-acidentes-e-alta-nas-autuacoes-durante-a-semana-santa/
-2026-04-10 07:58:33,407 [INFO] app.services.agent_service: Irrelevant URL, skipping: https://g1.globo.com/sp/campin | URL: https://g1.globo.com/sp/campinas-regiao/noticia/2026/04/07/guarda-de-indaiatuba-preso-por-sequestro-se-apresentou-como-policial-e-apontou-arma-para-influenciador-aponta-investigacao.ghtml
-2026-04-10 08:02:54,170 [INFO] app.services.agent_service: Fetching GDELT data and initializing... | URL: 
-2026-04-10 08:03:08,728 [INFO] app.services.agent_service: DB initiated. Agent started at 2026-04-10 08:03:08.728913 | URL: 
-2026-04-10 08:03:08,729 [INFO] app.services.agent_service: Total URLs to process: 31 | URL: 
-2026-04-10 08:03:08,730 [INFO] app.services.agent_service: Processing URL | URL: https://g1.globo.com/jornal-nacional/noticia/2026/04/04/roubo-de-soja-caminhoneiros-sao-alvos-de-ataques-armados-na-principal-rota-do-maranhao.ghtml
-2026-04-10 08:03:10,031 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- | URL: 
-2026-04-10 08:03:10,031 [INFO] app.services.agent_service: Processing URL | URL: https://imirante.com/noticias/sao-luis/2026/04/05/roubos-de-graos-criminosos-usam-barricadas-para-roubar-cargas-na-br-135-no-maranhao
-2026-04-10 08:03:10,697 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- | URL: 
-2026-04-10 08:03:10,697 [INFO] app.services.agent_service: Processing URL | URL: https://jornalpequeno.com.br/2026/04/05/caminhoneiros-denunciam-ataques-e-roubo-de-soja-na-br-135-no-maranhao/
-2026-04-10 08:03:10,818 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- | URL: 
-2026-04-10 08:03:10,819 [INFO] app.services.agent_service: Processing URL | URL: https://g1.globo.com/sp/mogi-das-cruzes-suzano/noticia/2026/04/09/trem-bate-em-caminhao-na-estrada-do-taboao-do-paratei-em-mogi.ghtml
-2026-04-10 08:03:12,238 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- | URL: 
-2026-04-10 08:03:12,238 [INFO] app.services.agent_service: Processing URL | URL: https://a8se.com/noticias/sergipe/prf-recupera-caminhao-adulterado-com-restricao-judicial-na-br-101-em-sergipe/
-2026-04-10 08:03:13,182 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- | URL: 
-2026-04-10 08:03:13,183 [INFO] app.services.agent_service: Processing URL | URL: https://www.em.com.br/gerais/2026/04/7391922-caminhao-com-armas-e-roubado-e-criminosos-fazem-refens-na-grande-bh.html
-2026-04-10 08:03:13,804 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- | URL: 
-2026-04-10 08:03:13,804 [INFO] app.services.agent_service: Processing URL | URL: https://jmonline.com.br/policia/furto-ousado-caminh-o-com-carga-de-agua-mineral-desaparece-em-uberaba-1.611584
-2026-04-10 08:03:13,903 [INFO] app.services.agent_service: Invalid text or too short, skipping URL | URL: 
-2026-04-10 08:03:13,903 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/idoso-morre-amarrado.ghtml
-2026-04-10 08:03:13,903 [INFO] app.services.agent_service: Processing URL | URL: https://jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 08:03:13,968 [INFO] app.services.agent_service: Invalid text or too short, skipping URL | URL: 
-2026-04-10 08:03:13,968 [INFO] app.services.agent_service: Processing URL | URL: https://www.jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 08:03:14,024 [INFO] app.services.agent_service: Invalid text or too short, skipping URL | URL: 
-2026-04-10 08:03:14,024 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/pf-operacao-trafico-interestadual-de-drogas.ghtml
-2026-04-10 08:03:14,025 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/08/jovem-morre-moto.ghtml
-2026-04-10 08:03:14,025 [INFO] app.services.agent_service: Processing URL | URL: https://www.agorams.com.br/pmr-recupera-veiculo-furtado-e-prende-dois-autores-na-ms-162-em-maracaju/
-2026-04-10 08:03:14,702 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- | URL: 
-2026-04-10 08:03:14,703 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/adolescente-apreendido-acidente.ghtml
-2026-04-10 08:03:14,703 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/08/suspeitos-desaparecimento-motorista-presos.ghtml
-2026-04-10 08:03:14,703 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/operacao-pascoa-multas.ghtml
-2026-04-10 08:03:14,704 [INFO] app.services.agent_service: Processing URL | URL: https://jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 08:03:14,831 [INFO] app.services.agent_service: Invalid text or too short, skipping URL | URL: 
-2026-04-10 08:03:14,831 [INFO] app.services.agent_service: Processing URL | URL: https://www.jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 08:03:14,894 [INFO] app.services.agent_service: Invalid text or too short, skipping URL | URL: 
-2026-04-10 08:03:14,895 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://www.diariodigital.com.br/policia-2/policia-civil-apreende-quase-3-toneladas-de-maconha-em-mundo-novo
-2026-04-10 08:03:14,895 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/cachorro-morto-enforcado.ghtml
-2026-04-10 08:03:14,895 [INFO] app.services.agent_service: Processing URL | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/suspeito-furto-denuncia.ghtml
-2026-04-10 08:03:16,136 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- | URL: 
-2026-04-10 08:03:16,137 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/04/fugitivos-penitenciaria-parnaiba.ghtml
-2026-04-10 08:03:16,137 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://www.correio24horas.com.br/minha-bahia/semaforos-vandalizados-geram-mais-de-r-1-milhao-de-prejuizo-em-salvador-0426
-2026-04-10 08:03:16,137 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://g1.globo.com/pi/piaui/noticia/2026/04/03/passageira-pede-escolta.ghtml
-2026-04-10 08:03:16,138 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://tnonline.uol.com.br/noticias/parana/novos-blindados-para-as-forcas-policiais-comecam-a-chegar-no-pr-1079495
-2026-04-10 08:03:16,138 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://tnonline.uol.com.br/noticias/parana/falsos-policiais-interceptam-onibus-na-br-277-e-assaltam-45-passageiros-no-parana-1078762
-2026-04-10 08:03:16,138 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://noticiasdatv.uol.com.br/noticia/novelas/paulinho-sofre-grande-injustica-e-e-denunciado-a-corregedoria-em-tres-gracas-149683
-2026-04-10 08:03:16,138 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://regiaonoroeste.com/policia-civil-desarticula-quadrilha-especializada-em-clonagem-de-veiculos-em-birigui/
-2026-04-10 08:03:16,139 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://g1.globo.com/rs/rio-grande-do-sul/noticia/2026/04/07/da-espessura-ao-ponto-churrasqueiro-gaucho-da-dicas-de-como-comprar-preparar-e-servir-picanha-eleita-um-dos-melhores-pratos-do-mundo.ghtml
-2026-04-10 08:03:16,139 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://www.aplateia.com.br/2026/04/prf-registra-queda-de-acidentes-e-alta-nas-autuacoes-durante-a-semana-santa/
-2026-04-10 08:03:16,139 [INFO] app.services.agent_service: Irrelevant URL, skipping | URL: https://g1.globo.com/sp/campinas-regiao/noticia/2026/04/07/guarda-de-indaiatuba-preso-por-sequestro-se-apresentou-como-policial-e-apontou-arma-para-influenciador-aponta-investigacao.ghtml
-2026-04-10 08:03:16,139 [INFO] app.services.agent_service: Completed. 
- | URL: 
-2026-04-10 08:10:43,902 [INFO] app.main: Shutting down... | URL: 
-2026-04-10 08:11:26,356 [INFO] app.main: Shutting down... [URL: ]
-2026-04-10 08:12:03,809 [INFO] app.services.agent_service: Fetching GDELT data and initializing... [URL: ]
-2026-04-10 08:12:14,967 [INFO] app.services.agent_service: DB initiated. Agent started at 2026-04-10 08:12:14.967032 [URL: ]
-2026-04-10 08:12:14,967 [INFO] app.services.agent_service: Total URLs to process: 31 [URL: ]
-2026-04-10 08:12:14,967 [INFO] app.services.agent_service: Processing URL [URL: https://g1.globo.com/jornal-nacional/noticia/2026/04/04/roubo-de-soja-caminhoneiros-sao-alvos-de-ataques-armados-na-principal-rota-do-maranhao.ghtml]
-2026-04-10 08:12:16,778 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- [URL: ]
-2026-04-10 08:12:16,778 [INFO] app.services.agent_service: Processing URL [URL: https://imirante.com/noticias/sao-luis/2026/04/05/roubos-de-graos-criminosos-usam-barricadas-para-roubar-cargas-na-br-135-no-maranhao]
-2026-04-10 08:12:18,012 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- [URL: ]
-2026-04-10 08:12:18,012 [INFO] app.services.agent_service: Processing URL [URL: https://jornalpequeno.com.br/2026/04/05/caminhoneiros-denunciam-ataques-e-roubo-de-soja-na-br-135-no-maranhao/]
-2026-04-10 08:12:18,220 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- [URL: ]
-2026-04-10 08:12:18,221 [INFO] app.services.agent_service: Processing URL [URL: https://g1.globo.com/sp/mogi-das-cruzes-suzano/noticia/2026/04/09/trem-bate-em-caminhao-na-estrada-do-taboao-do-paratei-em-mogi.ghtml]
-2026-04-10 08:12:19,642 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- [URL: ]
-2026-04-10 08:12:19,643 [INFO] app.services.agent_service: Processing URL [URL: https://a8se.com/noticias/sergipe/prf-recupera-caminhao-adulterado-com-restricao-judicial-na-br-101-em-sergipe/]
-2026-04-10 08:12:20,667 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- [URL: ]
-2026-04-10 08:12:20,668 [INFO] app.services.agent_service: Processing URL [URL: https://www.em.com.br/gerais/2026/04/7391922-caminhao-com-armas-e-roubado-e-criminosos-fazem-refens-na-grande-bh.html]
-2026-04-10 08:12:21,028 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- [URL: ]
-2026-04-10 08:12:21,029 [INFO] app.services.agent_service: Processing URL [URL: https://jmonline.com.br/policia/furto-ousado-caminh-o-com-carga-de-agua-mineral-desaparece-em-uberaba-1.611584]
-2026-04-10 08:12:21,195 [INFO] app.services.agent_service: Invalid text or too short, skipping URL [URL: ]
-2026-04-10 08:12:21,196 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/idoso-morre-amarrado.ghtml]
-2026-04-10 08:12:21,196 [INFO] app.services.agent_service: Processing URL [URL: https://jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000]
-2026-04-10 08:12:21,280 [INFO] app.services.agent_service: Invalid text or too short, skipping URL [URL: ]
-2026-04-10 08:12:21,282 [INFO] app.services.agent_service: Processing URL [URL: https://www.jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000]
-2026-04-10 08:12:21,392 [INFO] app.services.agent_service: Invalid text or too short, skipping URL [URL: ]
-2026-04-10 08:12:21,392 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/pf-operacao-trafico-interestadual-de-drogas.ghtml]
-2026-04-10 08:12:21,393 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://g1.globo.com/pi/piaui/noticia/2026/04/08/jovem-morre-moto.ghtml]
-2026-04-10 08:12:21,393 [INFO] app.services.agent_service: Processing URL [URL: https://www.agorams.com.br/pmr-recupera-veiculo-furtado-e-prende-dois-autores-na-ms-162-em-maracaju/]
-2026-04-10 08:12:21,733 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- [URL: ]
-2026-04-10 08:12:21,734 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/adolescente-apreendido-acidente.ghtml]
-2026-04-10 08:12:21,734 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://g1.globo.com/pi/piaui/noticia/2026/04/08/suspeitos-desaparecimento-motorista-presos.ghtml]
-2026-04-10 08:12:21,734 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/operacao-pascoa-multas.ghtml]
-2026-04-10 08:12:21,734 [INFO] app.services.agent_service: Processing URL [URL: https://jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005]
-2026-04-10 08:12:21,786 [INFO] app.services.agent_service: Invalid text or too short, skipping URL [URL: ]
-2026-04-10 08:12:21,787 [INFO] app.services.agent_service: Processing URL [URL: https://www.jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005]
-2026-04-10 08:12:21,844 [INFO] app.services.agent_service: Invalid text or too short, skipping URL [URL: ]
-2026-04-10 08:12:21,844 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://www.diariodigital.com.br/policia-2/policia-civil-apreende-quase-3-toneladas-de-maconha-em-mundo-novo]
-2026-04-10 08:12:21,845 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/cachorro-morto-enforcado.ghtml]
-2026-04-10 08:12:21,845 [INFO] app.services.agent_service: Processing URL [URL: https://g1.globo.com/pi/piaui/noticia/2026/04/07/suspeito-furto-denuncia.ghtml]
-2026-04-10 08:12:23,634 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
- [URL: ]
-2026-04-10 08:12:23,634 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://g1.globo.com/pi/piaui/noticia/2026/04/04/fugitivos-penitenciaria-parnaiba.ghtml]
-2026-04-10 08:12:23,634 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://www.correio24horas.com.br/minha-bahia/semaforos-vandalizados-geram-mais-de-r-1-milhao-de-prejuizo-em-salvador-0426]
-2026-04-10 08:12:23,635 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://g1.globo.com/pi/piaui/noticia/2026/04/03/passageira-pede-escolta.ghtml]
-2026-04-10 08:12:23,635 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://tnonline.uol.com.br/noticias/parana/novos-blindados-para-as-forcas-policiais-comecam-a-chegar-no-pr-1079495]
-2026-04-10 08:12:23,635 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://tnonline.uol.com.br/noticias/parana/falsos-policiais-interceptam-onibus-na-br-277-e-assaltam-45-passageiros-no-parana-1078762]
-2026-04-10 08:12:23,635 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://noticiasdatv.uol.com.br/noticia/novelas/paulinho-sofre-grande-injustica-e-e-denunciado-a-corregedoria-em-tres-gracas-149683]
-2026-04-10 08:12:23,635 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://regiaonoroeste.com/policia-civil-desarticula-quadrilha-especializada-em-clonagem-de-veiculos-em-birigui/]
-2026-04-10 08:12:23,636 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://g1.globo.com/rs/rio-grande-do-sul/noticia/2026/04/07/da-espessura-ao-ponto-churrasqueiro-gaucho-da-dicas-de-como-comprar-preparar-e-servir-picanha-eleita-um-dos-melhores-pratos-do-mundo.ghtml]
-2026-04-10 08:12:23,636 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://www.aplateia.com.br/2026/04/prf-registra-queda-de-acidentes-e-alta-nas-autuacoes-durante-a-semana-santa/]
-2026-04-10 08:12:23,636 [INFO] app.services.agent_service: Irrelevant URL, skipping [URL: https://g1.globo.com/sp/campinas-regiao/noticia/2026/04/07/guarda-de-indaiatuba-preso-por-sequestro-se-apresentou-como-policial-e-apontou-arma-para-influenciador-aponta-investigacao.ghtml]
-2026-04-10 08:12:23,636 [INFO] app.services.agent_service: Completed. 
- [URL: ]
-2026-04-10 08:13:56,114 [INFO] app.main: Shutting down... [URL: ]
-2026-04-10 08:15:29,588 [INFO] app.main: Shutting down... | [URL: ]
-2026-04-10 08:15:39,654 [INFO] app.main: Shutting down... | [URL: ]
-2026-04-10 08:15:43,987 [INFO] app.main: Shutting down... | [URL: ]
-2026-04-10 08:19:01,068 [INFO] app.main: Shutting down... | [URL: ]
-2026-04-10 08:19:29,704 [INFO] app.main: Shutting down... 
-2026-04-10 08:19:32,846 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
-2026-04-10 08:19:35,575 [INFO] app.services.agent_service: DB initiated. Agent started at 2026-04-10 08:19:35.575950 
-2026-04-10 08:19:35,580 [INFO] app.services.agent_service: Total URLs to process: 31 
-2026-04-10 08:19:35,581 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/jornal-nacional/noticia/2026/04/04/roubo-de-soja-caminhoneiros-sao-alvos-de-ataques-armados-na-principal-rota-do-maranhao.ghtml
-2026-04-10 08:19:36,947 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:19:36,947 [INFO] app.services.agent_service: Processing URL https://imirante.com/noticias/sao-luis/2026/04/05/roubos-de-graos-criminosos-usam-barricadas-para-roubar-cargas-na-br-135-no-maranhao
-2026-04-10 08:19:37,605 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:19:37,606 [INFO] app.services.agent_service: Processing URL https://jornalpequeno.com.br/2026/04/05/caminhoneiros-denunciam-ataques-e-roubo-de-soja-na-br-135-no-maranhao/
-2026-04-10 08:19:37,788 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:19:37,788 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/sp/mogi-das-cruzes-suzano/noticia/2026/04/09/trem-bate-em-caminhao-na-estrada-do-taboao-do-paratei-em-mogi.ghtml
-2026-04-10 08:19:39,052 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:19:39,052 [INFO] app.services.agent_service: Processing URL https://a8se.com/noticias/sergipe/prf-recupera-caminhao-adulterado-com-restricao-judicial-na-br-101-em-sergipe/
-2026-04-10 08:19:40,159 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:19:40,159 [INFO] app.services.agent_service: Processing URL https://www.em.com.br/gerais/2026/04/7391922-caminhao-com-armas-e-roubado-e-criminosos-fazem-refens-na-grande-bh.html
-2026-04-10 08:19:40,727 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:19:40,727 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/furto-ousado-caminh-o-com-carga-de-agua-mineral-desaparece-em-uberaba-1.611584
-2026-04-10 08:19:40,788 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:19:40,788 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/idoso-morre-amarrado.ghtml
-2026-04-10 08:19:40,789 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 08:19:40,872 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:19:40,873 [INFO] app.services.agent_service: Processing URL https://www.jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 08:19:40,958 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:19:40,959 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/pf-operacao-trafico-interestadual-de-drogas.ghtml
-2026-04-10 08:19:40,959 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/jovem-morre-moto.ghtml
-2026-04-10 08:19:40,959 [INFO] app.services.agent_service: Processing URL https://www.agorams.com.br/pmr-recupera-veiculo-furtado-e-prende-dois-autores-na-ms-162-em-maracaju/
-2026-04-10 08:19:41,140 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:19:41,140 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/adolescente-apreendido-acidente.ghtml
-2026-04-10 08:19:41,140 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/suspeitos-desaparecimento-motorista-presos.ghtml
-2026-04-10 08:19:41,141 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/operacao-pascoa-multas.ghtml
-2026-04-10 08:19:41,141 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 08:19:41,194 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:19:41,194 [INFO] app.services.agent_service: Processing URL https://www.jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 08:19:41,265 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:19:41,265 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.diariodigital.com.br/policia-2/policia-civil-apreende-quase-3-toneladas-de-maconha-em-mundo-novo
-2026-04-10 08:19:41,266 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/cachorro-morto-enforcado.ghtml
-2026-04-10 08:19:41,266 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/pi/piaui/noticia/2026/04/07/suspeito-furto-denuncia.ghtml
-2026-04-10 08:19:42,476 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:19:42,476 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/04/fugitivos-penitenciaria-parnaiba.ghtml
-2026-04-10 08:19:42,477 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.correio24horas.com.br/minha-bahia/semaforos-vandalizados-geram-mais-de-r-1-milhao-de-prejuizo-em-salvador-0426
-2026-04-10 08:19:42,477 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/03/passageira-pede-escolta.ghtml
-2026-04-10 08:19:42,477 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/novos-blindados-para-as-forcas-policiais-comecam-a-chegar-no-pr-1079495
-2026-04-10 08:19:42,477 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/falsos-policiais-interceptam-onibus-na-br-277-e-assaltam-45-passageiros-no-parana-1078762
-2026-04-10 08:19:42,478 [INFO] app.services.agent_service: Irrelevant URL, skipping https://noticiasdatv.uol.com.br/noticia/novelas/paulinho-sofre-grande-injustica-e-e-denunciado-a-corregedoria-em-tres-gracas-149683
-2026-04-10 08:19:42,478 [INFO] app.services.agent_service: Irrelevant URL, skipping https://regiaonoroeste.com/policia-civil-desarticula-quadrilha-especializada-em-clonagem-de-veiculos-em-birigui/
-2026-04-10 08:19:42,478 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/rs/rio-grande-do-sul/noticia/2026/04/07/da-espessura-ao-ponto-churrasqueiro-gaucho-da-dicas-de-como-comprar-preparar-e-servir-picanha-eleita-um-dos-melhores-pratos-do-mundo.ghtml
-2026-04-10 08:19:42,478 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.aplateia.com.br/2026/04/prf-registra-queda-de-acidentes-e-alta-nas-autuacoes-durante-a-semana-santa/
-2026-04-10 08:19:42,478 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/sp/campinas-regiao/noticia/2026/04/07/guarda-de-indaiatuba-preso-por-sequestro-se-apresentou-como-policial-e-apontou-arma-para-influenciador-aponta-investigacao.ghtml
-2026-04-10 08:19:42,479 [INFO] app.services.agent_service: Completed. 
-2026-04-10 08:20:10,550 [INFO] app.main: Shutting down... 
-2026-04-10 08:20:21,797 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
-2026-04-10 08:23:29,524 [ERROR] app.services.agent_service: Agent Service Error: No data fetched from GDELT. 
-2026-04-10 08:25:10,770 [INFO] app.main: Shutting down... 
-2026-04-10 08:25:25,918 [INFO] app.main: Shutting down... 
-2026-04-10 08:25:36,284 [INFO] app.main: Shutting down... 
-2026-04-10 08:26:14,182 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
-2026-04-10 08:26:27,536 [INFO] app.services.agent_service: Agent started at 2026-04-10 08:26:27.536653 
-2026-04-10 08:26:27,537 [INFO] app.services.agent_service: Total URLs to process: 31 
-2026-04-10 08:26:27,538 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/jornal-nacional/noticia/2026/04/04/roubo-de-soja-caminhoneiros-sao-alvos-de-ataques-armados-na-principal-rota-do-maranhao.ghtml
-2026-04-10 08:26:29,081 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:26:29,082 [INFO] app.services.agent_service: Processing URL https://imirante.com/noticias/sao-luis/2026/04/05/roubos-de-graos-criminosos-usam-barricadas-para-roubar-cargas-na-br-135-no-maranhao
-2026-04-10 08:26:29,724 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:26:29,725 [INFO] app.services.agent_service: Processing URL https://jornalpequeno.com.br/2026/04/05/caminhoneiros-denunciam-ataques-e-roubo-de-soja-na-br-135-no-maranhao/
-2026-04-10 08:26:29,933 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:26:29,934 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/sp/mogi-das-cruzes-suzano/noticia/2026/04/09/trem-bate-em-caminhao-na-estrada-do-taboao-do-paratei-em-mogi.ghtml
-2026-04-10 08:26:31,120 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:26:31,120 [INFO] app.services.agent_service: Processing URL https://a8se.com/noticias/sergipe/prf-recupera-caminhao-adulterado-com-restricao-judicial-na-br-101-em-sergipe/
-2026-04-10 08:26:32,048 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:26:32,048 [INFO] app.services.agent_service: Processing URL https://www.em.com.br/gerais/2026/04/7391922-caminhao-com-armas-e-roubado-e-criminosos-fazem-refens-na-grande-bh.html
-2026-04-10 08:26:32,314 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:26:32,314 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/furto-ousado-caminh-o-com-carga-de-agua-mineral-desaparece-em-uberaba-1.611584
-2026-04-10 08:26:32,495 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:26:32,495 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/idoso-morre-amarrado.ghtml
-2026-04-10 08:26:32,495 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 08:26:32,560 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:26:32,560 [INFO] app.services.agent_service: Processing URL https://www.jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 08:26:32,627 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:26:32,627 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/pf-operacao-trafico-interestadual-de-drogas.ghtml
-2026-04-10 08:26:32,627 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/jovem-morre-moto.ghtml
-2026-04-10 08:26:32,628 [INFO] app.services.agent_service: Processing URL https://www.agorams.com.br/pmr-recupera-veiculo-furtado-e-prende-dois-autores-na-ms-162-em-maracaju/
-2026-04-10 08:26:32,813 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:26:32,813 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/adolescente-apreendido-acidente.ghtml
-2026-04-10 08:26:32,815 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/suspeitos-desaparecimento-motorista-presos.ghtml
-2026-04-10 08:26:32,816 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/operacao-pascoa-multas.ghtml
-2026-04-10 08:26:32,816 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 08:26:32,875 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:26:32,876 [INFO] app.services.agent_service: Processing URL https://www.jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 08:26:32,932 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:26:32,933 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.diariodigital.com.br/policia-2/policia-civil-apreende-quase-3-toneladas-de-maconha-em-mundo-novo
-2026-04-10 08:26:32,933 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/cachorro-morto-enforcado.ghtml
-2026-04-10 08:26:32,933 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/pi/piaui/noticia/2026/04/07/suspeito-furto-denuncia.ghtml
-2026-04-10 08:26:34,341 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:26:34,341 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/04/fugitivos-penitenciaria-parnaiba.ghtml
-2026-04-10 08:26:34,342 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.correio24horas.com.br/minha-bahia/semaforos-vandalizados-geram-mais-de-r-1-milhao-de-prejuizo-em-salvador-0426
-2026-04-10 08:26:34,342 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/03/passageira-pede-escolta.ghtml
-2026-04-10 08:26:34,343 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/novos-blindados-para-as-forcas-policiais-comecam-a-chegar-no-pr-1079495
-2026-04-10 08:26:34,343 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/falsos-policiais-interceptam-onibus-na-br-277-e-assaltam-45-passageiros-no-parana-1078762
-2026-04-10 08:26:34,343 [INFO] app.services.agent_service: Irrelevant URL, skipping https://noticiasdatv.uol.com.br/noticia/novelas/paulinho-sofre-grande-injustica-e-e-denunciado-a-corregedoria-em-tres-gracas-149683
-2026-04-10 08:26:34,344 [INFO] app.services.agent_service: Irrelevant URL, skipping https://regiaonoroeste.com/policia-civil-desarticula-quadrilha-especializada-em-clonagem-de-veiculos-em-birigui/
-2026-04-10 08:26:34,344 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/rs/rio-grande-do-sul/noticia/2026/04/07/da-espessura-ao-ponto-churrasqueiro-gaucho-da-dicas-de-como-comprar-preparar-e-servir-picanha-eleita-um-dos-melhores-pratos-do-mundo.ghtml
-2026-04-10 08:26:34,344 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.aplateia.com.br/2026/04/prf-registra-queda-de-acidentes-e-alta-nas-autuacoes-durante-a-semana-santa/
-2026-04-10 08:26:34,345 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/sp/campinas-regiao/noticia/2026/04/07/guarda-de-indaiatuba-preso-por-sequestro-se-apresentou-como-policial-e-apontou-arma-para-influenciador-aponta-investigacao.ghtml
-2026-04-10 08:26:34,346 [INFO] app.services.agent_service: Completed. 
-2026-04-10 08:26:46,474 [INFO] app.main: Shutting down... 
-2026-04-10 08:27:12,891 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
-2026-04-10 08:30:19,918 [ERROR] app.services.agent_service: Agent Service Error: No data fetched from GDELT. 
-2026-04-10 08:32:54,256 [INFO] app.main: Shutting down... 
-2026-04-10 08:33:10,614 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
-2026-04-10 08:36:57,316 [ERROR] app.services.agent_service: Agent Service Error: No data fetched from GDELT. 
-2026-04-10 08:45:57,074 [INFO] app.main: Shutting down... 
-2026-04-10 08:46:13,005 [INFO] app.main: Shutting down... 
-2026-04-10 08:46:35,685 [INFO] app.main: Shutting down... 
-2026-04-10 08:47:00,990 [INFO] app.main: Shutting down... 
-2026-04-10 08:47:10,471 [INFO] app.main: Shutting down... 
-2026-04-10 08:47:20,927 [INFO] app.main: Shutting down... 
-2026-04-10 08:49:19,134 [INFO] app.main: Shutting down... 
-2026-04-10 08:49:43,856 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
-2026-04-10 08:49:51,918 [INFO] app.services.agent_service: Agent started at 2026-04-10 08:49:51.917997 
-2026-04-10 08:49:51,918 [INFO] app.services.agent_service: Total URLs to process: 31 
-2026-04-10 08:49:51,919 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/jornal-nacional/noticia/2026/04/04/roubo-de-soja-caminhoneiros-sao-alvos-de-ataques-armados-na-principal-rota-do-maranhao.ghtml
-2026-04-10 08:49:54,636 [INFO] app.services.agent_service: Caching AI response for hash: fc8feab6bf5e7caf03e58144d4d57f01 
-2026-04-10 08:49:54,637 [INFO] app.services.agent_service: AI response: {'street': 'unknown', 'city': 'unknown', 'state': 'MA', 'cargo_type': 'soja'} 
-2026-04-10 08:49:55,016 [INFO] app.services.agent_service: Extracted state: MA, cargo types: ['soja'], coordinates: {"lat": 44.5282698, "lng": -71.3899278} 
-2026-04-10 08:49:55,077 [INFO] app.services.agent_service: Route ID 1 inserted 
-2026-04-10 08:49:55,084 [INFO] app.services.agent_service: Registered route. 
-2026-04-10 08:49:55,085 [INFO] app.services.agent_service: Processing URL https://imirante.com/noticias/sao-luis/2026/04/05/roubos-de-graos-criminosos-usam-barricadas-para-roubar-cargas-na-br-135-no-maranhao
-2026-04-10 08:49:57,014 [INFO] app.services.agent_service: Caching AI response for hash: 03011f042c49747bbf6607f30094b5b0 
-2026-04-10 08:49:57,015 [INFO] app.services.agent_service: AI response: {'street': 'unknown', 'city': 'unknown', 'state': 'unknown', 'cargo_type': 'unknown'} 
-2026-04-10 08:49:57,016 [INFO] app.services.agent_service: State or Cargo Type not found in AI response, skipping URL 
-2026-04-10 08:49:57,016 [INFO] app.services.agent_service: Processing URL https://jornalpequeno.com.br/2026/04/05/caminhoneiros-denunciam-ataques-e-roubo-de-soja-na-br-135-no-maranhao/
-2026-04-10 08:49:57,779 [INFO] app.services.agent_service: Caching AI response for hash: 37006eea110258c6e709a952c2af84da 
-2026-04-10 08:49:57,779 [INFO] app.services.agent_service: AI response: {'street': 'BR-135', 'city': 'unknown', 'state': 'MA', 'cargo_type': 'soja'} 
-2026-04-10 08:49:58,298 [INFO] app.services.agent_service: Extracted state: MA, cargo types: ['soja'], coordinates: None 
-2026-04-10 08:49:58,307 [INFO] app.services.agent_service: Route ID 2 inserted 
-2026-04-10 08:49:58,314 [INFO] app.services.agent_service: Registered route. 
-2026-04-10 08:49:58,314 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/sp/mogi-das-cruzes-suzano/noticia/2026/04/09/trem-bate-em-caminhao-na-estrada-do-taboao-do-paratei-em-mogi.ghtml
-2026-04-10 08:50:00,499 [INFO] app.services.agent_service: Caching AI response for hash: 94ef2152c17f092f6d755aa2f7e9ca89 
-2026-04-10 08:50:00,500 [INFO] app.services.agent_service: AI response: {'street': 'estrada do Taboão', 'city': 'Mogi das Cruzes', 'state': 'SP', 'cargo_type': 'militar'} 
-2026-04-10 08:50:00,893 [INFO] app.services.agent_service: Extracted state: SP, cargo types: ['militar'], coordinates: {"lat": -23.3856595, "lng": -46.1733489} 
-2026-04-10 08:50:00,894 [INFO] app.services.agent_service: Route ID 3 inserted 
-2026-04-10 08:50:00,896 [INFO] app.services.agent_service: Registered route. 
-2026-04-10 08:50:00,896 [INFO] app.services.agent_service: Processing URL https://a8se.com/noticias/sergipe/prf-recupera-caminhao-adulterado-com-restricao-judicial-na-br-101-em-sergipe/
-2026-04-10 08:50:02,588 [INFO] app.services.agent_service: Caching AI response for hash: 4f120642825122bbbcc77793bae69bd0 
-2026-04-10 08:50:02,589 [INFO] app.services.agent_service: AI response: {'street': 'unknown', 'city': 'São Cristóvão', 'state': 'SE', 'cargo_type': 'unknown'} 
-2026-04-10 08:50:02,589 [INFO] app.services.agent_service: State or Cargo Type not found in AI response, skipping URL 
-2026-04-10 08:50:02,590 [INFO] app.services.agent_service: Processing URL https://www.em.com.br/gerais/2026/04/7391922-caminhao-com-armas-e-roubado-e-criminosos-fazem-refens-na-grande-bh.html
-2026-04-10 08:50:03,816 [INFO] app.services.agent_service: Caching AI response for hash: 762b3bb4e52fcab7ffb582084c86d6f4 
-2026-04-10 08:50:03,816 [INFO] app.services.agent_service: AI response: {'street': 'MG-050', 'city': 'Mateus Leme', 'state': 'MG', 'cargo_type': 'victim'} 
-2026-04-10 08:50:04,453 [INFO] app.services.agent_service: Extracted state: MG, cargo types: ['victim'], coordinates: {"lat": -20.0187325, "lng": -44.4946538} 
-2026-04-10 08:50:04,454 [INFO] app.services.agent_service: Route ID 4 inserted 
-2026-04-10 08:50:04,456 [INFO] app.services.agent_service: Registered route. 
-2026-04-10 08:50:04,456 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/furto-ousado-caminh-o-com-carga-de-agua-mineral-desaparece-em-uberaba-1.611584
-2026-04-10 08:50:04,609 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:50:04,610 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/idoso-morre-amarrado.ghtml
-2026-04-10 08:50:04,610 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 08:50:04,676 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:50:04,677 [INFO] app.services.agent_service: Processing URL https://www.jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 08:50:04,851 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:50:04,853 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/pf-operacao-trafico-interestadual-de-drogas.ghtml
-2026-04-10 08:50:04,854 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/jovem-morre-moto.ghtml
-2026-04-10 08:50:04,854 [INFO] app.services.agent_service: Processing URL https://www.agorams.com.br/pmr-recupera-veiculo-furtado-e-prende-dois-autores-na-ms-162-em-maracaju/
-2026-04-10 08:50:05,878 [INFO] app.services.agent_service: Caching AI response for hash: 65d61476bb2623b685374792d52e4428 
-2026-04-10 08:50:05,878 [INFO] app.services.agent_service: AI response: {'street': 'desconhecido', 'city': 'Maracaju', 'state': 'MS', 'cargo_type': 'policial'} 
-2026-04-10 08:50:06,203 [INFO] app.services.agent_service: Extracted state: MS, cargo types: ['policial'], coordinates: None 
-2026-04-10 08:50:06,204 [INFO] app.services.agent_service: Route ID 5 inserted 
-2026-04-10 08:50:06,205 [INFO] app.services.agent_service: Registered route. 
-2026-04-10 08:50:06,206 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/adolescente-apreendido-acidente.ghtml
-2026-04-10 08:50:06,206 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/suspeitos-desaparecimento-motorista-presos.ghtml
-2026-04-10 08:50:06,206 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/operacao-pascoa-multas.ghtml
-2026-04-10 08:50:06,206 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 08:50:06,274 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:50:06,274 [INFO] app.services.agent_service: Processing URL https://www.jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 08:50:06,328 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:50:06,330 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.diariodigital.com.br/policia-2/policia-civil-apreende-quase-3-toneladas-de-maconha-em-mundo-novo
-2026-04-10 08:50:06,330 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/cachorro-morto-enforcado.ghtml
-2026-04-10 08:50:06,330 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/pi/piaui/noticia/2026/04/07/suspeito-furto-denuncia.ghtml
-2026-04-10 08:50:08,288 [INFO] app.services.agent_service: Caching AI response for hash: 42644b7c0e7cb627f306048a71359bb4 
-2026-04-10 08:50:08,288 [INFO] app.services.agent_service: AI response: {'street': 'unknown', 'city': 'Barro Duro', 'state': 'PI', 'cargo_type': 'militar'} 
-2026-04-10 08:50:08,631 [INFO] app.services.agent_service: Extracted state: PI, cargo types: ['militar'], coordinates: None 
-2026-04-10 08:50:08,632 [INFO] app.services.agent_service: Route ID 6 inserted 
-2026-04-10 08:50:08,635 [INFO] app.services.agent_service: Registered route. 
-2026-04-10 08:50:08,636 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/04/fugitivos-penitenciaria-parnaiba.ghtml
-2026-04-10 08:50:08,636 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.correio24horas.com.br/minha-bahia/semaforos-vandalizados-geram-mais-de-r-1-milhao-de-prejuizo-em-salvador-0426
-2026-04-10 08:50:08,637 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/03/passageira-pede-escolta.ghtml
-2026-04-10 08:50:08,637 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/novos-blindados-para-as-forcas-policiais-comecam-a-chegar-no-pr-1079495
-2026-04-10 08:50:08,638 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/falsos-policiais-interceptam-onibus-na-br-277-e-assaltam-45-passageiros-no-parana-1078762
-2026-04-10 08:50:08,638 [INFO] app.services.agent_service: Irrelevant URL, skipping https://noticiasdatv.uol.com.br/noticia/novelas/paulinho-sofre-grande-injustica-e-e-denunciado-a-corregedoria-em-tres-gracas-149683
-2026-04-10 08:50:08,639 [INFO] app.services.agent_service: Irrelevant URL, skipping https://regiaonoroeste.com/policia-civil-desarticula-quadrilha-especializada-em-clonagem-de-veiculos-em-birigui/
-2026-04-10 08:50:08,639 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/rs/rio-grande-do-sul/noticia/2026/04/07/da-espessura-ao-ponto-churrasqueiro-gaucho-da-dicas-de-como-comprar-preparar-e-servir-picanha-eleita-um-dos-melhores-pratos-do-mundo.ghtml
-2026-04-10 08:50:08,640 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.aplateia.com.br/2026/04/prf-registra-queda-de-acidentes-e-alta-nas-autuacoes-durante-a-semana-santa/
-2026-04-10 08:50:08,641 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/sp/campinas-regiao/noticia/2026/04/07/guarda-de-indaiatuba-preso-por-sequestro-se-apresentou-como-policial-e-apontou-arma-para-influenciador-aponta-investigacao.ghtml
-2026-04-10 08:50:08,641 [INFO] app.services.agent_service: Completed. 
-2026-04-10 08:50:46,486 [INFO] app.main: Shutting down... 
-2026-04-10 08:50:58,451 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
-2026-04-10 08:51:23,017 [INFO] app.services.agent_service: Agent started at 2026-04-10 08:51:23.016993 
-2026-04-10 08:51:23,017 [INFO] app.services.agent_service: Total URLs to process: 31 
-2026-04-10 08:51:23,017 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/jornal-nacional/noticia/2026/04/04/roubo-de-soja-caminhoneiros-sao-alvos-de-ataques-armados-na-principal-rota-do-maranhao.ghtml
-2026-04-10 08:51:24,245 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:51:24,246 [INFO] app.services.agent_service: Processing URL https://imirante.com/noticias/sao-luis/2026/04/05/roubos-de-graos-criminosos-usam-barricadas-para-roubar-cargas-na-br-135-no-maranhao
-2026-04-10 08:51:25,066 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:51:25,067 [INFO] app.services.agent_service: Processing URL https://jornalpequeno.com.br/2026/04/05/caminhoneiros-denunciam-ataques-e-roubo-de-soja-na-br-135-no-maranhao/
-2026-04-10 08:51:25,173 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:51:25,174 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/sp/mogi-das-cruzes-suzano/noticia/2026/04/09/trem-bate-em-caminhao-na-estrada-do-taboao-do-paratei-em-mogi.ghtml
-2026-04-10 08:51:26,411 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:51:26,412 [INFO] app.services.agent_service: Processing URL https://a8se.com/noticias/sergipe/prf-recupera-caminhao-adulterado-com-restricao-judicial-na-br-101-em-sergipe/
-2026-04-10 08:51:27,455 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:51:27,456 [INFO] app.services.agent_service: Processing URL https://www.em.com.br/gerais/2026/04/7391922-caminhao-com-armas-e-roubado-e-criminosos-fazem-refens-na-grande-bh.html
-2026-04-10 08:51:27,735 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:51:27,736 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/furto-ousado-caminh-o-com-carga-de-agua-mineral-desaparece-em-uberaba-1.611584
-2026-04-10 08:51:27,808 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:51:27,809 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/idoso-morre-amarrado.ghtml
-2026-04-10 08:51:27,809 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 08:51:27,870 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:51:27,870 [INFO] app.services.agent_service: Processing URL https://www.jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 08:51:27,925 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:51:27,926 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/pf-operacao-trafico-interestadual-de-drogas.ghtml
-2026-04-10 08:51:27,926 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/jovem-morre-moto.ghtml
-2026-04-10 08:51:27,926 [INFO] app.services.agent_service: Processing URL https://www.agorams.com.br/pmr-recupera-veiculo-furtado-e-prende-dois-autores-na-ms-162-em-maracaju/
-2026-04-10 08:51:28,220 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:51:28,221 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/adolescente-apreendido-acidente.ghtml
-2026-04-10 08:51:28,221 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/suspeitos-desaparecimento-motorista-presos.ghtml
-2026-04-10 08:51:28,222 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/operacao-pascoa-multas.ghtml
-2026-04-10 08:51:28,222 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 08:51:28,282 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:51:28,282 [INFO] app.services.agent_service: Processing URL https://www.jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 08:51:28,342 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:51:28,342 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.diariodigital.com.br/policia-2/policia-civil-apreende-quase-3-toneladas-de-maconha-em-mundo-novo
-2026-04-10 08:51:28,342 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/cachorro-morto-enforcado.ghtml
-2026-04-10 08:51:28,343 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/pi/piaui/noticia/2026/04/07/suspeito-furto-denuncia.ghtml
-2026-04-10 08:51:29,520 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:51:29,520 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/04/fugitivos-penitenciaria-parnaiba.ghtml
-2026-04-10 08:51:29,520 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.correio24horas.com.br/minha-bahia/semaforos-vandalizados-geram-mais-de-r-1-milhao-de-prejuizo-em-salvador-0426
-2026-04-10 08:51:29,520 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/03/passageira-pede-escolta.ghtml
-2026-04-10 08:51:29,521 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/novos-blindados-para-as-forcas-policiais-comecam-a-chegar-no-pr-1079495
-2026-04-10 08:51:29,521 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/falsos-policiais-interceptam-onibus-na-br-277-e-assaltam-45-passageiros-no-parana-1078762
-2026-04-10 08:51:29,521 [INFO] app.services.agent_service: Irrelevant URL, skipping https://noticiasdatv.uol.com.br/noticia/novelas/paulinho-sofre-grande-injustica-e-e-denunciado-a-corregedoria-em-tres-gracas-149683
-2026-04-10 08:51:29,521 [INFO] app.services.agent_service: Irrelevant URL, skipping https://regiaonoroeste.com/policia-civil-desarticula-quadrilha-especializada-em-clonagem-de-veiculos-em-birigui/
-2026-04-10 08:51:29,521 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/rs/rio-grande-do-sul/noticia/2026/04/07/da-espessura-ao-ponto-churrasqueiro-gaucho-da-dicas-de-como-comprar-preparar-e-servir-picanha-eleita-um-dos-melhores-pratos-do-mundo.ghtml
-2026-04-10 08:51:29,522 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.aplateia.com.br/2026/04/prf-registra-queda-de-acidentes-e-alta-nas-autuacoes-durante-a-semana-santa/
-2026-04-10 08:51:29,522 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/sp/campinas-regiao/noticia/2026/04/07/guarda-de-indaiatuba-preso-por-sequestro-se-apresentou-como-policial-e-apontou-arma-para-influenciador-aponta-investigacao.ghtml
-2026-04-10 08:51:29,522 [INFO] app.services.agent_service: Completed. 
-2026-04-10 08:53:36,335 [INFO] app.main: Shutting down... 
-2026-04-10 08:53:41,946 [INFO] app.main: Shutting down... 
-2026-04-10 08:55:18,464 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
-2026-04-10 08:56:02,020 [INFO] app.services.agent_service: Agent started at 2026-04-10 08:56:02.020672 
-2026-04-10 08:56:02,021 [INFO] app.services.agent_service: Total URLs to process: 31 
-2026-04-10 08:56:02,022 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/jornal-nacional/noticia/2026/04/04/roubo-de-soja-caminhoneiros-sao-alvos-de-ataques-armados-na-principal-rota-do-maranhao.ghtml
-2026-04-10 08:56:03,484 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:56:03,485 [INFO] app.services.agent_service: Processing URL https://imirante.com/noticias/sao-luis/2026/04/05/roubos-de-graos-criminosos-usam-barricadas-para-roubar-cargas-na-br-135-no-maranhao
-2026-04-10 08:56:04,220 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:56:04,220 [INFO] app.services.agent_service: Processing URL https://jornalpequeno.com.br/2026/04/05/caminhoneiros-denunciam-ataques-e-roubo-de-soja-na-br-135-no-maranhao/
-2026-04-10 08:56:04,418 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:56:04,419 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/sp/mogi-das-cruzes-suzano/noticia/2026/04/09/trem-bate-em-caminhao-na-estrada-do-taboao-do-paratei-em-mogi.ghtml
-2026-04-10 08:56:05,680 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:56:05,680 [INFO] app.services.agent_service: Processing URL https://a8se.com/noticias/sergipe/prf-recupera-caminhao-adulterado-com-restricao-judicial-na-br-101-em-sergipe/
-2026-04-10 08:56:06,952 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:56:06,952 [INFO] app.services.agent_service: Processing URL https://www.em.com.br/gerais/2026/04/7391922-caminhao-com-armas-e-roubado-e-criminosos-fazem-refens-na-grande-bh.html
-2026-04-10 08:56:07,238 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:56:07,239 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/furto-ousado-caminh-o-com-carga-de-agua-mineral-desaparece-em-uberaba-1.611584
-2026-04-10 08:56:07,300 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:56:07,300 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/idoso-morre-amarrado.ghtml
-2026-04-10 08:56:07,301 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 08:56:07,361 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:56:07,361 [INFO] app.services.agent_service: Processing URL https://www.jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 08:56:07,439 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:56:07,439 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/pf-operacao-trafico-interestadual-de-drogas.ghtml
-2026-04-10 08:56:07,439 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/jovem-morre-moto.ghtml
-2026-04-10 08:56:07,440 [INFO] app.services.agent_service: Processing URL https://www.agorams.com.br/pmr-recupera-veiculo-furtado-e-prende-dois-autores-na-ms-162-em-maracaju/
-2026-04-10 08:56:07,729 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:56:07,729 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/adolescente-apreendido-acidente.ghtml
-2026-04-10 08:56:07,730 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/suspeitos-desaparecimento-motorista-presos.ghtml
-2026-04-10 08:56:07,730 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/operacao-pascoa-multas.ghtml
-2026-04-10 08:56:07,730 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 08:56:07,783 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:56:07,784 [INFO] app.services.agent_service: Processing URL https://www.jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 08:56:07,838 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 08:56:07,839 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.diariodigital.com.br/policia-2/policia-civil-apreende-quase-3-toneladas-de-maconha-em-mundo-novo
-2026-04-10 08:56:07,839 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/cachorro-morto-enforcado.ghtml
-2026-04-10 08:56:07,839 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/pi/piaui/noticia/2026/04/07/suspeito-furto-denuncia.ghtml
-2026-04-10 08:56:09,175 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 08:56:09,175 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/04/fugitivos-penitenciaria-parnaiba.ghtml
-2026-04-10 08:56:09,176 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.correio24horas.com.br/minha-bahia/semaforos-vandalizados-geram-mais-de-r-1-milhao-de-prejuizo-em-salvador-0426
-2026-04-10 08:56:09,176 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/03/passageira-pede-escolta.ghtml
-2026-04-10 08:56:09,176 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/novos-blindados-para-as-forcas-policiais-comecam-a-chegar-no-pr-1079495
-2026-04-10 08:56:09,176 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/falsos-policiais-interceptam-onibus-na-br-277-e-assaltam-45-passageiros-no-parana-1078762
-2026-04-10 08:56:09,177 [INFO] app.services.agent_service: Irrelevant URL, skipping https://noticiasdatv.uol.com.br/noticia/novelas/paulinho-sofre-grande-injustica-e-e-denunciado-a-corregedoria-em-tres-gracas-149683
-2026-04-10 08:56:09,177 [INFO] app.services.agent_service: Irrelevant URL, skipping https://regiaonoroeste.com/policia-civil-desarticula-quadrilha-especializada-em-clonagem-de-veiculos-em-birigui/
-2026-04-10 08:56:09,177 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/rs/rio-grande-do-sul/noticia/2026/04/07/da-espessura-ao-ponto-churrasqueiro-gaucho-da-dicas-de-como-comprar-preparar-e-servir-picanha-eleita-um-dos-melhores-pratos-do-mundo.ghtml
-2026-04-10 08:56:09,177 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.aplateia.com.br/2026/04/prf-registra-queda-de-acidentes-e-alta-nas-autuacoes-durante-a-semana-santa/
-2026-04-10 08:56:09,177 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/sp/campinas-regiao/noticia/2026/04/07/guarda-de-indaiatuba-preso-por-sequestro-se-apresentou-como-policial-e-apontou-arma-para-influenciador-aponta-investigacao.ghtml
-2026-04-10 08:56:09,178 [INFO] app.services.agent_service: Completed. 
-2026-04-10 08:57:22,917 [INFO] app.main: Shutting down... 
-2026-04-10 08:57:37,289 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
-2026-04-10 09:01:56,317 [ERROR] app.services.agent_service: Agent Service Error: No data fetched from GDELT. 
-2026-04-10 09:02:15,200 [INFO] app.main: Shutting down... 
-2026-04-10 09:02:37,578 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
-2026-04-10 09:03:55,655 [INFO] app.services.agent_service: Agent started at 2026-04-10 09:03:55.655309 
-2026-04-10 09:03:55,655 [INFO] app.services.agent_service: Total URLs to process: 31 
-2026-04-10 09:03:55,656 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/jornal-nacional/noticia/2026/04/04/roubo-de-soja-caminhoneiros-sao-alvos-de-ataques-armados-na-principal-rota-do-maranhao.ghtml
-2026-04-10 09:03:57,350 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 09:03:57,351 [INFO] app.services.agent_service: Processing URL https://imirante.com/noticias/sao-luis/2026/04/05/roubos-de-graos-criminosos-usam-barricadas-para-roubar-cargas-na-br-135-no-maranhao
-2026-04-10 09:03:58,112 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 09:03:58,113 [INFO] app.services.agent_service: Processing URL https://jornalpequeno.com.br/2026/04/05/caminhoneiros-denunciam-ataques-e-roubo-de-soja-na-br-135-no-maranhao/
-2026-04-10 09:03:58,322 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 09:03:58,323 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/sp/mogi-das-cruzes-suzano/noticia/2026/04/09/trem-bate-em-caminhao-na-estrada-do-taboao-do-paratei-em-mogi.ghtml
-2026-04-10 09:03:59,533 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 09:03:59,533 [INFO] app.services.agent_service: Processing URL https://a8se.com/noticias/sergipe/prf-recupera-caminhao-adulterado-com-restricao-judicial-na-br-101-em-sergipe/
-2026-04-10 09:04:00,640 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 09:04:00,640 [INFO] app.services.agent_service: Processing URL https://www.em.com.br/gerais/2026/04/7391922-caminhao-com-armas-e-roubado-e-criminosos-fazem-refens-na-grande-bh.html
-2026-04-10 09:04:01,129 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 09:04:01,129 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/furto-ousado-caminh-o-com-carga-de-agua-mineral-desaparece-em-uberaba-1.611584
-2026-04-10 09:04:01,197 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 09:04:01,198 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/idoso-morre-amarrado.ghtml
-2026-04-10 09:04:01,198 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 09:04:01,267 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 09:04:01,267 [INFO] app.services.agent_service: Processing URL https://www.jmonline.com.br/policia/furto-de-carga-e-registrado-em-posto-na-zona-rural-de-uberaba-1.610000
-2026-04-10 09:04:01,363 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 09:04:01,363 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/pf-operacao-trafico-interestadual-de-drogas.ghtml
-2026-04-10 09:04:01,364 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/jovem-morre-moto.ghtml
-2026-04-10 09:04:01,365 [INFO] app.services.agent_service: Processing URL https://www.agorams.com.br/pmr-recupera-veiculo-furtado-e-prende-dois-autores-na-ms-162-em-maracaju/
-2026-04-10 09:04:01,563 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 09:04:01,563 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/adolescente-apreendido-acidente.ghtml
-2026-04-10 09:04:01,563 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/suspeitos-desaparecimento-motorista-presos.ghtml
-2026-04-10 09:04:01,563 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/operacao-pascoa-multas.ghtml
-2026-04-10 09:04:01,564 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 09:04:01,618 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 09:04:01,619 [INFO] app.services.agent_service: Processing URL https://www.jmonline.com.br/policia/caminh-o-carregado-com-15-toneladas-de-arroz-e-furtado-nos-parque-das-americas-em-uberaba-1.610005
-2026-04-10 09:04:01,682 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
-2026-04-10 09:04:01,684 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.diariodigital.com.br/policia-2/policia-civil-apreende-quase-3-toneladas-de-maconha-em-mundo-novo
-2026-04-10 09:04:01,685 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/cachorro-morto-enforcado.ghtml
-2026-04-10 09:04:01,686 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/pi/piaui/noticia/2026/04/07/suspeito-furto-denuncia.ghtml
-2026-04-10 09:04:02,947 [INFO] app.services.agent_service: FULL CACHE HIT → skipping processing 
-2026-04-10 09:04:02,947 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/04/fugitivos-penitenciaria-parnaiba.ghtml
-2026-04-10 09:04:02,948 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.correio24horas.com.br/minha-bahia/semaforos-vandalizados-geram-mais-de-r-1-milhao-de-prejuizo-em-salvador-0426
-2026-04-10 09:04:02,948 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/03/passageira-pede-escolta.ghtml
-2026-04-10 09:04:02,948 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/novos-blindados-para-as-forcas-policiais-comecam-a-chegar-no-pr-1079495
-2026-04-10 09:04:02,948 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/falsos-policiais-interceptam-onibus-na-br-277-e-assaltam-45-passageiros-no-parana-1078762
-2026-04-10 09:04:02,948 [INFO] app.services.agent_service: Irrelevant URL, skipping https://noticiasdatv.uol.com.br/noticia/novelas/paulinho-sofre-grande-injustica-e-e-denunciado-a-corregedoria-em-tres-gracas-149683
-2026-04-10 09:04:02,949 [INFO] app.services.agent_service: Irrelevant URL, skipping https://regiaonoroeste.com/policia-civil-desarticula-quadrilha-especializada-em-clonagem-de-veiculos-em-birigui/
-2026-04-10 09:04:02,949 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/rs/rio-grande-do-sul/noticia/2026/04/07/da-espessura-ao-ponto-churrasqueiro-gaucho-da-dicas-de-como-comprar-preparar-e-servir-picanha-eleita-um-dos-melhores-pratos-do-mundo.ghtml
-2026-04-10 09:04:02,949 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.aplateia.com.br/2026/04/prf-registra-queda-de-acidentes-e-alta-nas-autuacoes-durante-a-semana-santa/
-2026-04-10 09:04:02,949 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/sp/campinas-regiao/noticia/2026/04/07/guarda-de-indaiatuba-preso-por-sequestro-se-apresentou-como-policial-e-apontou-arma-para-influenciador-aponta-investigacao.ghtml
-2026-04-10 09:04:02,950 [INFO] app.services.agent_service: Completed. 
-2026-04-10 09:07:11,702 [INFO] app.main: Shutting down... 
-2026-04-10 09:07:23,398 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
-2026-04-10 09:07:35,656 [ERROR] app.services.agent_service: Agent Service Error: No data fetched from GDELT. 
-2026-04-10 09:08:23,327 [INFO] app.main: Shutting down... 
-2026-04-10 09:08:38,520 [INFO] app.main: Shutting down... 
-2026-04-10 09:08:44,320 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
-2026-04-10 09:09:39,309 [ERROR] app.services.agent_service: Agent Service Error: No data fetched from GDELT. 
-2026-04-10 09:10:30,275 [INFO] app.main: Shutting down... 
-2026-04-10 09:10:37,129 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
-2026-04-10 09:11:23,958 [ERROR] app.services.agent_service: Agent Service Error: No data fetched from GDELT. 
+2026-04-11 06:01:39,897 [INFO] app.main: Shutting down... 
+2026-04-11 06:02:01,991 [INFO] app.repositories.job_repository: Job 11574e09-23d7-4146-a8c5-cf845b76eb23 updated to status: running 
+2026-04-11 06:02:01,991 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
+2026-04-11 06:02:18,212 [ERROR] app.services.agent_service: Agent Service Error: No data fetched from GDELT. 
+2026-04-11 06:02:18,225 [INFO] app.repositories.job_repository: Job 11574e09-23d7-4146-a8c5-cf845b76eb23 updated to status: error 
+2026-04-11 06:02:46,261 [INFO] app.main: Shutting down... 
+2026-04-11 06:02:51,795 [INFO] app.repositories.job_repository: Job 39ae9121-9209-4bc8-b8b8-6078e6558526 updated to status: running 
+2026-04-11 06:02:51,795 [INFO] app.services.agent_service: Fetching GDELT data and initializing... 
+2026-04-11 06:03:26,163 [INFO] app.services.agent_service: Agent started at 2026-04-11 06:03:26.162999 
+2026-04-11 06:03:26,163 [INFO] app.services.agent_service: Total URLs to process: 29 
+2026-04-11 06:03:26,163 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/jornal-nacional/noticia/2026/04/04/roubo-de-soja-caminhoneiros-sao-alvos-de-ataques-armados-na-principal-rota-do-maranhao.ghtml
+2026-04-11 06:03:28,901 [INFO] app.services.agent_service: Caching AI response for hash: fc8feab6bf5e7caf03e58144d4d57f01 
+2026-04-11 06:03:28,902 [INFO] app.services.agent_service: AI response: {'street': 'unknown', 'city': 'São\u202fLuís', 'state': 'MA', 'cargo_type': 'soja'} 
+2026-04-11 06:03:29,337 [INFO] app.services.agent_service: Extracted state: MA, cargo types: ['soja'], coordinates: None 
+2026-04-11 06:03:29,353 [INFO] app.services.agent_service: Route ID 1 inserted 
+2026-04-11 06:03:29,371 [INFO] app.services.agent_service: Registered route. 
+2026-04-11 06:03:29,372 [INFO] app.services.agent_service: Processing URL https://imirante.com/noticias/sao-luis/2026/04/05/roubos-de-graos-criminosos-usam-barricadas-para-roubar-cargas-na-br-135-no-maranhao
+2026-04-11 06:03:30,900 [INFO] app.services.agent_service: Caching AI response for hash: 03011f042c49747bbf6607f30094b5b0 
+2026-04-11 06:03:30,900 [INFO] app.services.agent_service: AI response: {'street': 'unknown', 'city': 'unknown', 'state': 'unknown', 'cargo_type': 'unknown'} 
+2026-04-11 06:03:30,901 [INFO] app.services.agent_service: State or Cargo Type not found in AI response, skipping URL 
+2026-04-11 06:03:30,901 [INFO] app.services.agent_service: Processing URL https://jornalpequeno.com.br/2026/04/05/caminhoneiros-denunciam-ataques-e-roubo-de-soja-na-br-135-no-maranhao/
+2026-04-11 06:03:31,823 [INFO] app.services.agent_service: Caching AI response for hash: 37006eea110258c6e709a952c2af84da 
+2026-04-11 06:03:31,824 [INFO] app.services.agent_service: AI response: {'street': 'BR-135 km 17', 'city': 'unknown', 'state': 'MA', 'cargo_type': 'soja'} 
+2026-04-11 06:03:32,467 [INFO] app.services.agent_service: Extracted state: MA, cargo types: ['soja'], coordinates: None 
+2026-04-11 06:03:32,468 [INFO] app.services.agent_service: Route ID 2 inserted 
+2026-04-11 06:03:32,473 [INFO] app.services.agent_service: Registered route. 
+2026-04-11 06:03:32,473 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/sp/mogi-das-cruzes-suzano/noticia/2026/04/09/trem-bate-em-caminhao-na-estrada-do-taboao-do-paratei-em-mogi.ghtml
+2026-04-11 06:03:34,939 [INFO] app.services.agent_service: Caching AI response for hash: 94ef2152c17f092f6d755aa2f7e9ca89 
+2026-04-11 06:03:34,939 [INFO] app.services.agent_service: AI response: {'street': 'estrada do Taboão do Parateí', 'city': 'Mogi das Cruzes', 'state': 'SP', 'cargo_type': 'trem'} 
+2026-04-11 06:03:35,270 [INFO] app.services.agent_service: Extracted state: SP, cargo types: ['trem'], coordinates: {"lat": -23.3856595, "lng": -46.1733489} 
+2026-04-11 06:03:35,271 [INFO] app.services.agent_service: Route ID 3 inserted 
+2026-04-11 06:03:35,272 [INFO] app.services.agent_service: Registered route. 
+2026-04-11 06:03:35,273 [INFO] app.services.agent_service: Processing URL https://a8se.com/noticias/sergipe/prf-recupera-caminhao-adulterado-com-restricao-judicial-na-br-101-em-sergipe/
+2026-04-11 06:03:37,904 [INFO] app.services.agent_service: Caching AI response for hash: 4f120642825122bbbcc77793bae69bd0 
+2026-04-11 06:03:37,907 [INFO] app.services.agent_service: AI response: {'street': 'BR-101', 'city': 'São Cristóvão', 'state': 'SE', 'cargo_type': 'carga'} 
+2026-04-11 06:03:38,645 [INFO] app.services.agent_service: Extracted state: SE, cargo types: ['carga'], coordinates: {"lat": -10.9539357, "lng": -37.2219281} 
+2026-04-11 06:03:38,647 [INFO] app.services.agent_service: Route ID 4 inserted 
+2026-04-11 06:03:38,648 [INFO] app.services.agent_service: Registered route. 
+2026-04-11 06:03:38,649 [INFO] app.services.agent_service: Processing URL https://www.em.com.br/gerais/2026/04/7391922-caminhao-com-armas-e-roubado-e-criminosos-fazem-refens-na-grande-bh.html
+2026-04-11 06:03:39,839 [INFO] app.services.agent_service: Caching AI response for hash: 762b3bb4e52fcab7ffb582084c86d6f4 
+2026-04-11 06:03:39,840 [INFO] app.services.agent_service: AI response: {'street': 'MG-050, km 74', 'city': 'Mateus Leme', 'state': 'MG', 'cargo_type': 'suspects'} 
+2026-04-11 06:03:40,476 [INFO] app.services.agent_service: Extracted state: MG, cargo types: ['suspects'], coordinates: {"lat": -20.0192424, "lng": -44.4958028} 
+2026-04-11 06:03:40,477 [INFO] app.services.agent_service: Route ID 5 inserted 
+2026-04-11 06:03:40,479 [INFO] app.services.agent_service: Registered route. 
+2026-04-11 06:03:40,479 [INFO] app.services.agent_service: Processing URL https://jmonline.com.br/policia/furto-ousado-caminh-o-com-carga-de-agua-mineral-desaparece-em-uberaba-1.611584
+2026-04-11 06:03:40,662 [INFO] app.services.agent_service: Invalid text or too short, skipping URL 
+2026-04-11 06:03:40,662 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/idoso-morre-amarrado.ghtml
+2026-04-11 06:03:40,662 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/pf-operacao-trafico-interestadual-de-drogas.ghtml
+2026-04-11 06:03:40,663 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/jovem-morre-moto.ghtml
+2026-04-11 06:03:40,663 [INFO] app.services.agent_service: Processing URL https://www.agorams.com.br/pmr-recupera-veiculo-furtado-e-prende-dois-autores-na-ms-162-em-maracaju/
+2026-04-11 06:03:43,923 [INFO] app.services.agent_service: Caching AI response for hash: 65d61476bb2623b685374792d52e4428 
+2026-04-11 06:03:43,924 [INFO] app.services.agent_service: AI response: {'street': 'MS-162', 'city': 'Maracaju', 'state': 'MS', 'cargo_type': 'vehicle'} 
+2026-04-11 06:03:44,107 [INFO] app.services.agent_service: Extracted state: MS, cargo types: ['vehicle'], coordinates: {"lat": -21.4837493, "lng": -55.1598621} 
+2026-04-11 06:03:44,108 [INFO] app.services.agent_service: Route ID 6 inserted 
+2026-04-11 06:03:44,110 [INFO] app.services.agent_service: Registered route. 
+2026-04-11 06:03:44,110 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/adolescente-apreendido-acidente.ghtml
+2026-04-11 06:03:44,110 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/08/suspeitos-desaparecimento-motorista-presos.ghtml
+2026-04-11 06:03:44,111 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/operacao-pascoa-multas.ghtml
+2026-04-11 06:03:44,111 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.diariodigital.com.br/policia-2/policia-civil-apreende-quase-3-toneladas-de-maconha-em-mundo-novo
+2026-04-11 06:03:44,111 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/07/cachorro-morto-enforcado.ghtml
+2026-04-11 06:03:44,111 [INFO] app.services.agent_service: Processing URL https://g1.globo.com/pi/piaui/noticia/2026/04/07/suspeito-furto-denuncia.ghtml
+2026-04-11 06:03:46,166 [INFO] app.services.agent_service: Caching AI response for hash: 42644b7c0e7cb627f306048a71359bb4 
+2026-04-11 06:03:46,167 [INFO] app.services.agent_service: AI response: {'street': 'unknown', 'city': 'Barro Duro', 'state': 'PI', 'cargo_type': 'militar'} 
+2026-04-11 06:03:46,497 [INFO] app.services.agent_service: Extracted state: PI, cargo types: ['militar'], coordinates: None 
+2026-04-11 06:03:46,505 [INFO] app.services.agent_service: Route ID 7 inserted 
+2026-04-11 06:03:46,527 [INFO] app.services.agent_service: Registered route. 
+2026-04-11 06:03:46,528 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/10/suspeito-homicidio-ma-preso-fiscalizacao-prf.ghtml
+2026-04-11 06:03:46,528 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/04/fugitivos-penitenciaria-parnaiba.ghtml
+2026-04-11 06:03:46,528 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.correio24horas.com.br/minha-bahia/semaforos-vandalizados-geram-mais-de-r-1-milhao-de-prejuizo-em-salvador-0426
+2026-04-11 06:03:46,528 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/novos-blindados-para-as-forcas-policiais-comecam-a-chegar-no-pr-1079495
+2026-04-11 06:03:46,529 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/pi/piaui/noticia/2026/04/10/mega-sena-apostas-premio.ghtml
+2026-04-11 06:03:46,529 [INFO] app.services.agent_service: Processing URL https://www.jornalcruzeiro.com.br/sorocaba/regiao/2026/04/759341-operacao-prende-sete-suspeitos-de-roubo-em-itapetininga.html
+2026-04-11 06:03:47,410 [INFO] app.services.agent_service: Caching AI response for hash: 964bcf515a04c2ba6dc83e24c650cf33 
+2026-04-11 06:03:47,411 [INFO] app.services.agent_service: AI response: {'street': 'unknown', 'city': 'Itapetininga', 'state': 'SP', 'cargo_type': 'robbers'} 
+2026-04-11 06:03:47,742 [INFO] app.services.agent_service: Extracted state: SP, cargo types: ['robbers'], coordinates: None 
+2026-04-11 06:03:47,745 [INFO] app.services.agent_service: Route ID 8 inserted 
+2026-04-11 06:03:47,750 [INFO] app.services.agent_service: Registered route. 
+2026-04-11 06:03:47,751 [INFO] app.services.agent_service: Irrelevant URL, skipping https://tnonline.uol.com.br/noticias/parana/falsos-policiais-interceptam-onibus-na-br-277-e-assaltam-45-passageiros-no-parana-1078762
+2026-04-11 06:03:47,753 [INFO] app.services.agent_service: Irrelevant URL, skipping https://noticiasdatv.uol.com.br/noticia/novelas/paulinho-sofre-grande-injustica-e-e-denunciado-a-corregedoria-em-tres-gracas-149683
+2026-04-11 06:03:47,754 [INFO] app.services.agent_service: Irrelevant URL, skipping https://regiaonoroeste.com/policia-civil-desarticula-quadrilha-especializada-em-clonagem-de-veiculos-em-birigui/
+2026-04-11 06:03:47,754 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/rs/rio-grande-do-sul/noticia/2026/04/07/da-espessura-ao-ponto-churrasqueiro-gaucho-da-dicas-de-como-comprar-preparar-e-servir-picanha-eleita-um-dos-melhores-pratos-do-mundo.ghtml
+2026-04-11 06:03:47,755 [INFO] app.services.agent_service: Irrelevant URL, skipping https://www.aplateia.com.br/2026/04/prf-registra-queda-de-acidentes-e-alta-nas-autuacoes-durante-a-semana-santa/
+2026-04-11 06:03:47,755 [INFO] app.services.agent_service: Irrelevant URL, skipping https://g1.globo.com/sp/campinas-regiao/noticia/2026/04/07/guarda-de-indaiatuba-preso-por-sequestro-se-apresentou-como-policial-e-apontou-arma-para-influenciador-aponta-investigacao.ghtml
+2026-04-11 06:03:47,755 [INFO] app.services.agent_service: Completed. 
+2026-04-11 06:03:47,774 [INFO] app.repositories.job_repository: Job 39ae9121-9209-4bc8-b8b8-6078e6558526 updated to status: done 

@@ -1,5 +1,4 @@
-from app.repositories.database import get_connection, release_connection
-
+from app.repositories.database_config import get_connection, release_connection
 
 def init_db():
     conn = get_connection()
@@ -36,6 +35,13 @@ def init_db():
                 url VARCHAR(150),
                 response JSONB,
                 processed BOOLEAN DEFAULT FALSE
+            );
+
+            -- tabela de agent jobs
+            CREATE TABLE IF NOT EXISTS jobs (
+                id UUID PRIMARY KEY,
+                status TEXT, -- pending, running, done, error
+                created_at TIMESTAMP DEFAULT NOW()
             );        
         """)
 
