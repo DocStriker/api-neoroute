@@ -10,7 +10,7 @@ def init_db():
             -- tabela das rotas
             CREATE TABLE IF NOT EXISTS rotas (
                 id SERIAL PRIMARY KEY,
-                url VARCHAR(150) NOT NULL UNIQUE,
+                url VARCHAR(200) NOT NULL UNIQUE,
                 state VARCHAR(2) NOT NULL,
                 date DATE NOT NULL,
                 coord JSONB
@@ -32,7 +32,7 @@ def init_db():
             -- tabela de tipos de caches de respostas da AI
             CREATE TABLE IF NOT EXISTS process_cache (
                 hash TEXT PRIMARY KEY,
-                url VARCHAR(150),
+                url VARCHAR(200),
                 response JSONB,
                 processed BOOLEAN DEFAULT FALSE
             );

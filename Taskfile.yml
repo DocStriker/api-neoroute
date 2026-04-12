@@ -1,0 +1,11 @@
+version: '3'
+
+tasks:
+  reset-api:
+    desc: Reset the API
+    cmds:
+      - echo "Resetting the API..."
+      - docker-compose -f neoroute_api/docker-compose.yml down -v
+      - docker-compose -f neoroute_api/docker-compose.yml up -d
+      - .venv/bin/uvicorn neoroute_api.app.main:app --reload
+

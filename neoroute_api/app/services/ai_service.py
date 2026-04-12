@@ -15,7 +15,6 @@ class ReviewAnalysis(BaseModel):
             cargo_type: str = Field(description="The type of cargo stolen, in a single word without accents and in plural, if not found, return 'unknown'")
 
 class AIService:
-
     def __init__(self):
         if os.getenv("ENV") == "aws":
             from app.core.ssm_config import get_param
@@ -29,7 +28,6 @@ class AIService:
             "Content-Type": "application/json"
         }
 
-        
     def parse(self, texto, model="gemini"):
         if model == "gemini":
             prompt = f"No texto: {texto}, extraia a localização principal mencionada no texto, o tipo de carga roubada, a rua, cidade e o estado onde ocorreu o roubo."
@@ -61,13 +59,14 @@ class AIService:
                 }}
 
                 Rules:
-                - Use 'unknown' if not found
+                - must be use 'unknown' if not found
                 - cargo_type must be ONE word, plural, no accents
+                - if cargo_type is "carga" or similar, what kind of cargo is it? electronics, food, etc? if you can't identify the type, return "unknown"
                 - state must be abbreviated (e.g., SP)
                 """
              
             response = requests.post(self.url, headers=self.headers, timeout=15, json={
-                    "model": "nvidia/nemotron-3-nano-30b-a3b:free",
+                    "model": "nvidia/nemotron-3-super-120b-a12b:free",
                     "messages": [
                         {"role": "user", "content": prompt}
                     ],
@@ -84,7 +83,6 @@ class AIService:
                 return ReviewAnalysis(**data)
 
             except (json.JSONDecodeError, ValidationError):
-                # fallback robusto
                 return ReviewAnalysis()
         
 if __name__ == "__main__":

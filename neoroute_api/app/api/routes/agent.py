@@ -35,9 +35,8 @@ def run_agent(background_tasks: BackgroundTasks,auth: None = Depends(verify_toke
 
     if os.getenv("ENV") == "aws":
         print("Recebeu requisição")
-
+        
         try:
-
             message = {"action": "run_agent"}
 
             response = sqs.send_message(
@@ -54,5 +53,5 @@ def run_agent(background_tasks: BackgroundTasks,auth: None = Depends(verify_toke
 
         return {"status": "agent enviado para fila"}
     
-    background_tasks.add_task(agent.run(job_id), job_id)
+    background_tasks.add_task(agent.run, job_id)
     return {"status": "agent started in background", "job_id": job_id}
