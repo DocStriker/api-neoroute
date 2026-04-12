@@ -60,8 +60,7 @@ class AIService:
 
                 Rules:
                 - must be use 'unknown' if not found
-                - cargo_type must be ONE word, plural, no accents
-                - if cargo_type is "carga" or similar, what kind of cargo is it? electronics, food, etc? if you can't identify the type, return "unknown"
+                - cargo_type must be ONE word, plural, no accents and related to the type of cargo stolen (e.g., electronics, furniture, etc.)
                 - state must be abbreviated (e.g., SP)
                 """
              

@@ -5,7 +5,11 @@ tasks:
     desc: Reset the API
     cmds:
       - echo "Resetting the API..."
+      - docker-compose -f neoroute_api/docker-compose.yml up -d
+      - echo "Resetting the database..."
       - docker-compose -f neoroute_api/docker-compose.yml down -v
       - docker-compose -f neoroute_api/docker-compose.yml up -d
-      - .venv/bin/uvicorn neoroute_api.app.main:app --reload
+      - echo "Running API..."
+      - PYTHONPATH=./neoroute_api .venv/bin/uvicorn app.main:app --reload
+      - echo "API reset complete!"
 

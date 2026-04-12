@@ -4,6 +4,9 @@ import pandas as pd
 from datetime import datetime
 from app.utils.utils import Utils
 
+import logging
+logger = logging.getLogger(__name__)
+
 class ScrapingService:
     def __init__(self):
         self.u = Utils()
@@ -36,7 +39,7 @@ class ScrapingService:
             data = resp.json()
 
             if "articles" not in data or not data["articles"]:
-                print("Nenhum artigo encontrado na resposta do GDELT.")
+                logger.info("No articles found in GDELT response")
 
             articles = pd.DataFrame(data["articles"]).rename(columns={'seendate':'date'})
 
@@ -50,12 +53,12 @@ class ScrapingService:
             articles.dropna(subset=["date"], inplace=True)
             articles.drop_duplicates(inplace=True)
 
-            return #articles[["url", "date"]]
+            return articles[["url", "date"]]
 
         except requests.RequestException as e:
-            print(f"Erro de conexão com GDELT: {e}")
+            logger.error("Connection error with GDELT: %s", e)
             return None
         
         except Exception as e:
-            print(f"Erro inesperado: {e}")
+            logger.error("Unexpected error: %s", e)
             return None

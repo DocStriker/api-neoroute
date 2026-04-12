@@ -127,7 +127,6 @@ class AgentService:
         except Exception as e:
             logger.error("Agent Service Error: %s", str(e))
             update_job(job_id, "error")
-            raise HTTPException(status_code=500, detail="Internal Server Error")
 
         finally:
             if cur:
