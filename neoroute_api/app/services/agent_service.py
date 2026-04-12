@@ -1,6 +1,5 @@
 import json, re, datetime
 
-from fastapi import HTTPException
 from app.services.scraping_service import ScrapingService
 from app.services.geolocation_service import GeolocationService
 from app.utils.utils import Utils, RateLimiter
@@ -115,7 +114,6 @@ class AgentService:
                     conn.commit()
                     logger.info("Registered route.")
 
-                        
                 except Exception as e:
                     logger.error("Error processing URL, %s", str(e), extra={"url_full": row["url"]})
                     conn.rollback()
