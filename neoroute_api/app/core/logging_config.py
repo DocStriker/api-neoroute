@@ -1,5 +1,9 @@
 import logging
+import time
 import os
+
+os.environ["TZ"] = "America/Sao_Paulo"
+time.tzset()
 
 class SafeExtraFilter(logging.Filter):
     def filter(self, record):
@@ -15,10 +19,10 @@ def setup_logging():
         return
 
     console_formatter = logging.Formatter(
-        "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+        "%(asctime)s [%(levelname)s] %(name)s: %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
     )
     file_formatter = logging.Formatter(
-        "%(asctime)s [%(levelname)s] %(name)s: %(message)s %(url_full)s"
+        "%(asctime)s [%(levelname)s] %(name)s: %(message)s %(url_full)s", datefmt="%Y-%m-%d %H:%M:%S"
     )
 
     console_handler = logging.StreamHandler()

@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 class Utils:
     
     def safe_request(self, url, params):
-        delay = 6
+        delay = 5
         
         for i in range(5):
             try:

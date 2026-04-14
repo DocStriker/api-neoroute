@@ -12,4 +12,11 @@ tasks:
       - echo "Running API..."
       - PYTHONPATH=./neoroute_api .venv/bin/uvicorn app.main:app --reload
       - echo "API reset complete!"
+  start-api:
+    desc: Start the API
+    cmds:
+      - echo "Starting the API..."
+      - docker-compose -f neoroute_api/docker-compose.yml up -d
+      - PYTHONPATH=./neoroute_api .venv/bin/uvicorn app.main:app --reload
+      - echo "API started!"
 

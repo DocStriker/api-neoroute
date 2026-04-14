@@ -38,10 +38,10 @@ class AgentService:
             for _, row in df.iterrows():
                 try:
                     if not self.f.is_relevant_url(row["url"]):
-                        logger.info("Irrelevant URL, skipping", extra={"url_full": row["url"]})
+                        logger.info("Irrelevant URL, skipping %s", row["url"][:30], extra={"url_full": "| " + row["url"]})
                         continue
 
-                    logger.info("Processing URL", extra={"url_full": row["url"]})
+                    logger.info("Processing URL %s", row["url"][:30], extra={"url_full": "| " + row["url"]})
                     text = self.scraper.use_bs(row["url"])
 
                     if not self.f.is_valid_text(text):
