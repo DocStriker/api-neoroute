@@ -1,82 +1,37 @@
-from psycopg2.extras import RealDictCursor
-from .database_config import get_connection, release_connection
+from sqlalchemy.orm import Session
+from sqlalchemy import func, text
+from app.models.carga import Carga
 
-def count_records(table_name: str):
-    allowed_tables = ["rotas", "cargas"]
+class CargaRepository:
+    @staticmethod
+    def top_carga(db: Session):
+        result = (
+            db.query(Carga.name.label("carga"), func.count().label("total"))
+            .join(text("rota_cargas rc ON rc.carga_id = cargas.id"))
+            .group_by(Carga.name)
+            .order_by(func.count().desc())
+            .limit(1)
+            .first()
+        )
+        return result
     
-    if table_name not in allowed_tables:
-        raise ValueError("Tabela não permitida")
-
-    conn = get_connection()
-    cur = conn.cursor(cursor_factory=RealDictCursor)
-    cur.execute(f"SELECT COUNT(*) FROM {table_name}")
-    total = cur.fetchone()
-    cur.close()
-    release_connection(conn)
-    return total
-
-def top_carga():
-    conn = get_connection()
-    cur = conn.cursor(cursor_factory=RealDictCursor)
-    cur.execute("""
-        SELECT c.nome AS carga, COUNT(rc.rota_id) AS total
-        FROM rota_cargas rc
-        JOIN cargas c ON rc.carga_id = c.id
-        GROUP BY c.nome
-        ORDER BY total DESC
-        LIMIT 1;
-    """)
-    result = cur.fetchone()
-    cur.close()
-    release_connection(conn)
-    return result
-
-# Consulta o banco de dados para todos os tipos de cargas por quantidade de registro
-def cargas():
-    """Retorna a carga mais recorrente (com mais registros associados)."""
-    try:
-        conn = get_connection()
-        cur = conn.cursor(cursor_factory=RealDictCursor)
-        query = """
-            SELECT c.nome AS carga, COUNT(rc.rota_id) AS total
-            FROM rota_cargas rc
-            JOIN cargas c ON rc.carga_id = c.id
-            GROUP BY c.nome;
-        """
-        cur.execute(query)
-        result = cur.fetchall()
-        if result:
-            return result
-        else:
-            return {"message": "Nenhum registro encontrado."}
-    except Exception as e:
-        return {"error": str(e)}
-    finally:
-        cur.close()
-        release_connection(conn)
-
-# Consulta o banco de dados por ocorrências por dia
-def ocorrencias_por_dia():
-    """Retorna o número de ocorrências (rotas) por dia."""
-    try:
-        conn = get_connection()
-        cur = conn.cursor(cursor_factory=RealDictCursor)
-        query = """
+    @staticmethod
+    def list_cargas(db: Session):
+        result = (
+            db.query(Carga.name.label("carga"), func.count().label("total"))
+            .join(text("rota_cargas rc ON rc.carga_id = cargas.id"))
+            .group_by(Carga.name)
+            .all()
+        )
+        return result
+    
+    @staticmethod
+    def ocurrency_by_day(db: Session):
+        query = text("""
             SELECT date, COUNT(*) AS total
             FROM rotas
             GROUP BY date
             ORDER BY date ASC;
-        """
-        cur.execute(query)
-        results = cur.fetchall()
-
-        # transforma para um formato fácil de usar no front
-        data = [{"date": str(r["date"]), "total": r["total"]} for r in results]
-        return {"ocorrencias_por_dia": data}
-
-    except Exception as e:
-        return {"error": str(e)}
-    finally:
-        cur.close()
-        release_connection(conn)
-
+        """)
+        result = db.execute(query).fetchall()
+        return result
