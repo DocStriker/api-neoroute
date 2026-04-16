@@ -1,84 +1,76 @@
-from psycopg2.extras import RealDictCursor
-from .database_config import get_connection, release_connection
+from sqlalchemy.orm import Session
+from sqlalchemy import func
+from app.models.rotas import Rota
+from app.models.carga import Carga
 
-def count_records(table_name: str):
-    allowed_tables = ["rotas", "cargas"]
-    
-    if table_name not in allowed_tables:
-        raise ValueError("Tabela não permitida")
+class RotaRepository:
+    @staticmethod
+    def count_records(db: Session, table: str) -> int:
+        allowed = {
+            "rotas": Rota,
+            "cargas": Carga
+        }
 
-    conn = get_connection()
-    cur = conn.cursor(cursor_factory=RealDictCursor)
-    cur.execute(f"SELECT COUNT(*) FROM {table_name}")
-    total = cur.fetchone()
-    cur.close()
-    release_connection(conn)
-    return total
+        model = allowed.get(table)
 
-def top_state():
-    """
-    Retorna o estado com maior número de registros.
-    A tabela deve conter uma coluna chamada 'state'.
-    """
-    try:
-        conn = get_connection()
-        cur = conn.cursor(cursor_factory=RealDictCursor)
-        query = f"""
-            SELECT state, COUNT(*) AS total
-            FROM rotas
-            GROUP BY state
-            ORDER BY total DESC
-            LIMIT 1;
-        """
-        cur.execute(query)
-        result = cur.fetchone()
-        if result:
-            return {"top_state": result["state"], "total_records": result["total"]}
-        else:
-            return {"message": "Nenhum registro encontrado."}
-    except Exception as e:
-        return {"error": str(e)}
-    finally:
-        cur.close()
-        release_connection(conn)
+        if not model:
+            raise ValueError("Tabela não permitida")
 
-def states():
+        return db.query(func.count(model.id)).scalar()
 
-    try:
-        conn = get_connection()
-        cur = conn.cursor(cursor_factory=RealDictCursor)
-        query = f"""
-            SELECT state, COUNT(*) AS total
-            FROM rotas
-            GROUP BY state;
-        """
-        cur.execute(query)
-        result = cur.fetchall()
-        if result:
-            return result
-        else:
-            return {"message": "Nenhum registro encontrado."}
-    except Exception as e:
-        return {"error": str(e)}
-    finally:
-        cur.close()
-        release_connection(conn)
+    @staticmethod
+    def top_state(db: Session):
+        result = (
+            db.query(
+                Rota.state,
+                func.count(Rota.id).label("total")
+            )
+            .group_by(Rota.state)
+            .order_by(func.count(Rota.id).desc())
+            .limit(1)
+            .first()
+        )
 
-def get_coordenadas():
-    try:
-        conn = get_connection()
-        cur = conn.cursor(cursor_factory=RealDictCursor)
-        query = """
-            SELECT CONCAT(LEFT(url, 20), '...') AS url, coord FROM rotas;
-            """
-        
-        cur.execute(query)
-        results = cur.fetchall()
+        if not result:
+            return None
 
-        return results
-    
-    except Exception as e:
-        return {"error": str(e)}
-    finally:
-        cur.close()
-        release_connection(conn)
+        return {
+            "top_state": result.state,
+            "total_records": result.total
+        }
+
+
+    @staticmethod
+    def states(db: Session):
+        results = (
+            db.query(
+                Rota.state,
+                func.count(Rota.id).label("total")
+            )
+            .group_by(Rota.state)
+            .all()
+        )
+
+        return [
+            {"state": r.state, "total": r.total}
+            for r in results
+        ]
+
+
+    @staticmethod
+    def get_coordenadas(db: Session):
+        results = (
+            db.query(
+                Rota.url,
+                Rota.coord
+            )
+            .all()
+        )
+
+        return [
+            {
+                "url": f"{r.url[:20]}..." if r.url else None,
+                "coord": r.coord
+            }
+            for r in results
+        ]

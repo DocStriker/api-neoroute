@@ -1,4 +1,3 @@
-import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,9 +14,6 @@ async def lifespan(app: FastAPI):
     setup_logging()
     yield
     logger.info("Shutting down...")
-
-if os.getenv("ENV") == "aws":
-    from mangum import Mangum
 
 app = FastAPI(
     title="NeoRoute API",
@@ -39,6 +35,3 @@ app.include_router(cargas.router)
 app.include_router(states.router)
 app.include_router(geodata.router)
 app.include_router(jobs.router)
-
-if os.getenv("ENV") == "aws":
-    handler = Mangum(app)

@@ -1,18 +1,11 @@
-from fastapi import APIRouter, Depends
-from app.core.security import verify_token
+from fastapi import Depends
+from sqlalchemy.orm import Session
+from app.core.database import get_db
+from fastapi import APIRouter
+from app.repositories.rota_repository import RotaRepository
 
-from app.repositories.rota_repository import top_state, count_records, states
+router = APIRouter(prefix="/states", tags=["states"])
 
-router = APIRouter()
-
-@router.get("/total/{table_name}", operation_id="get_total_states", tags=["Estados"])
-def get_total(table_name: str, auth: None = Depends(verify_token)):
-    return count_records(table_name)
-
-@router.get("/top_state", operation_id="get_top_state", tags=["Estados"])
-def get_top_state(auth: None = Depends(verify_token)):
-    return top_state()
-
-@router.get("/states", operation_id="get_all_states", tags=["Estados"])
-def get_states(auth: None = Depends(verify_token)):
-    return states()
+@router.get("/top-state")
+def top_state(db: Session = Depends(get_db)):
+    return RotaRepository.top_state(db)

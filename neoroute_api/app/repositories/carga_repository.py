@@ -7,7 +7,7 @@ class CargaRepository:
     def top_carga(db: Session):
         result = (
             db.query(Carga.name.label("carga"), func.count().label("total"))
-            .join(text("rota_cargas rc ON rc.carga_id = cargas.id"))
+            .join(Carga.rotas)
             .group_by(Carga.name)
             .order_by(func.count().desc())
             .limit(1)

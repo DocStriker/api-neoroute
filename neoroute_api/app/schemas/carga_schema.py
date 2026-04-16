@@ -1,8 +1,16 @@
 from pydantic import BaseModel
+from datetime import date
 
-class CargaResponse(BaseModel):
+class CargaCount(BaseModel):
     carga: str
     total: int
 
-class CargaListResponse(BaseModel):
-    cargas: list[str]
+    class Config:
+        from_attributes = True
+
+class OcurrencyByDay(BaseModel):
+    date: date
+    total: int
+
+    class Config:
+        from_attributes = True
