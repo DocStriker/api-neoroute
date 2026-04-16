@@ -26,6 +26,9 @@ class AgentService:
     def run(self, job_id: str, db: Session):
         try:
             JobService.update_job(job_id, "running")
+            
+            logger.info("Running agent, start at %s", datetime.datetime.now())
+            logger.info("Fetching GDELT data")
 
             df = self.scraper.fetch_gdelt()
 
@@ -35,6 +38,7 @@ class AgentService:
             for _, row in df.iterrows():
                 self._process_row(row, db)
 
+            logger.info("Agent finished processing, end at %s", datetime.datetime.now())
             JobService.update_job(job_id, "done")
 
         except Exception as e:
@@ -45,14 +49,16 @@ class AgentService:
         try:
             url = row["url"]
 
-            logger.info(f"Processing URL: {url}")
+            logger.info("Processing URL: %s", url[:30], extra={"url": " | " + url})
 
             if not self.f.is_relevant_url(url):
+                logger.info("URL not relevant, skipping")
                 return
 
             text = self.scraper.use_bs(url)
 
             if not self.f.is_valid_text(text):
+                logger.info("Text not valid, skipping")
                 return
 
             h = self.u.hash(url)
@@ -60,11 +66,15 @@ class AgentService:
             cached = ProcessCacheRepository.get(h, db)
 
             if cached and cached.processed:
+                logger.info("URL already processed, skipping")
                 return
 
             airesponse = self.rate_limiter.safe_ai_call(text).model_dump()
 
             ProcessCacheRepository.save(h, airesponse, db)
+
+            logger.info("Hash for URL: %s", h)
+            logger.info("AI response: %s", airesponse)
 
             state = airesponse.get("state")
             cargo = airesponse.get("cargo_type")

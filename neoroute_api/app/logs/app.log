@@ -76,3 +76,51 @@ cargo_type
 2026-04-16 05:22:34 [INFO] app.services.agent_service: Processing URL: https://regiaonoroeste.com/familia-e-rendida-por-criminosos-armados-em-frente-a-farmacia-em-rio-preto/ 
 2026-04-16 05:22:34 [INFO] app.services.agent_service: Processing URL: https://www.acritica.com/geral/sine-manaus-oferta-412-vagas-de-emprego-nesta-segunda-feira-1.401102 
 2026-04-16 05:32:49 [INFO] app.main: Shutting down... 
+2026-04-16 07:27:22 [INFO] app.services.agent_service: Processing URL: https://g1.globo.com/sp/piracicaba-regiao/noticia/2026/04/11/pm-prende-dois-suspeitos-e-recupera-caminhao-furtado-com-carga-de-r-115-mil-em-piracicaba.ghtml 
+2026-04-16 07:27:25 [INFO] app.services.ai_service: AI response status: 200 
+2026-04-16 07:27:25 [INFO] app.services.agent_service: Processing URL: https://olhardireto.com.br/noticias/exibir.asp?id=574579&noticia=grupo-suspeito-de-furtar-modulo-de-caminhao-dos-bombeiros-e-preso-apos-perseguicao-e-cerco-policial 
+2026-04-16 07:27:27 [INFO] app.services.agent_service: Processing URL: https://g1.globo.com/sp/mogi-das-cruzes-suzano/noticia/2026/04/09/trem-bate-em-caminhao-na-estrada-do-taboao-do-paratei-em-mogi.ghtml 
+2026-04-16 07:27:33 [INFO] app.services.ai_service: AI response status: 200 
+2026-04-16 07:27:33 [INFO] app.services.agent_service: Processing URL: https://www.sonoticias.com.br/geral/homem-que-matou-vitimas-de-acidente-por-vinganca-e-condenado-a-39-anos-de-cadeia-em-mato-grosso/ 
+2026-04-16 07:27:33 [INFO] app.services.agent_service: Processing URL: https://jmonline.com.br/policia/furto-ousado-caminh-o-com-carga-de-agua-mineral-desaparece-em-uberaba-1.611584 
+2026-04-16 07:27:33 [INFO] app.services.agent_service: Processing URL: https://www.gazetadigital.com.br/editorias/policia/dois-sao-presos-por-receptacao-de-fios-eletricos-furtados-em-lucas-do-rio-verde/843438 
+2026-04-16 07:27:33 [INFO] app.services.agent_service: Processing URL: https://www.ceara.gov.br/2026/04/15/pcce-prende-suspeitos-de-receptacao-e-adulteracao-de-caminhonetes-de-luxo-em-fortaleza/ 
+2026-04-16 07:27:33 [INFO] app.services.agent_service: Processing URL: https://www.estadao.com.br/jornal-do-carro/estradao/linguagem-das-estradas-como-caminhoneiros-se-comunicam-alem-das-palavras/ 
+2026-04-16 07:27:40 [INFO] app.services.ai_service: AI response status: 200 
+2026-04-16 07:27:40 [ERROR] app.utils.utils: AI call failed (attempt 1): 4 validation errors for ReviewAnalysis
+street
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+city
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+state
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+cargo_type
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing 
+2026-04-16 07:27:41 [INFO] app.services.ai_service: AI response status: 200 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: https://tnonline.uol.com.br/noticias/parana/policia-civil-prende-dez-homens-e-recupera-r-100-mil-em-cabos-de-cobre-no-parana-1081259 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: https://g1.globo.com/rr/roraima/noticia/2026/04/12/trio-invade-casa-amarra-idoso-rouba-veiculo-e-capota-durante-fuga-no-sul-de-rr.ghtml 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: https://www.reporterdiario.com.br/noticia/3810864/apos-roubo-de-carga-criminosos-fogem-da-pm-e-colidem-contra-poste/ 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: https://g1.globo.com/sp/ribeirao-preto-franca/noticia/2026/04/14/quadrilha-disfarcada-de-operarios-que-interditava-ruas-para-furtar-cabos-e-presa-no-interior-de-sp.ghtml 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: https://g1.globo.com/pi/piaui/noticia/2026/04/10/suspeito-homicidio-ma-preso-fiscalizacao-prf.ghtml 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: https://jmonline.com.br/policia/trio-e-preso-em-uberaba-por-armazenamento-irregular-e-suspeita-de-falsificac-o-de-defensivos-1.613271 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: https://www.jmonline.com.br/policia/trio-e-preso-em-uberaba-por-armazenamento-irregular-e-suspeita-de-falsificac-o-de-defensivos-1.613271 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: https://www.jornalcruzeiro.com.br/sorocaba/regiao/2026/04/759401-tres-homens-sao-presos-apos-furto-em-distribuidora-em-itapetininga.html 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: https://www.correio24horas.com.br/minha-bahia/semaforos-vandalizados-geram-mais-de-r-1-milhao-de-prejuizo-em-salvador-0426 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: https://g1.globo.com/rn/rio-grande-do-norte/noticia/2026/04/11/motociclista-morte-acidente-viatura-pm-natal.ghtml 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: https://g1.globo.com/mg/vales-mg/noticia/2026/04/11/vaqueiro-e-preso-suspeito-de-furtar-gado-da-fazenda-onde-trabalhava-em-governador-valadares.ghtml 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: http://anoticiadovale.com/2026/04/11/homem-troca-carro-por-caminhonete-furtada-e-e-detido-pela-prf-em-petrolina/ 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: https://g1.globo.com/pi/piaui/noticia/2026/04/10/mega-sena-apostas-premio.ghtml 
+2026-04-16 07:27:41 [INFO] app.services.agent_service: Processing URL: https://www.jornalcruzeiro.com.br/sorocaba/regiao/2026/04/759341-operacao-prende-sete-suspeitos-de-roubo-em-itapetininga.html 
+2026-04-16 07:27:43 [INFO] app.services.ai_service: AI response status: 200 
+2026-04-16 07:27:43 [INFO] app.services.agent_service: Processing URL: https://g1.globo.com/sp/ribeirao-preto-franca/noticia/2026/04/12/mulher-e-baleada-nas-nadegas-apos-discussao-em-franca-sp.ghtml 
+2026-04-16 07:27:43 [INFO] app.services.agent_service: Processing URL: https://www.agorams.com.br/em-duas-acoes-dof-e-pm-de-dourados-apreendem-quase-quatro-toneladas-de-drogas/ 
+2026-04-16 07:27:43 [INFO] app.services.agent_service: Processing URL: https://regiaonoroeste.com/homens-sao-presos-em-flagrante-por-tentativa-de-furto-de-material-asfaltico-em-jales/ 
+2026-04-16 07:27:43 [INFO] app.services.agent_service: Processing URL: https://regiaonoroeste.com/policia-civil-desarticula-quadrilha-especializada-em-clonagem-de-veiculos-em-birigui/ 
+2026-04-16 07:27:43 [INFO] app.services.agent_service: Processing URL: https://regiaonoroeste.com/familia-e-rendida-por-criminosos-armados-em-frente-a-farmacia-em-rio-preto/ 
+2026-04-16 07:27:43 [INFO] app.services.agent_service: Processing URL: https://www.acritica.com/geral/sine-manaus-oferta-412-vagas-de-emprego-nesta-segunda-feira-1.401102 
+2026-04-16 07:31:24 [INFO] app.main: Shutting down... 
+2026-04-16 07:42:55 [INFO] app.main: Shutting down... 
