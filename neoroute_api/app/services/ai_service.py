@@ -1,10 +1,9 @@
-import os
-from urllib import response
-from google import genai
 from pydantic import BaseModel, Field, ValidationError
 from dotenv import load_dotenv
-import json
-import requests
+import json, os, requests
+
+import logging
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -16,35 +15,15 @@ class ReviewAnalysis(BaseModel):
 
 class AIService:
     def __init__(self):
-        if os.getenv("ENV") == "aws":
-            from app.core.ssm_config import get_param
-            self.api_token = get_param("/neoroute/api/aiagent")
-
         self.api_token = os.getenv("AIAGENT_TOKEN_TWO")
-        #self.client = genai.Client(api_key=self.api_token)
         self.url = "https://openrouter.ai/api/v1/chat/completions"
         self.headers = {
             "Authorization": f"Bearer {self.api_token}",
             "Content-Type": "application/json"
         }
-
-    def parse(self, texto, model="gemini"):
-        if model == "gemini":
-            prompt = f"No texto: {texto}, extraia a localização principal mencionada no texto, o tipo de carga roubada, a rua, cidade e o estado onde ocorreu o roubo."
-
-            config = genai.types.GenerateContentConfig(
-            response_mime_type="application/json",
-            response_schema=ReviewAnalysis,
-            thinking_config=genai.types.ThinkingConfig(include_thoughts=False))
-                
-            response = self.client.models.generate_content(
-                model="gemini-3.1-flash-lite-preview",
-                contents=prompt,
-                config=config)
-            return response.parsed
         
-        elif model == "openrouter":
-            prompt = f"""
+    def parse(self, texto):  
+        prompt = f"""
                 Extract structured data from the text below.
 
                 Text:
@@ -64,7 +43,7 @@ class AIService:
                 - state must be abbreviated (e.g., SP)
                 """
              
-            response = requests.post(self.url, headers=self.headers, timeout=15, json={
+        response = requests.post(self.url, headers=self.headers, timeout=15, json={
                     "model": "nvidia/nemotron-3-super-120b-a12b:free",
                     "messages": [
                         {"role": "user", "content": prompt}
@@ -72,20 +51,20 @@ class AIService:
                     "reasoning": {"enabled": False}
                     }
                 )
-            
-            response.raise_for_status()
+        logger.info(f"AI response status: {response.status_code}")
+        response.raise_for_status()
 
-            content = response.json()["choices"][0]["message"]["content"]
+        content = response.json()["choices"][0]["message"]["content"]
 
-            try:
-                data = json.loads(content)
-                return ReviewAnalysis(**data)
+        try:
+            data = json.loads(content)
+            return ReviewAnalysis(**data)
 
-            except (json.JSONDecodeError, ValidationError):
-                return ReviewAnalysis()
+        except (json.JSONDecodeError, ValidationError):
+            return ReviewAnalysis()
         
 if __name__ == "__main__":
     ai_service = AIService()
     test_text = "Roubo de carga de eletrônicos na Av. Paulista, São Paulo, SP."
-    result = ai_service.parse(test_text, model="openrouter")
-    print(result)
+    result = ai_service.parse(test_text)
+    print(result.model_dump())

@@ -4,8 +4,12 @@ from app.services.scraping_service import ScrapingService
 from app.services.geolocation_service import GeolocationService
 from app.utils.utils import Utils, RateLimiter
 from app.utils.filters import Filters
-from app.repositories.database_config import get_connection, release_connection
-from app.repositories.job_repository import update_job
+from sqlalchemy.orm import Session
+from app.repositories.process_cache_repository import ProcessCacheRepository
+from app.repositories.rota_repository import RotaRepository
+from app.repositories.carga_repository import CargaRepository
+from app.services.job_service import JobService
+
 
 import logging
 logger = logging.getLogger(__name__)
@@ -19,117 +23,91 @@ class AgentService:
         self.f = Filters()
         self.rate_limiter = RateLimiter(max_calls=10, period=60)
 
-    def run(self, job_id: str):
+    def run(self, job_id: str, db: Session):
         try:
-            update_job(job_id, "running")
+            JobService.update_job(job_id, "running")
 
-            conn = get_connection()
-            cur = conn.cursor()
-
-            logger.info("Fetching GDELT data and initializing...")
             df = self.scraper.fetch_gdelt()
 
             if df is None or df.empty:
-                raise Exception("No data fetched from GDELT.")
-
-            logger.info("Agent started at %s", datetime.datetime.now())
-            logger.info("Total URLs to process: %d", len(df))
+                raise Exception("No data fetched")
 
             for _, row in df.iterrows():
-                try:
-                    if not self.f.is_relevant_url(row["url"]):
-                        logger.info("Irrelevant URL, skipping %s", row["url"][:30], extra={"url_full": "| " + row["url"]})
-                        continue
+                self._process_row(row, db)
 
-                    logger.info("Processing URL %s", row["url"][:30], extra={"url_full": "| " + row["url"]})
-                    text = self.scraper.use_bs(row["url"])
-
-                    if not self.f.is_valid_text(text):
-                        logger.info("Invalid text or too short, skipping URL")
-                        continue
-
-                    h = self.u.hash(row["url"])
-
-                    cur.execute("SELECT processed, response FROM process_cache WHERE hash = %s", (h,))
-                    cached = cur.fetchone()
-
-                    if cached and cached[0]:
-                        logger.info("FULL CACHE HIT → skipping processing")
-                        continue
-                    
-                    else:
-                        airesponse = self.rate_limiter.safe_ai_call(text).model_dump()
-                        logger.info("Caching AI response for hash: %s", h)
-                        logger.info("AI response: %s", airesponse)
-
-                        cur.execute(
-                            "INSERT INTO process_cache (hash, response, processed) VALUES (%s, %s, %s)",
-                            (h, json.dumps(airesponse), True)
-                        )
-
-                    state = airesponse.get("state")
-                    cargo = airesponse.get("cargo_type")
-
-                    if state == "unknown" or cargo == "unknown":
-                        logger.info("State or Cargo Type not found in AI response, skipping URL")
-                        continue
-
-                    coord = self.geo.get_coordinates(self.f.extract_adress(airesponse))
-                    coord = json.dumps(coord) if isinstance(coord, dict) else str(coord)
-
-                    cargo_list = re.split(r"[,\s]+", cargo)
-                    cargo_list = [c.strip() for c in cargo_list if c.strip()]
-
-                    logger.info("Extracted state: %s, cargo types: %s, coordinates: %s", state, cargo_list, coord)
-
-                    cur.execute(
-                                """
-                                INSERT INTO rotas (url, state, date, coord)
-                                VALUES (%s, %s, %s, %s)
-                                RETURNING id;
-                                """,
-                                (row["url"], state, row["date"], coord if coord != "None" else json.dumps({"error": "not found"}))
-                            )
-                    rota_id = cur.fetchone()[0]
-                    logger.info("Route ID %s inserted", rota_id)
-
-                    for cargo in cargo_list:
-                        cargo = self.f.remove_accents(cargo.strip().lower())
-
-                        cur.execute("""
-                            INSERT INTO cargas (nome)
-                            VALUES (%s)
-                            ON CONFLICT (nome) DO UPDATE SET nome = EXCLUDED.nome
-                            RETURNING id;
-                        """, (cargo,))
-
-                        cargo_id = cur.fetchone()[0]
-
-                        cur.execute("""
-                            INSERT INTO rota_cargas (rota_id, carga_id)
-                            VALUES (%s, %s)
-                            ON CONFLICT DO NOTHING;
-                        """, (rota_id, cargo_id))
-                    
-                    conn.commit()
-                    logger.info("Registered route.")
-
-                except Exception as e:
-                    logger.error("Error processing URL, %s", str(e), extra={"url_full": row["url"]})
-                    conn.rollback()
-
-            conn.commit()
-            logger.info("Completed.")
-            update_job(job_id, "done")
+            JobService.update_job(job_id, "done")
 
         except Exception as e:
-            logger.error("Agent Service Error: %s", str(e))
-            update_job(job_id, "error")
+            logger.error(f"Agent error: {e}")
+            JobService.update_job(job_id, "error")
 
-        finally:
-            if cur:
-                cur.close()
-            if conn:
-                release_connection(conn)
+    def _process_row(self, row, db: Session):
+        try:
+            url = row["url"]
+
+            logger.info(f"Processing URL: {url}")
+
+            if not self.f.is_relevant_url(url):
+                return
+
+            text = self.scraper.use_bs(url)
+
+            if not self.f.is_valid_text(text):
+                return
+
+            h = self.u.hash(url)
+
+            cached = ProcessCacheRepository.get(h, db)
+
+            if cached and cached.processed:
+                return
+
+            airesponse = self.rate_limiter.safe_ai_call(text).model_dump()
+
+            ProcessCacheRepository.save(h, airesponse, db)
+
+            state = airesponse.get("state")
+            cargo = airesponse.get("cargo_type")
+
+            if state == "unknown" or cargo == "unknown":
+                return
+
+            coord = self._resolve_coord(airesponse)
+
+            rota = RotaRepository.create(
+                db,
+                url=url,
+                state=state,
+                date=row["date"],
+                coord=coord
+            )
+
+            self._process_cargos(db, rota.id, cargo)
+
+            db.commit()
+
+        except Exception as e:
+            logger.error(f"Error processing row: {e}")
+            db.rollback()
+
+    def _resolve_coord(self, airesponse):
+        coord = self.geo.get_coordinates(
+            self.f.extract_adress(airesponse)
+        )
+
+        if isinstance(coord, dict):
+            return coord
+
+        return {"error": "not found"}
+    
+    def _process_cargos(self, db: Session, rota_id: int, cargo_str: str):
+        cargos = re.split(r"[,\s]+", cargo_str)
+
+        for cargo in cargos:
+            cargo = self.f.remove_accents(cargo.strip().lower())
+
+            carga_obj = CargaRepository.get_or_create(db, cargo)
+
+            RotaRepository.link_carga(db, rota_id, carga_obj.id)
 
         

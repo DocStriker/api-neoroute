@@ -19,7 +19,7 @@ class CargaRepository:
     def list_cargas(db: Session):
         result = (
             db.query(Carga.name.label("carga"), func.count().label("total"))
-            .join(text("rota_cargas rc ON rc.carga_id = cargas.id"))
+            .join(Carga.rotas)
             .group_by(Carga.name)
             .all()
         )
@@ -35,3 +35,16 @@ class CargaRepository:
         """)
         result = db.execute(query).fetchall()
         return result
+
+    @staticmethod
+    def get_or_create(db: Session, name: str):
+        obj = db.query(Carga).filter_by(name=name).first()
+
+        if obj:
+            return obj
+
+        obj = Carga(name=name)
+        db.add(obj)
+        db.flush()
+
+        return obj

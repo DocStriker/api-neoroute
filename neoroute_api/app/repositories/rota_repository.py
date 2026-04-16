@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func
 from app.models.rotas import Rota
 from app.models.carga import Carga
+from app.models.association import rota_cargas
 
 class RotaRepository:
     @staticmethod
@@ -74,3 +75,19 @@ class RotaRepository:
             }
             for r in results
         ]
+    
+    @staticmethod
+    def create(db, **kwargs):
+        rota = Rota(**kwargs)
+        db.add(rota)
+        db.flush()
+        return rota
+
+    @staticmethod
+    def link_carga(db, rota_id, carga_id):
+        db.execute(
+            rota_cargas.insert().values(
+                rota_id=rota_id,
+                carga_id=carga_id
+            )
+        )

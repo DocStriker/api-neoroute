@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, String
-from app.core.database import Base
+from sqlalchemy import Column, Integer
+from app.models.base import Base
 from sqlalchemy import Table, ForeignKey
 
 rota_cargas = Table(

@@ -28,10 +28,9 @@ def setup_logging():
     console_handler = logging.StreamHandler()
     console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(console_formatter)
-    #console_handler.addFilter(SafeExtraFilter())
 
-    os.makedirs("neoroute_api/app/logs", exist_ok=True)
-    file_handler = logging.FileHandler("neoroute_api/app/logs/app.log", encoding="utf-8")
+    os.makedirs("app/logs", exist_ok=True)
+    file_handler = logging.FileHandler("app/logs/app.log", encoding="utf-8")
     file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(file_formatter)
     file_handler.addFilter(SafeExtraFilter())

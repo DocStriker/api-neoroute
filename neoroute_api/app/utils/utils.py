@@ -7,11 +7,10 @@ import logging
 logger = logging.getLogger(__name__)
 
 class Utils:
-    
     def safe_request(self, url, params):
         delay = 5
         
-        for i in range(5):
+        for i in range(4):
             try:
                 response = requests.get(
                     url,
@@ -45,7 +44,7 @@ class RateLimiter:
     def wait(self):
         now = time.time()
 
-        # remove chamadas antigas
+        # remove lapsed calls
         self.calls = [t for t in self.calls if now - t < self.period]
 
         if len(self.calls) >= self.max_calls:
@@ -59,7 +58,7 @@ class RateLimiter:
         for i in range(3):
             try:
                 self.wait()
-                return self.ai.parse(texto, model="openrouter")
+                return self.ai.parse(texto)
             except Exception as e:
                 logger.error("AI call failed (attempt %d): %s", i+1, e)
                 time.sleep(2 ** i)

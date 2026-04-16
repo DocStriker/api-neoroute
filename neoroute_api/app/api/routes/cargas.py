@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.core.database import get_db
 from app.services.carga_service import CargaService
-from neoroute_api.app.schemas.carga_schema import CargaCount, OcurrencyByDay
+from app.schemas.carga_schema import CargaCount, OcurrencyByDay
 
 router = APIRouter(prefix="/cargas", tags=["cargas"])
 

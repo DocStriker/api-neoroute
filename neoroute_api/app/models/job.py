@@ -1,7 +1,7 @@
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 from sqlalchemy import DateTime, Enum, Column
-from app.core.database import Base
+from app.models.base import Base
 import uuid
 
 class Job(Base):

@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Depends, BackgroundTasks
 from sqlalchemy.orm import Session
-
-from app.core.database import get_db
+from app.core.database import SessionLocal, get_db
 from app.core.security import verify_token
 from app.services.agent_service import AgentService
 from app.services.job_service import JobService
@@ -16,9 +15,15 @@ def run_agent(
 ):
     job_id = JobService.create_job(db)
 
-    agent = AgentService()
+    def task():
+        db = SessionLocal()
+        try:
+            agent = AgentService()
+            agent.run(job_id, db)
+        finally:
+            db.close()
 
-    background_tasks.add_task(agent.run, job_id)
+    background_tasks.add_task(task)
 
     return {
         "status": "agent started in background",

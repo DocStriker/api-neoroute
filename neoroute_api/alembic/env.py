@@ -1,7 +1,7 @@
 from logging.config import fileConfig
 
 from app.models import job, carga, cache, association, rotas  # noqa: F401
-from app.core.database import Base  # noqa: F401
+from app.models.base import Base  # noqa: F401
 from sqlalchemy import pool
 
 from alembic import context

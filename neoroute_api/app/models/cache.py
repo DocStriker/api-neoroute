@@ -1,5 +1,5 @@
 from sqlalchemy import Column, CHAR, String, JSON, Boolean
-from app.core.database import Base
+from app.models.base import Base
 
 class Cache(Base):
     __tablename__ = "process_cache"
